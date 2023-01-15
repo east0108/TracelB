@@ -16,7 +16,6 @@ public class TravelDaoImpl implements TravelDao {
 	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 	
 	
-	@Override
 	public Travel getTravelById(Integer travelId) {
 		try {
 			String sql= "SELECT id,name,town,address,tickets,introduce,picture FROM travel2 WHERE id = :travelId";
