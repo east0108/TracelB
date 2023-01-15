@@ -18,7 +18,7 @@ public class TravelDaoImpl implements TravelDao {
 	@Override
 	public Travel getTravelById(Integer travelId) {
 		try {
-			String sql= "SELECT id,name,town,address,tickets,introduce,picture FROM travel2 WHERE id = :travelId";
+			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2 WHERE id = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			map.put("travelId", travelId); 
 					
