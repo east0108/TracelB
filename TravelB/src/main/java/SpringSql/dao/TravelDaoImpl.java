@@ -16,20 +16,23 @@ public class TravelDaoImpl implements TravelDao {
 	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 
 	@Override
-	public Travel getTravelById(Integer travelId) {
+	public List<Travel> getTravelById(String travelId) {
 		try {
-			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2 WHERE id = :travelId";
+			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2 WHERE town = :travelId";
 			Map<String,Object> map=new HashMap<>();
+			
+			
 			map.put("travelId", travelId); 
 					
 			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
-			 
 			
-				return travelList.get(0);
+			
+				return  travelList;
 			
 			}catch (Exception e) {
 				return null;
 			}
+		
 			
 		}
 }

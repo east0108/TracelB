@@ -1,5 +1,7 @@
 package SpringSql.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +15,7 @@ public class TravelServiceImpl implements TravelService{
 	private TravelDao travelDao;
 
 	@Override
-	public Travel getTravelById(Integer travelId) {
+	public List<Travel> getTravelById(String travelId) {
 		
 		return travelDao.getTravelById(travelId);
 	}

@@ -8,14 +8,30 @@
 		
 		
 		
-		
-		地點<div th:text="${travel.name}"></div>
-		區域<div th:text="${travel.town}"></div>		
-		地址<div th:text="${travel.address}"></div>
-		電話<div th:text="${travel.tel}"></div>
-		門票資訊<div th:text="${travel.ticket}"></div>
-		介紹<div th:text="${travel.introduce}"></div>	
-		圖片<img th:src="${travel.picture}"></div>
+<table border="1"  width="100%">
+    <tr>
+        <th>Name</th>
+        <th>Town</th>
+        <th>Address</th>
+        <th>tel</th>
+        <th>tickets</th>
+        <th>introduce</th>
+        <th>picture</th>
+        
+    </tr>  
+  <tr th:each="travel : ${travel}">
+    <td th:text="${travel.name}"></td>
+    <td th:text="${travel.town}"></td>
+    <td th:text="${travel.address}"></td>
+    <td th:text="${travel.tel}"></td>
+    <td th:text="${travel.ticket}"></td>
+    <td th:text="${travel.introduce}"></td>
+    <td th:text="${travel.picture}"></td>  
+  </tr>
+  
+  <a th:href="@{${index}}">回首頁</a>
+
+</table>
 		
 </body>
 </html>
