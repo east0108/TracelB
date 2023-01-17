@@ -40,7 +40,7 @@ public class JspController {
 	}
 	
 	
-	@PostMapping("/index")
+	@PostMapping("/home")
 	public String dataPage(Model model,@RequestParam Integer travelId) {
 		
 	
