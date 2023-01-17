@@ -1,5 +1,7 @@
 package SpringSql.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +15,8 @@ public class TravelController {
 	private  TravelService travelService;
 	
 	
-	public Travel getTravel(Integer travelId) {
-		Travel travel = travelService.getTravelById(travelId);
+	public List<Travel> getTravel(String travelId) {
+		List<Travel> travel = travelService.getTravelById(travelId);
 		
 		return travel;
 	}

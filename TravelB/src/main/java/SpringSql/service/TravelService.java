@@ -1,9 +1,11 @@
 package SpringSql.service;
 
+import java.util.List;
+
 import SpringSql.model.Travel;
 
 public interface TravelService {
 	
 	
-	Travel getTravelById(Integer travelId);
+	List<Travel> getTravelById(String travelId);
 }

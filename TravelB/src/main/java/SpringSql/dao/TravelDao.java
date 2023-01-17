@@ -1,8 +1,12 @@
 package SpringSql.dao;
 
+import java.util.List;
+
 import SpringSql.model.Travel;
 
 public interface TravelDao {
 		
-	Travel getTravelById(Integer travelId);
+
+
+	List<Travel> getTravelById(String travelId);
 }

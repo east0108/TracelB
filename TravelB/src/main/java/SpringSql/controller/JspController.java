@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -29,7 +30,8 @@ public class JspController {
 	@Autowired
 	private  TravelController travelController;
 	
-
+	@Autowired
+	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 	
 	
 	@GetMapping("/index")
@@ -41,12 +43,12 @@ public class JspController {
 	
 	
 	@PostMapping("/home")
-	public String dataPage(Model model,@RequestParam Integer travelId) {
+	public String dataPage(Model model,@RequestParam String travelId) {
 		
 	
 	
-		Travel travel =travelController.getTravel(travelId);
-		
+		List<Travel> travel =travelController.getTravel(travelId);
+			
 		
 		
 		

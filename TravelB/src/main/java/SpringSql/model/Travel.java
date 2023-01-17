@@ -7,7 +7,7 @@ public class Travel {
 		private String town;
 		private String address;
 		private String tel;
-		private String ticket;
+		private String tickets;
 		private String introduce;
 		private String picture;
 		
@@ -42,10 +42,10 @@ public class Travel {
 			this.tel = tel;
 		}
 		public String getTicket() {
-			return ticket;
+			return tickets;
 		}
 		public void setTicket(String ticket) {
-			this.ticket = ticket;
+			this.tickets = ticket;
 		}
 		public String getIntroduce() {
 			return introduce;
