@@ -20,7 +20,7 @@ public class TravelDaoImpl implements TravelDao {
 	@Override
 	public List<Travel> getTravelById(String travelId) {
 		try {
-			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2 WHERE town = :travelId";
+			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			
 			
