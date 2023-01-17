@@ -32,7 +32,7 @@ public class JspController {
 
 	
 	
-	@GetMapping("/home")
+	@GetMapping("/index")
 	public String home () {
 	
 		
@@ -40,7 +40,7 @@ public class JspController {
 	}
 	
 	
-	@PostMapping("/home")
+	@PostMapping("/index")
 	public String dataPage(Model model,@RequestParam Integer travelId) {
 		
 	
@@ -60,6 +60,11 @@ public class JspController {
 			
 				
 	}
+	@GetMapping("/login")
+	public String Member () {	
+		return "login";
+	}
+	
 }
 	
 	
