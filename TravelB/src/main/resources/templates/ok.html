@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+	td img{width:200px;height:100px;}
+	
+</style>
+
 </head>
 <body>
 		
@@ -16,8 +22,7 @@
         <th>tel</th>
         <th>tickets</th>
         <th>introduce</th>
-        <th>picture</th>
-        
+        <th>picture</th>       
     </tr>  
   <tr th:each="travel : ${travel}">
     <td th:text="${travel.name}"></td>
@@ -26,7 +31,8 @@
     <td th:text="${travel.tel}"></td>
     <td th:text="${travel.ticket}"></td>
     <td th:text="${travel.introduce}"></td>
-    <td th:text="${travel.picture}"></td>  
+    <td id="img"><img th:src="@{(${travel.picture})}"/></td> 
+    
   </tr>
   
   <a th:href="@{${index}}">回首頁</a>
