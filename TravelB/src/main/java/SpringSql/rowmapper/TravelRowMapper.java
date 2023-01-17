@@ -1,4 +1,4 @@
-package SpringSql.dao;
+package SpringSql.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

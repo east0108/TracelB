@@ -1,4 +1,4 @@
-package SpringSql.service;
+package SpringSql.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import SpringSql.dao.TravelDao;
 import SpringSql.model.Travel;
+import SpringSql.service.TravelService;
 
 @Component
 public class TravelServiceImpl implements TravelService{

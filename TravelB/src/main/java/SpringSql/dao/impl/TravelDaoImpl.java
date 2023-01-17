@@ -1,4 +1,4 @@
-package SpringSql.dao;
+package SpringSql.dao.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import SpringSql.dao.TravelDao;
 import SpringSql.model.Travel;
+import SpringSql.rowmapper.TravelRowMapper;
 @Component
 public class TravelDaoImpl implements TravelDao {
 

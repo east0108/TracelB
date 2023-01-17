@@ -34,15 +34,15 @@ public class JspController {
 	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 	
 	
-	@GetMapping("/index")
+	@GetMapping("/index3")
 	public String home () {
 	
 		
-		return "index";
+		return "index3";
 	}
 	
 	
-	@PostMapping("/home")
+	@PostMapping("/index3")
 	public String dataPage(Model model,@RequestParam String travelId) {
 		
 	
@@ -58,7 +58,7 @@ public class JspController {
 		
 			}
 			model.addAttribute("error","沒有這筆資料");
-			return "index";
+			return "index3";
 			
 				
 	}
