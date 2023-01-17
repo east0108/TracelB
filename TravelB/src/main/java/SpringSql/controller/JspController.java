@@ -65,6 +65,11 @@ public class JspController {
 		return "login";
 	}
 	
+	@GetMapping("/members/register")
+	public String register () {	
+		return "register";
+	}
+	
 }
 	
 	
