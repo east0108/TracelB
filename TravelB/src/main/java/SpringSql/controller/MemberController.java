@@ -37,6 +37,12 @@ public class MemberController {
 	
 	@PostMapping("/members/register")
 	public ResponseEntity<Member> register(@RequestBody @Valid MemberRegisterRequest memberRegisterRequest){
+		
+		System.out.println("shfoisjefjioesjif");
+		System.out.println("shfoisjefjioesjif");
+		System.out.println("shfoisjefjioesjif");
+		System.out.println("shfoisjefjioesjif");
+		System.out.println("shfoisjefjioesjif");
 		Integer memberId = memberService.register(memberRegisterRequest);
 		
 		Member member = memberService.getMemberById(memberId);
@@ -48,11 +54,7 @@ public class MemberController {
 	public ResponseEntity<Member> login(@RequestBody @Valid MemberLoginRequest memberLoginRequest,Model model){
 		
 		
-		System.out.println("shfoisjefjioesjif");
-		System.out.println("shfoisjefjioesjif");
-		System.out.println("shfoisjefjioesjif");
-		System.out.println("shfoisjefjioesjif");
-		System.out.println("shfoisjefjioesjif");
+		
 		
 		 Member member = memberService.login(memberLoginRequest);
 			

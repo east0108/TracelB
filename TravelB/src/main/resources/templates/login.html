@@ -205,7 +205,7 @@
                             <a href="">Cookies</a>
                             <a href="">Help</a>
                             <a href="">FQAs</a>
-                            \<a href="http://127.0.0.1:8080/travel/login">測試</a>
+                            <a href="http://127.0.0.1:8080/travel/members/register">測試</a>
                         </div>
                     </div>
                 </div>
@@ -243,13 +243,10 @@
 
         const http = new XMLHttpRequest();
         http.withCredentials=true;
-        http.open('POST','http://127.0.0.1:8080/travel/members/register',true);//'https://cors-anywhere.herokuapp.com/'+
+        http.open('POST','http://localhost:8080/travel/members/register',true);//'https://cors-anywhere.herokuapp.com/'+
         http.setRequestHeader("Content-Type", "application/json");
         http.send(JSON.stringify(params)) ;// Make sure to stringify //JSON.stringify(params)
-        http.onload = function() {
-            // Do whatever with response
-            alert(http.responseText)
-        }; 	
+        	
     };
 </script>
 </body>
