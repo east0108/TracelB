@@ -64,11 +64,12 @@ public class JspController {
 	public String Member () {	
 		return "login";
 	}
-	
 	@GetMapping("/members/register")
 	public String register () {	
 		return "register";
 	}
+	
+	
 	
 }
 	

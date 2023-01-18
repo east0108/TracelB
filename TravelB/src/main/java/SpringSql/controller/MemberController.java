@@ -1,13 +1,25 @@
 package SpringSql.controller;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import SpringSql.dto.MemberLoginRequest;
 import SpringSql.dto.MemberRegisterRequest;
@@ -18,7 +30,8 @@ import SpringSql.service.MemberService;
 
 @RestController
 public class MemberController {
-
+	final static Logger log = LoggerFactory.getLogger(MemberController.class);
+	static List<Member> members = null;
 	@Autowired
 	private MemberService memberService;
 	
@@ -32,7 +45,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<Member> login(@RequestBody @Valid MemberLoginRequest memberLoginRequest){
+	public ResponseEntity<Member> login(@RequestBody @Valid MemberLoginRequest memberLoginRequest,Model model){
 		
 		
 		System.out.println("shfoisjefjioesjif");
@@ -43,7 +56,7 @@ public class MemberController {
 		
 		 Member member = memberService.login(memberLoginRequest);
 			
-		 
+		 model.addAttribute("member",member);
 		 return ResponseEntity.status(HttpStatus.OK).body(member);
 
 	}

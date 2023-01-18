@@ -441,3 +441,5 @@
     padding-right: 0;
     border-right: none;
 }
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
