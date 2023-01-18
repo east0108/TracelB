@@ -43,6 +43,7 @@ public class MemberController {
 		System.out.println("shfoisjefjioesjif");
 		System.out.println("shfoisjefjioesjif");
 		System.out.println("shfoisjefjioesjif");
+		
 		Integer memberId = memberService.register(memberRegisterRequest);
 		
 		Member member = memberService.getMemberById(memberId);
