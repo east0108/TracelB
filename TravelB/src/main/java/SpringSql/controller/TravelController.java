@@ -46,7 +46,7 @@ public class TravelController {
 			return "ok";
 		
 			}
-			model.addAttribute("error","沒有這筆資料");
+			model.addAttribute("error","沒有這筆資");
 			return "index3";
 			
 				
