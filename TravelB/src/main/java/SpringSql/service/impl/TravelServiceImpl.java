@@ -17,7 +17,7 @@ public class TravelServiceImpl implements TravelService{
 	private TravelDao travelDao;
 
 	@Override
-	public List<Travel> getTravelById(TravelQueryParams travelQueryParams) {
+	public List<Travel> getTravelById(String travelQueryParams) {
 		
 		return travelDao.getTravelById(travelQueryParams);
 	}

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import SpringSql.dao.TravelDao;
+import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
 import SpringSql.rowmapper.TravelRowMapper;
 @Component
@@ -18,13 +19,13 @@ public class TravelDaoImpl implements TravelDao {
 	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 
 	@Override
-	public List<Travel> getTravelById(String travelId) {
+	public List<Travel> getTravelById(String travelQueryParams) {
 		try {
 			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			
 			
-			map.put("travelId", travelId); 
+			map.put("travelId", travelQueryParams); 
 					
 			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
 			
