@@ -92,3 +92,17 @@
     
 })(jQuery);
 
+function login() {
+        // Form fields, see IDs above
+        const params = {
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value
+        }
+
+        const http = new XMLHttpRequest();
+        http.withCredentials=true;
+        http.open('POST','http://localhost:8080/travel/members/register',true);//'https://cors-anywhere.herokuapp.com/'+
+        http.setRequestHeader("Content-Type", "application/json");
+        http.send(JSON.stringify(params)) ;// Make sure to stringify //JSON.stringify(params)
+        	
+    };
