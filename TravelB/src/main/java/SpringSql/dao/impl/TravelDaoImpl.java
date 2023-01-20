@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
+import SpringSql.model.jpaTravel;
+import SpringSql.rowmapper.JpaTravelRowMapper;
 import SpringSql.rowmapper.TravelRowMapper;
 @Component
 public class TravelDaoImpl implements TravelDao {
@@ -38,4 +40,26 @@ public class TravelDaoImpl implements TravelDao {
 		
 			
 		}
-}
+
+	@Override
+	public List<Travel> getTravelAll() {
+		
+		try {
+			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2 ";
+			Map<String,Object> map=new HashMap<>();
+					
+			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
+			
+			
+				return  travelList;
+			
+			}catch (Exception e) {
+				return null;
+			}
+		
+	}
+
+	
+
+	}
+

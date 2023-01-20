@@ -1,5 +1,6 @@
 package SpringSql.service.impl;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +12,22 @@ import org.springframework.stereotype.Component;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
+import SpringSql.model.jpaTravel;
 import SpringSql.repository.TravelRepository;
 import SpringSql.service.TravelService;
 
 @Component
-public class TravelServiceImpl implements TravelService{
+public class TravelServiceImpl  implements TravelService{
+	
+	
 	
 	@Autowired
 	private TravelDao travelDao;
 	
-	@Autowired 
+	@Autowired
 	private TravelRepository travelRepository;
+	
+
 
 	@Override
 	public List<Travel> getTravelById(String travelQueryParams) {
@@ -29,11 +35,60 @@ public class TravelServiceImpl implements TravelService{
 		return travelDao.getTravelById(travelQueryParams);
 	}
 
+
+
+	
+
+
 	@Override
-	public Page<Travel> findpaginated(int pageNO, int pageSize) {
-		Pageable pageable =PageRequest.of(pageNO -1, pageSize);
+	public List<Travel> getTravelAll() {
+		
+		return travelDao.getTravelAll();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public Page<jpaTravel> listAll(int pageNumber) {
+		Pageable pageable =PageRequest.of(pageNumber - 1, 5); 
 		return travelRepository.findAll(pageable);
 	}
+
+
+
+
+
+
+	@Override
+	public Page<jpaTravel> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+
+
+	
+
+
+
+	
+	
+
 	
 	
 	

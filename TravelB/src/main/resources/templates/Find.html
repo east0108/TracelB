@@ -8,6 +8,11 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
     
+    <style type="text/css">
+
+	td img{width:200px;height:100px;}
+	
+	</style>
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -31,13 +36,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
-
-<style type="text/css">
-
-	td img{width:200px;height:100px;}
-	
-</style>
 </head>
 
 
@@ -88,7 +86,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="index" class="nav-item nav-link active">首頁</a>
-                    <a href="about" class="nav-item nav-link">商品資訊</a>
+                    <a href="find" class="nav-item nav-link"  >商品資訊</a>
                     <a href="service" class="nav-item nav-link">Services</a>
                     <a href="package" class="nav-item nav-link">分類</a>
                     <div class="nav-item dropdown">
@@ -107,6 +105,8 @@
             </div>
         </nav>
 
+	
+
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
@@ -124,34 +124,28 @@
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
-
-<div th:if ="${totalPages > 1}">
-		<div class ="row col-sm-10">
-		<div class ="col-sm-2">
-			Total Rows: [[${totalItems}]]
-		</div>
-		<div class ="col-sm-1">
-			<span th:each="i:${#numbers.sequence(1, totalPages)}">
-			<a th:if="${currentPage != i}" th:href="@{'/ok/'+${i}}">[[${i}]]</a>
-			<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;&nbsp;
-			</span>
-		</div>
-		<div class	="col-sm-1">
-		<a th:if="${currentPage < totalPages}" th:href="@{'/ok/'+${currentPage + 1}}">Next</a>
+    
+    <div>&nbsp;</div>
+	<div>
+		Total Items:[[${totalItems}]] - Page [[${currentPage}]] of [[${totalPages}]]
+		&nbsp;
+		
+		<a th:if="${currentPage > 1}" th:href="@{'/find/'+${currentPage - 1}}">Previous</a>
+		<span th:unless="${currentPage > 1}">Previous</span>
+		
+		<span th:each="i: ${#numbers.sequence(1,totalPages)}">
+			<a th:if="${i != currentPage} " th:href="@{'/find/'+${i}}">[[${i}]]</a>		
+			<span th:unless="${i != currentPage} ">[[${i}]]</span>
+			&nbsp;&nbsp;
+		</span>
+		
+		<a th:if="${currentPage < totalPages}" th:href="@{'/find/'+${currentPage + 1}}">Next</a>
 		<span th:unless="${currentPage < totalPages}">Next</span>
-		</div>
-		<div class	="col-sm-1">
-		<a th:if="${currentPage < totalPages}" th:href="@{'/ok/'+${currentPage}}">Last</a>
-		<span th:unless="${currentPage < totalPages}">Last</span>
-		</div>				
-		</div>
-</div>
-
-
-
-   <table>
-    <colgroup span="8"></colgroup>
+		
+	</div>
+    
+    <table border="1" witch="100">
+    
     <tr>
         <th>地點</th>
         <th>縣市區域</th>
@@ -162,20 +156,24 @@
         <th>景點照片</th> 
         <th>售票資訊</th>      
    </tr>  
-  		<tr th:each="travel : ${travel}">
+  		<tr th:each="travel : ${listTravel }">
     	<td th:text="${travel.name}"></td>
     	<td th:text="${travel.town}"></td>
     	<td th:text="${travel.address}"></td>
     	<td th:text="${travel.tel}"></td>
     	<td th:text="${travel.ticket}"></td>
     	<td th:text="${travel.introduce}"></td>
-    	<td id="img"><img th:src="@{(${travel.picture})}"/></td>      
+    	<td id="img"><img th:src="@{(${travel.picture})}"/></td>  
+    
   </tr>
 </table>
 
 
-
     
+
+
+
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
