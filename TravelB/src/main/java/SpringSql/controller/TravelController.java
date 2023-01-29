@@ -55,7 +55,7 @@ public class TravelController {
 		return listByPage(model, 1);
 	}
 	
-	@GetMapping("/find/{pageNumber}")
+	@GetMapping("/page/{pageNumber}")
 	public String listByPage(Model model,@PathVariable("pageNumber")int currentPage) {
 			
 		Page<jpaTravel>  page =travelService.listAll(currentPage);

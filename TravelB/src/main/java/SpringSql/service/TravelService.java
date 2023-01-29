@@ -18,7 +18,7 @@ public interface TravelService {
 
 
 
-	Page<jpaTravel> listAll();
+	
 
 	Page<jpaTravel> listAll(int pageNumber);
 
