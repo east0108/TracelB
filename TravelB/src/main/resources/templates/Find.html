@@ -8,6 +8,11 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
     
+    <style type="text/css">
+
+	td img{width:200px;height:100px;}
+	
+	</style>
 
     <!-- Favicon -->
     <link th:href="@{/img/favicon.ico}" rel="icon">
@@ -31,13 +36,6 @@
 
     <!-- Template Stylesheet -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
-    
-
-<style type="text/css">
-
-	td img{width:200px;height:100px;}
-	
-</style>
 </head>
 
 
@@ -60,19 +58,9 @@
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
                 </div>
-            </div>
-            <div class="col-lg-4 text-center text-lg-end">
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
-                </div>
-            </div>
+            </div>     
         </div>
     </div>
-    <!-- Topbar End -->
 
 
     <!-- Navbar & Hero Start -->
@@ -87,8 +75,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index" class="nav-item nav-link">首頁</a>
-                    <a href="find" class="nav-item nav-link">商品資訊</a>
+                    <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
+                    <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
                     <a href="service" class="nav-item nav-link">Services</a>
                     <a href="package" class="nav-item nav-link">分類</a>
                     <div class="nav-item dropdown">
@@ -107,13 +95,15 @@
             </div>
         </nav>
 
+	
+
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-3 text-white mb-3 animated slideInDown">Enjoy Your Vacation With Us</h1>
-                        <p class="fs-4 text-white mb-4 animated slideInDown">Tempor erat elitr rebum at clita diam amet diam et eos erat ipsum lorem sit</p>
-                        <div class="position-relative w-75 mx-auto animated slideInDown">
+                        <h1 class="display-3 text-white mb-3 ">Enjoy Your Vacation With Us</h1>
+                        <p class="fs-4 text-white mb-4 ">Tempor erat elitr rebum at clita diam amet diam et eos erat ipsum lorem sit</p>
+                        <div class="position-relative w-75 mx-auto ">
                             <form method="post">
                             <input name="travelId"  class="border-0 rounded-pill w-100 py-3 ps-4 pe-5" style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
                             <button class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 15px;">Search</button>
@@ -124,10 +114,28 @@
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
-
-   <table>
-    <colgroup span="8"></colgroup>
+    
+    <div>&nbsp;</div>
+	<div>
+		Total Items:[[${totalItems}]] - Page [[${currentPage}]] of [[${totalPages}]]
+		&nbsp;
+		
+		<a th:if="${currentPage > 1}" th:href="@{'/page/'+${currentPage - 1}}">Previous</a>
+		<span th:unless="${currentPage > 1}">Previous</span>
+		
+		<span th:each="i: ${#numbers.sequence(1,totalPages)}">
+			<a th:if="${i != currentPage} " th:href="@{'/page/'+${i}}">[[${i}]]</a>		
+			<span th:unless="${i != currentPage} ">[[${i}]]</span>
+			&nbsp;&nbsp;
+		</span>
+		
+		<a th:if="${currentPage < totalPages}" th:href="@{'/page/'+${currentPage + 1}}">Next</a>
+		<span th:unless="${currentPage < totalPages}">Next</span>
+		
+	</div>
+    
+    <table border="1" witch="100">
+    
     <tr>
         <th>地點</th>
         <th>縣市區域</th>
@@ -138,20 +146,24 @@
         <th>景點照片</th> 
         <th>售票資訊</th>      
    </tr>  
-  		<tr th:each="travel : ${travel}">
+  		<tr th:each="travel : ${listTravel }">
     	<td th:text="${travel.name}"></td>
     	<td th:text="${travel.town}"></td>
     	<td th:text="${travel.address}"></td>
     	<td th:text="${travel.tel}"></td>
     	<td th:text="${travel.ticket}"></td>
     	<td th:text="${travel.introduce}"></td>
-    	<td id="img"><img th:src="@{(${travel.picture})}"/></td>      
+    	<td id="img"><img th:src="@{(${travel.picture})}"/></td>  
+    
   </tr>
 </table>
 
 
-
     
+
+
+
+
 
     <!-- JavaScript Libraries -->
     <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>

@@ -1,4 +1,4 @@
-package SpringSql.dao;
+package SpringSql.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,13 +7,14 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 
 import SpringSql.model.Travel;
+import SpringSql.model.jpaTravel;
 
-public class TravelRowMapper implements RowMapper<Travel> {
+public class JpaTravelRowMapper implements RowMapper<jpaTravel> {
 
 	@Override
-	public Travel mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public jpaTravel mapRow(ResultSet rs, int rowNum) throws SQLException {
 			 
-			Travel travel =new Travel();
+		jpaTravel travel =new jpaTravel();
 			
 			travel.setId(rs.getInt("id"));
 			travel.setName(rs.getString("name"));

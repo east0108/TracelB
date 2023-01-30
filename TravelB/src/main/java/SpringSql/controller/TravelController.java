@@ -97,6 +97,7 @@ public class TravelController {
 			return "NO";		
 			}
 			return "ok";		
+
 					
 				
 	}
@@ -106,8 +107,19 @@ public class TravelController {
 	public String register () {	
 		return "register";
 	}
+
+			
+		
+			
+			
+		
+				
+	}
+	
 	
 
 
 	
-}
+
+
+	
