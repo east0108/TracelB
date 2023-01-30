@@ -49,15 +49,26 @@ public class TravelController {
 //	}
 //	
 	
-	@RequestMapping("/find")
+	@RequestMapping("/find")//網頁分頁標籤
 	
 	public String viewHomePAGE(Model model) {
-		return listByPage(model, 1);
+		return listByPage(model, 1,null);
 	}
 	
-	@GetMapping("/page/{pageNumber}")
-	public String listByPage(Model model,@PathVariable("pageNumber")int currentPage) {
-			
+	@RequestMapping("/page/{pageNumber}")//網頁分頁標籤
+	public String listByPage(Model model,@PathVariable("pageNumber")int currentPage,@RequestParam (required = false) String travelId) {
+		
+		if(travelId!=null) {
+			List<Travel> travel =travelService.getTravelById(travelId);		
+			model.addAttribute("travel",travel);
+				if(travel.isEmpty()) {//假設沒有查詢到這筆資料
+				model.addAttribute("error","找不到相關的資訊");
+				return "NO";		
+				}
+				return "ok";					
+		}
+		
+		
 		Page<jpaTravel>  page =travelService.listAll(currentPage);
 		long totalItems =page.getTotalElements();
 		int totalPages =page.getTotalPages();
@@ -68,22 +79,29 @@ public class TravelController {
 		model.addAttribute("totalPages",totalPages);
 		model.addAttribute("listTravel",listTravels);
 		return "Find";
+
+		
+		
 	}
 	
 	
-	@PostMapping("/find")
+	@PostMapping("/find")//查詢資料系統
 	public String dataPage(Model model,@RequestParam String travelId) {
 		
 		List<Travel> travel =travelService.getTravelById(travelId);		
+		model.addAttribute("travel",travel);
 		
-			model.addAttribute("travel",travel);
-			if(travel!=null) {
-			return "ok";
-		
+	
+			if(travel.isEmpty()) {//假設沒有查詢到這筆資料
+			model.addAttribute("error","找不到相關的資訊");
+			return "NO";		
 			}
-			model.addAttribute("error","沒有這筆資料");
-			return "index";
+			return "ok";		
 			
+		
+			
+			
+		
 				
 	}
 	

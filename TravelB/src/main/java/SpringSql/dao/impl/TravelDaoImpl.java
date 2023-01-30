@@ -22,7 +22,7 @@ public class TravelDaoImpl implements TravelDao {
 
 	@Override
 	public List<Travel> getTravelById(String travelQueryParams) {
-		try {
+		
 			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			
@@ -32,13 +32,12 @@ public class TravelDaoImpl implements TravelDao {
 			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
 			
 			
+			if(travelList!=null) {
+			
 				return  travelList;
-			
-			}catch (Exception e) {
-				return null;
 			}
+				return null;
 		
-			
 		}
 
 	@Override
