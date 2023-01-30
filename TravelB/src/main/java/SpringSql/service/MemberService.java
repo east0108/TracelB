@@ -1,5 +1,8 @@
 package SpringSql.service;
 
+import javax.validation.Valid;
+
+import SpringSql.dto.MemberCheckEmail;
 import SpringSql.dto.MemberLoginRequest;
 import SpringSql.dto.MemberRegisterRequest;
 import SpringSql.model.Member;
@@ -9,6 +12,8 @@ import SpringSql.model.Member;
 public interface MemberService {
 
 	Member getMemberById(Integer memberId);
+	
+	Member getMemberByEmail(MemberRegisterRequest memberRegisterRequest);
 	
 	Integer register(MemberRegisterRequest memberRegisterRequest);
 	

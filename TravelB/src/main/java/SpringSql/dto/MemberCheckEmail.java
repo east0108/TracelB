@@ -5,18 +5,19 @@ import java.sql.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class MemberRegisterRequest {
-	
+public class MemberCheckEmail {
+
 	@NotBlank
 	@Email
 	private String email;
 	
 	private String name;
 	private String account;
-	@NotBlank
+	
 	private String password;
 
 	private Date birthday;
+
 	public String getEmail() {
 		return email;
 	}
@@ -40,7 +41,7 @@ public class MemberRegisterRequest {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -56,9 +57,5 @@ public class MemberRegisterRequest {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-
 	
-	
-
-
 }

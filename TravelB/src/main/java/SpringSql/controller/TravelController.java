@@ -97,6 +97,17 @@ public class TravelController {
 			return "NO";		
 			}
 			return "ok";		
+
+					
+				
+	}
+	
+	
+	@GetMapping("/members/register")
+	public String register () {	
+		return "register";
+	}
+
 			
 		
 			
@@ -107,8 +118,8 @@ public class TravelController {
 	
 	
 
+
 	
 
 
 	
-}
