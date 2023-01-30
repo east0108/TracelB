@@ -13,14 +13,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import SpringSql.dto.MemberCheckEmail;
 import SpringSql.dto.MemberLoginRequest;
 import SpringSql.dto.MemberRegisterRequest;
 import SpringSql.model.Member;
@@ -50,8 +52,17 @@ public class MemberController {
 		
 		 Member member = memberService.login(memberLoginRequest);
 			
-		 model.addAttribute("member",member);
+		 
 		 return ResponseEntity.status(HttpStatus.OK).body(member);
 
+	}
+	
+	@PostMapping("/members/checkEmail")
+	public ResponseEntity<Member> checkEmail(@RequestBody MemberRegisterRequest memberRegisterRequest){
+			
+		
+		Member member = memberService.getMemberByEmail(memberRegisterRequest);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
 }

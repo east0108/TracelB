@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import SpringSql.dao.MemberDao;
+import SpringSql.dto.MemberCheckEmail;
 import SpringSql.dto.MemberLoginRequest;
 import SpringSql.dto.MemberRegisterRequest;
 import SpringSql.model.Member;
@@ -67,6 +68,22 @@ public class MemberServiceImpl implements MemberService {
 			log.warn("該 email {} 的密碼不正確",memberLoginRequest.getEmail());
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
+		
+	}
+
+
+
+	@Override
+	public Member getMemberByEmail(MemberRegisterRequest memberRegisterRequest) {
+		Member member = memberDao.getMemberByEmail(memberRegisterRequest.getEmail());
+		
+	
+		if(member != null) {
+			log.warn("該 email {} 已經被註冊",memberRegisterRequest.getEmail());
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+		log.warn("該 email {} 尚未註冊",memberRegisterRequest.getEmail());
+		return memberDao.getMemberByEmail(memberRegisterRequest.getEmail());
 	}
 
 
