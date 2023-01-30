@@ -103,7 +103,7 @@ public class TravelController {
 	}
 	
 	
-	@GetMapping("/members/register")
+	@GetMapping("register")
 	public String register () {	
 		return "register";
 	}
