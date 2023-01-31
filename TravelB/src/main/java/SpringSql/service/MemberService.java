@@ -1,14 +1,13 @@
 package SpringSql.service;
 
-import javax.validation.Valid;
+import org.springframework.stereotype.Service;
 
-import SpringSql.dto.MemberCheckEmail;
 import SpringSql.dto.MemberLoginRequest;
 import SpringSql.dto.MemberRegisterRequest;
 import SpringSql.model.Member;
 
 
-
+@Service
 public interface MemberService {
 
 	Member getMemberById(Integer memberId);

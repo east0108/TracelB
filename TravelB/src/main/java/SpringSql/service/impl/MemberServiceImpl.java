@@ -60,13 +60,16 @@ public class MemberServiceImpl implements MemberService {
 		
 		if(member == null) {
 			log.warn("該 email {} 尚未註冊",memberLoginRequest.getEmail());
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			return null;
 		}
 		if(member.getPassword().equals(memberLoginRequest.getPassword())) {
 			return member;
 		}else {			
 			log.warn("該 email {} 的密碼不正確",memberLoginRequest.getEmail());
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			return null;
+			
 		}
 		
 	}
