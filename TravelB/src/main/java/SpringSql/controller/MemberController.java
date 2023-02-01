@@ -42,7 +42,7 @@ public class MemberController {
 	}
 	
 	//新增會員
-	@PostMapping("/members/register")
+	@PostMapping("/register")
 	public ResponseEntity<Member> register(@RequestBody @Valid MemberRegisterRequest memberRegisterRequest) {
 
 		Integer memberId = memberService.register(memberRegisterRequest);
@@ -86,7 +86,7 @@ public class MemberController {
 
 		// 設置Session
 		session.setAttribute("MemberSession", member);
-
+		System.out.println(member.getUserid() +" : "+ member.getEmail());
 		log.info(memberLoginRequest.getEmail() + "登入系統");
 		return "redirect:index";
 	}
@@ -97,12 +97,12 @@ public class MemberController {
 	public String logout(HttpSession session, SessionStatus sessionStatus) {
 		
 		if(session.getAttribute("MemberSession") != null){
-			log.info(session.getAttribute("MemberSession").toString() + "登出系統");
+			log.info((Member)session.getAttribute("MemberSession") + "登出系統");
 			session.removeAttribute("MemberSession");
 			sessionStatus.setComplete();
 		}
 		
-		return "redirect:login";
+		return "redirect:";
 	}
 	
 	
