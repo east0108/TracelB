@@ -37,14 +37,7 @@ public class TravelController {
 	
 
 
-//	
-//	@GetMapping("/find")
-//	public String viewHomePage(Model model) {		
-//		List<Travel> travel = travelService.getTravelAll();
-//		model.addAttribute("travel",travel);
-//		return "Find";
-//	}
-//	
+
 	
 	@RequestMapping("/find")//網頁分頁標籤
 	

@@ -9,13 +9,14 @@ public class MemberRegisterRequest {
 	
 	@NotBlank
 	@Email
-	private String email;
-	
-	private String name;
-	private String account;
+	String email;
+	String name;
+	String gender;
 	@NotBlank
-	private String password;
-
+	String password;
+	String phone;
+	String address;
+	String city;
 	private Date birthday;
 	public String getEmail() {
 		return email;
@@ -33,14 +34,39 @@ public class MemberRegisterRequest {
 		this.name = name;
 	}
 
-	public String getAccount() {
-		return account;
+	
+	public String getGender() {
+		return gender;
 	}
 
-	public void setAccount(String account) {
-		this.account = account;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-	
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public String getPassword() {
 		return password;
 	}

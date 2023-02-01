@@ -1,4 +1,4 @@
-package SpringSql.controller;
+ package SpringSql.controller;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	
+	//登入會員畫面
 	@GetMapping("register")
 	public String register (@ModelAttribute MemberLoginRequest memberLoginRequest) {	
 		return "register";
@@ -66,12 +67,13 @@ public class MemberController {
 //
 //	}
 	
+	//登入註冊畫面
 	@GetMapping("/login")
 	public String Member (@ModelAttribute MemberLoginRequest memberLoginRequest) {	
 		return "login";
 	}
 	
-	//登入-thymeleaf
+	//登入會員-thymeleaf
 	@PostMapping("/login")
 	public String doLogin(
 			@ModelAttribute MemberLoginRequest memberLoginRequest, 
@@ -85,8 +87,7 @@ public class MemberController {
 		}
 
 		// 設置Session
-		session.setAttribute("MemberSession", member);
-		System.out.println(member.getUserid() +" : "+ member.getEmail());
+		session.setAttribute("loginEmail", member.getEmail());
 		log.info(memberLoginRequest.getEmail() + "登入系統");
 		return "redirect:index";
 	}
@@ -96,9 +97,11 @@ public class MemberController {
 	@RequestMapping(value = "/logout", method = {RequestMethod.GET})
 	public String logout(HttpSession session, SessionStatus sessionStatus) {
 		
-		if(session.getAttribute("MemberSession") != null){
-			log.info((Member)session.getAttribute("MemberSession") + "登出系統");
-			session.removeAttribute("MemberSession");
+
+		if(session.getAttribute("loginEmail") != null){
+			log.info(session.getAttribute("loginEmail").toString() + "登出系統");
+			session.removeAttribute("loginEmail");
+
 			sessionStatus.setComplete();
 		}
 		
@@ -114,4 +117,22 @@ public class MemberController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
+	
+	//登入會員中心畫面
+	@GetMapping("/memberCentre")
+	public String memberCentre (@ModelAttribute MemberLoginRequest memberLoginRequest) {	
+		return "memberCentre";
+	}
+	
+	//更改會員資料
+	@PutMapping("/memberCentre")
+	public ResponseEntity<Member> updataMember(@RequestBody MemberLoginRequest memberLoginRequest) {
+		
+		Member member  = memberService.updataMember(memberLoginRequest);
+		
+		
+		
+		return ResponseEntity.status(HttpStatus.OK).body(member);
+	}
+	
 }

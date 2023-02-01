@@ -91,7 +91,15 @@ public class MemberServiceImpl implements MemberService {
 
 
 
+	@Override
+	public Member updataMember(MemberLoginRequest memberLoginRequest) {
+		
+		memberDao.updataMember(memberLoginRequest);
+		Member member = memberDao.getMemberByEmail(memberLoginRequest.getEmail());
+		if(member != null) {
+			log.warn("該 email {} 更新成功	",memberLoginRequest.getEmail());
+		}
+		return member;
+	}
 
-	
-	
 }
