@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.catalina.connector.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,8 @@ public class MemberController {
 
 		// 設置Session
 		session.setAttribute("loginEmail", member.getEmail());
+		
+		
 
 		log.info(memberLoginRequest.getEmail() + "登入系統");
 		return "redirect:index";
@@ -114,4 +117,10 @@ public class MemberController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
+	
+	@GetMapping("login/loginEmail")
+    public  String getsessionusername(HttpSession session){ //@Path用來取得url路徑的值
+		
+        return (String)session.getAttribute("loginEmail");
+    }
 }

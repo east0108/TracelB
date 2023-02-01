@@ -176,28 +176,20 @@ $(() => {
 })
 
 
-/*$(document).ready(function(){
-
-  Checklogin();
-});
-
-
-var loginEmail=" ";
-
-function Checklogin() {
+/*function checkLoginStatus() {
   $.ajax({
-    url: "/login",
-    dataType: "json",
-    success:function(data) {
-      console.log(data);
-        var html;
-        html='<label>#{loginEmail}</label><a href="/logout">登出</a>';
-        html = html.replace(/#{loginEmail}/g, data);
-        $("#check").append(html);
-        $("#checklogin").append(html);
-        username=data;
-    },error:function (){
-      alert("沒登入");
+    type: "GET",
+    url: "http://localhost:8080/travel/login/loginEmail",
+    success: function(response) {
+      if (response.isLoggedIn) {
+        // Show content for logged-in users
+        $("#logged-in-content").show();
+        $("#logged-out-content").hide();
+      } else {
+        // Show content for logged-out users
+        $("#logged-in-content").hide();
+        $("#logged-out-content").show();
+      }
     }
   });
 }*/
