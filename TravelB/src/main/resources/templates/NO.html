@@ -94,10 +94,15 @@
                     <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
                     <div class="nav-item dropdown">
                     </div>
-                </div>
-                <a href="login" class="btn btn-primary rounded-pill py-2 px-4">會員登錄</a>
+
+                    <a href="contact" class="nav-item nav-link">Contact</a>
+
+
+
+
             </div>
         </nav>
+        </div>
 
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
@@ -136,7 +141,10 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/session.js}"></script>
+
 </body>
 
 </html>

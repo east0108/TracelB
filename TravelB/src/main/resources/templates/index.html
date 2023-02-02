@@ -83,25 +83,13 @@
                     <div class="nav-item dropdown">
                     </div>
 
-                    <a href="memberCentre" class="nav-item nav-link">會員中心</a>
-             
+                    <a href="contact" class="nav-item nav-link">Contact</a>
                     
-                    
-                    <a th:if="${session.loginEmail ==  null}" href="register" class="nav-item nav-link">註冊</a>
-                    
-                    <a  th:if="${session.loginEmail !=  null}" class="menu-item" href="http://localhost:8080/travel/logout">
-                        <div class="menu-item-img"><img th:src="@{/images/exit_to_app.png}"></div>
-                        <span>登出</span>
-
-                    </a>
-                    
-                    <span th:if="${session.loginEmail !=  null}" th:text="${session.loginEmail}" class="nav-item nav-link"></span>
-               		</div>
-
-               		 <a th:if="${session.loginEmail ==  null}" href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>
-
-
-
+         		
+                         
+                      </div>
+                 
+            
 
             </div>
         </nav>
@@ -647,10 +635,10 @@
         <script th:src="@{/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
 
         <!-- Template Javascript -->
-        <script th:src="@{/js/main.js}"></script>
-        <script>
 
-        </script>
+        <script src="js/main.js"></script>
+        <script src="js/session.js"></script>
+        
 
 </body>
 
