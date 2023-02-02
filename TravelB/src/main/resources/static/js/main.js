@@ -114,6 +114,9 @@ function register() {
     }
 };
 
+//更新會員
+
+
 //登入帳號
 function login() {
     // Form fields, see IDs above

@@ -31,7 +31,6 @@ public class Member implements Serializable {
     Date birthday;
 	Date created_date;
 	
-	
 	public Integer getUserid() {
 		return user_id;
 	}
@@ -63,7 +62,7 @@ public class Member implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getPhone() {
 		return phone;
 	}
