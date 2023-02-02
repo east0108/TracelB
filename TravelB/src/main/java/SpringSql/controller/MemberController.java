@@ -77,7 +77,7 @@ public class MemberController {
 			@ModelAttribute MemberLoginRequest memberLoginRequest, 
 			Model model,
 			HttpSession session) {
-		
+		System.out.println("OK");
 		Member member = memberService.login(memberLoginRequest);
 		if(member == null) {
 			log.warn(memberLoginRequest.getEmail() + "嘗試登入系統");
@@ -85,7 +85,7 @@ public class MemberController {
 		}
 
 		// 設置Session
-		session.setAttribute("loginEmail", member.getEmail());
+		session.setAttribute("loginEmail", member);
 
 		log.info(memberLoginRequest.getEmail() + "登入系統");
 		return "redirect:index";
@@ -113,5 +113,32 @@ public class MemberController {
 		Member member = memberService.getMemberByEmail(memberRegisterRequest);
 
 		return ResponseEntity.status(HttpStatus.OK).body(member);
+	}
+	
+//	@GetMapping("/index/checklogin")
+//	public String checklogin (HttpSession session) {
+//		String getEmail = (String)session.getAttribute("loginEmail");
+//		System.out.println(getEmail);
+//		System.out.println("ok111");
+//		
+//	if(getEmail != null) {
+//		return "index" ;
+//	}else {
+//	return "login";
+//	}
+//	}
+	@GetMapping("/index/checklogin")//驗證是否為會員狀態
+	public ResponseEntity<Member> checklogin(HttpSession session) {
+		Member getEmail = (Member)session.getAttribute("loginEmail");
+		System.out.println(getEmail);
+		System.out.println("ok111");
+		
+		if(getEmail!=null) {
+			System.out.println("ok"+getEmail);
+		return (ResponseEntity<Member>) ResponseEntity.status(HttpStatus.OK).body(getEmail);
+		}else {
+			System.out.println("no"+getEmail);
+		return (ResponseEntity<Member>) ResponseEntity.status(HttpStatus.NOT_FOUND).body(getEmail);
+		}
 	}
 }

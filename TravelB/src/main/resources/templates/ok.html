@@ -102,21 +102,14 @@
                         </div>
                     </div>
                     <a href="contact" class="nav-item nav-link">Contact</a>
-                <a th:if="${session.loginEmail ==  null}" href="register" class="nav-item nav-link">註冊</a>
-                    
-                    <a  th:if="${session.loginEmail !=  null}" class="menu-item" href="http://localhost:8080/travel/logout">
-                        <div class="menu-item-img"><img th:src="@{/images/exit_to_app.png}"></div>
-                        <span>登出</span>
-                    </a>
-                    
-                    <span th:if="${session.loginEmail !=  null}" th:text="${session.loginEmail}" class="nav-item nav-link"></span>
+               
                		</div>
 
-               		 <a th:if="${session.loginEmail ==  null}" href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>
-
+               		
+  
             </div>
         </nav>
-
+  </div>
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
@@ -176,6 +169,7 @@
 
     <!-- Template Javascript -->
     <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/session.js}"></script>
 </body>
 
 </html>

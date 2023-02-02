@@ -174,31 +174,3 @@ $(() => {
         $(".mobile-menu-content").addClass("active");
     });
 })
-
-
-/*$(document).ready(function(){
-
-  Checklogin();
-});
-
-
-var loginEmail=" ";
-
-function Checklogin() {
-  $.ajax({
-    url: "/login",
-    dataType: "json",
-    success:function(data) {
-      console.log(data);
-        var html;
-        html='<label>#{loginEmail}</label><a href="/logout">登出</a>';
-        html = html.replace(/#{loginEmail}/g, data);
-        $("#check").append(html);
-        $("#checklogin").append(html);
-        username=data;
-    },error:function (){
-      alert("沒登入");
-    }
-  });
-}*/
-
