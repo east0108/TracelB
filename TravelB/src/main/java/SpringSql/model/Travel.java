@@ -23,7 +23,7 @@ public class Travel {
 		@Column
 		private String tel;
 		@Column
-		private String tickets;
+		private Integer tickets;
 		@Column
 		private String introduce;
 		@Column
@@ -59,10 +59,10 @@ public class Travel {
 		public void setTel(String tel) {
 			this.tel = tel;
 		}
-		public String getTicket() {
+		public Integer getTicket() {
 			return tickets;
 		}
-		public void setTicket(String tickets) {
+		public void setTicket(Integer tickets) {
 			this.tickets = tickets;
 		}
 		public String getIntroduce() {

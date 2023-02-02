@@ -20,7 +20,7 @@ public class TravelRowMapper implements RowMapper<Travel> {
 			travel.setTown(rs.getString("town"));
 			travel.setAddress(rs.getString("address"));
 			travel.setTel(rs.getString("tel"));
-			travel.setTicket(rs.getString("tickets"));
+			travel.setTicket(rs.getInt("tickets"));
 			travel.setIntroduce(rs.getString("introduce"));
 			travel.setPicture(rs.getString("picture"));
 		

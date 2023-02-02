@@ -11,8 +11,9 @@ import SpringSql.model.jpaTravel;
 public interface TravelDao {
 		
 
-
-	List<Travel> getTravelById(String travelQueryParams);
+	Travel getTravelById(Integer travelId);
+	
+	List<Travel> getTravelByTown(String travelQueryParams);
 
 	List<Travel> getTravelAll();
 	
