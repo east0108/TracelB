@@ -2,6 +2,7 @@ package SpringSql.dao;
 
 import java.util.List;
 
+import SpringSql.dto.MemberLoginRequest;
 import SpringSql.dto.MemberRegisterRequest;
 import SpringSql.model.Member;
 
@@ -15,7 +16,7 @@ public interface MemberDao {
 
 	Integer createMember(MemberRegisterRequest memberRegisterRequest);
 	
-	
+	Integer updataMember(MemberLoginRequest memberLoginRequest);
 	
 //	void save(Member member);
 //	List<Member> findAll();

@@ -18,6 +18,8 @@ public interface MemberService {
 	
 	Member login(MemberLoginRequest memberLoginRequest);
 	
+	Member updataMember(MemberLoginRequest memberLoginRequest);
+	
 //	void save(Member member);
 //	List<Me mber> findAll();
 //	Member findById(Integer id);

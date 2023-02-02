@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -9,27 +9,31 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link th:href="@{/img/favicon.ico}" rel="icon">
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link
+        th:href="@{https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap}"
+        rel="stylesheet">
+
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 
 
@@ -78,8 +82,27 @@
                     <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
                     <div class="nav-item dropdown">
                     </div>
-                </div>
-                <a href="login" class="btn btn-primary rounded-pill py-2 px-4">會員登錄</a>
+
+                    <a href="memberCentre" class="nav-item nav-link">會員中心</a>
+             
+                    
+                    
+                    <a th:if="${session.loginEmail ==  null}" href="register" class="nav-item nav-link">註冊</a>
+                    
+                    <a  th:if="${session.loginEmail !=  null}" class="menu-item" href="http://localhost:8080/travel/logout">
+                        <div class="menu-item-img"><img th:src="@{/images/exit_to_app.png}"></div>
+                        <span>登出</span>
+
+                    </a>
+                    
+                    <span th:if="${session.loginEmail !=  null}" th:text="${session.loginEmail}" class="nav-item nav-link"></span>
+               		</div>
+
+               		 <a th:if="${session.loginEmail ==  null}" href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>
+
+
+
+
             </div>
         </nav>
 
@@ -288,25 +311,38 @@
 
 
     <!-- Booking Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="booking p-5">
-                <div class="row g-5 align-items-center">
-                    <div class="col-md-6 text-white">
-                        <h6 class="text-white text-uppercase">Booking</h6>
-                        <h1 class="text-white mb-4">Online Booking</h1>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <a class="btn btn-outline-light py-3 px-5 mt-2" href="">Read More</a>
-                    </div>
-                    <div class="col-md-6">
-                        <h1 class="text-white mb-4">Book A Tour</h1>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="booking p-5">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-md-6 text-white">
+                            <h6 class="text-white text-uppercase">Booking</h6>
+                            <h1 class="text-white mb-4">Online Booking</h1>
+                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
+                                diam et eos. Clita erat ipsum et lorem et sit.</p>
+                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
+                                diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
+                                dolore erat amet</p>
+                            <a class="btn btn-outline-light py-3 px-5 mt-2" href="">Read More</a>
+                        </div>
+                        <div class="col-md-6">
+                            <h1 class="text-white mb-4">Book A Tour</h1>
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control bg-transparent" id="name"
+                                                placeholder="Your Name">
+                                            <label for="name">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control bg-transparent" id="email"
+                                                placeholder="Your Email">
+                                            <label for="email">Your Email</label>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -593,27 +629,29 @@
     </div>
     <!-- Footer End -->
 
-=======
->>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-  
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- JavaScript Libraries -->
+        <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
+        <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js}"></script>
+        <script th:src="@{/lib/wow/wow.min.js}"></script>
+        <script th:src="@{/lib/easing/easing.min.js}"></script>
+        <script th:src="@{/lib/waypoints/waypoints.min.js}"></script>
+        <script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+        <script th:src="@{/lib/tempusdominus/js/moment.min.js}"></script>
+        <script th:src="@{/lib/tempusdominus/js/moment-timezone.min.js}"></script>
+        <script th:src="@{/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+        <!-- Template Javascript -->
+        <script th:src="@{/js/main.js}"></script>
+        <script>
+
+        </script>
+
 </body>
 
 </html>
