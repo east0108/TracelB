@@ -31,12 +31,14 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
+
     <link th:href="@{/css/style.css}" rel="stylesheet">
 
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <style>
 
     </style>
+
 </head>
 
 <body>
@@ -54,12 +56,14 @@
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York,
                         USA</small>
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
                 </div>
+
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -83,7 +87,7 @@
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
+            <a href="index" class="navbar-brand p-0">
                 <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Tourist</h1>
                 <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
@@ -92,30 +96,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index" class="nav-item nav-link">Home</a>
-                    <a href="about" class="nav-item nav-link">About</a>
-                    <a href="service" class="nav-item nav-link">Services</a>
-                    <a href="package" class="nav-item nav-link">Packages</a>
+                    <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
+                    <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="destination" class="dropdown-item">Destination</a>
-                            <a href="booking" class="dropdown-item">Booking</a>
-                            <a href="team" class="dropdown-item">Travel Guides</a>
-                            <a href="testimonial" class="dropdown-item">Testimonial</a>
-                            <a href="404" class="dropdown-item">404 Page</a>
-                        </div>
                     </div>
-                    <a onclick="" href="contact" class="nav-item nav-link">Contact</a>
-                    <a href="register" class="nav-item nav-link active">註冊</a>
                 </div>
-                <a href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>
+                <a href="login" class="btn btn-primary rounded-pill py-2 px-4">會員登錄</a>
             </div>
         </nav>
 
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
+
                     <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                         <!--col-lg-10 pt-lg-5 mt-lg-5 text-center-->
                         <h1 class="display-3 text-white animated slideInDown">註冊</h1>
@@ -155,27 +148,78 @@
                 <div class="row g-2 pt-2">
                     <div class="col-4">
                         <img class="img-fluid bg-light p-1" src="img/package-1.jpg" alt="">
+
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/package-2.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
+                            <h5>Hotel Reservation</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/package-3.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                            <h5>Travel Guides</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/package-2.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
+                            <h5>Event Management</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/package-3.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h5>WorldWide Tours</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/package-1.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
+                            <h5>Hotel Reservation</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                            <h5>Travel Guides</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
+                            <h5>Event Management</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
+    <!-- Service End -->
+
+
 
 
 
@@ -229,7 +273,7 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a href="index">Home</a>
+                            <a href="">Home</a>
                             <a href="">Cookies</a>
                             <a href="">Help</a>
                             <a href="">FQAs</a>
@@ -259,11 +303,13 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
+
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/register.js}"></script>
     <script>
 
     </script>
+
 </body>
 
 </html>
