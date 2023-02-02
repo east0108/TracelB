@@ -89,12 +89,31 @@
                             <a href="404" class="dropdown-item">404 Page</a>
                         </div>
                     </div>
+
                     <a href="contact" class="nav-item nav-link">Contact</a>            
                		</div>
          		
             </div>
         </nav>
  </div>
+
+                    <a href="contact" class="nav-item nav-link">Contact</a>
+                	 <a th:if="${session.loginEmail ==  null}" th:href="@{'/register'}" class="nav-item nav-link" id="check">註冊</a>
+                                		
+               		  <div th:if="${session.loginEmail !=  null}" class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><img th:src="@{/images/person.png}"></a>
+                        <span class="dropdown-menu m-0">
+                            <a href="destination" class="dropdown-item">會員中心</a>
+                            <a href="http://localhost:8080/travel/logout" class="dropdown-item">登出</a>
+                        </span>
+                         </div>
+                    </div>
+
+               	<a th:if="${session.loginEmail ==  null}" th:href="@{'/login'}" class="btn btn-primary rounded-pill py-2 px-4" id="checklogin">登入</a>
+           		</div>
+       	</nav>
+
+>>>>>>> branch 'david' of https://github.com/a92075123/TravelB.git
 	
 
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
