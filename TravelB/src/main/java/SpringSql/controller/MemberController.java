@@ -155,11 +155,6 @@ public class MemberController {
 		}
 	}
 
-	@GetMapping("login/loginEmail")
-    public  String getsessionusername(HttpSession session){ //@Path用來取得url路徑的值
-		
-        return (String)session.getAttribute("loginEmail");
-    }
 
 
 	//登入會員中心畫面
