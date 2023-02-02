@@ -87,7 +87,7 @@ public class MemberController {
 		}
 
 		// 設置Session
-		session.setAttribute("loginEmail", member.getEmail());
+		session.setAttribute("loginEmail", member);
 		log.info(memberLoginRequest.getEmail() + "登入系統");
 		return "redirect:index";
 	}
