@@ -21,14 +21,15 @@ public class Member implements Serializable {
 	Integer user_id;
 	String email;
 	String name;
-	String account;
+	String gender;
 	String password;
-	
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone="GMT+8")
+	String phone;
+	String address;
+	String city;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone="GMT+8")
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date birthday;
 	Date created_date;
-	
 	
 	public Integer getUserid() {
 		return user_id;
@@ -48,17 +49,37 @@ public class Member implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAccount() {
-		return account;
+	
+	public String getGender() {
+		return gender;
 	}
-	public void setAccount(String account) {
-		this.account = account;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
 	}
 	public Date getBirthday() {
 		return birthday;
