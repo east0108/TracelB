@@ -20,9 +20,10 @@ function Checklogin() {
     },error:function (){
 		var html=' <div id="toLogin">'
 					+	'<a  href="register" class="nav-item nav-link" >註冊</a>'
-               		+	'<a  href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>'
-          			+	'</div>'
-		
+               		+	'</div>'
+          			+	'<div>'
+          			+	'<a  href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>'
+					+	'</div>'	
 		$("#navbarCollapse").append(html);
     }
   });
