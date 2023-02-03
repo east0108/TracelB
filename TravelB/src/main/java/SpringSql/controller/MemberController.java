@@ -93,6 +93,7 @@ public class MemberController {
 	}
 	
 	
+	
 	//session登出
 	@RequestMapping(value = "/logout", method = {RequestMethod.GET})
 	public String logout(HttpSession session, SessionStatus sessionStatus) {
