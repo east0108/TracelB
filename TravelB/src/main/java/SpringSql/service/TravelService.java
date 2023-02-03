@@ -11,7 +11,7 @@ import SpringSql.model.jpaTravel;
 
 public interface TravelService {
 	
-	List<Travel> getTravelById(String travelQueryParams);
+	List<Travel> getTravelByTown(String travelQueryParams);
 	
 	List<Travel> getTravelAll();
 
@@ -19,8 +19,8 @@ public interface TravelService {
 
 
 	
-
-	Page<jpaTravel> listAll(int pageNumber);
+//
+//	Page<jpaTravel> listAll(int pageNumber);
 
 
 
