@@ -45,7 +45,7 @@
 
     <!-- Template Javascript -->
     <script th:src="@{/js/main.js}"></script>
-
+	<script th:src="@{/js/session.js}"></script>
     <style type="text/css">
         .img-fluid {
             max-width: 600px;
@@ -103,13 +103,12 @@
             <span class="fa fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
+            <div class="navbar-nav ms-auto py-0" id="registerToBack">
                 <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
-                <a th:href="@{'/find'}" class="nav-item nav-link">商品資訊</a>
-                <div class="nav-item dropdown">
-                </div>
+                <a th:href="@{'/find'}" class="nav-item nav-link active">商品資訊</a>
+                
             </div>
-            <a href="login" class="btn btn-primary rounded-pill py-2 px-4">會員登錄</a>
+          
         </div>
     </nav>
 

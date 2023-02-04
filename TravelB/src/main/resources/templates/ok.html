@@ -81,16 +81,13 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
+                <div class="navbar-nav ms-auto py-0" id="registerToBack">
                     <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
                     <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
-                    <div class="nav-item dropdown">
-                    </div>
                 </div>
-                <a href="login" class="btn btn-primary rounded-pill py-2 px-4">會員登錄</a>
             </div>
         </nav>
-
+  </div>
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
@@ -150,6 +147,7 @@
 
     <!-- Template Javascript -->
     <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/session.js}"></script>
 </body>
 
 </html>

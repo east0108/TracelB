@@ -24,15 +24,15 @@ public class TravelServiceImpl  implements TravelService{
 	@Autowired
 	private TravelDao travelDao;
 	
-	@Autowired
-	private TravelRepository travelRepository;
+//	@Autowired
+//	private TravelRepository travelRepository;
 	
 
 
 	@Override
-	public List<Travel> getTravelById(String travelQueryParams) {
+	public List<Travel> getTravelByTown(String travelQueryParams) {
 		
-		return travelDao.getTravelById(travelQueryParams);
+		return travelDao.getTravelByTown(travelQueryParams);
 	}
 
 
@@ -57,13 +57,13 @@ public class TravelServiceImpl  implements TravelService{
 
 
 
-
-	@Override
-	public Page<jpaTravel> listAll(int pageNumber) {
-		Pageable pageable =PageRequest.of(pageNumber - 1, 5); 
-		return travelRepository.findAll(pageable);
-	}
-
+//
+//	@Override
+//	public Page<jpaTravel> listAll(int pageNumber) {
+//		Pageable pageable =PageRequest.of(pageNumber - 1, 5); 
+//		return travelRepository.findAll(pageable);
+//	}
+//
 
 
 

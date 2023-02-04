@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.catalina.connector.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,15 +80,17 @@ public class MemberController {
 			@ModelAttribute MemberLoginRequest memberLoginRequest, 
 			Model model,
 			HttpSession session) {
-		
+		System.out.println("OK");
 		Member member = memberService.login(memberLoginRequest);
 		if(member == null) {
 			log.warn(memberLoginRequest.getEmail() + "嘗試登入系統");
 			return "redirect:login";
 		}
 
+
 		// 設置Session
 		session.setAttribute("loginEmail", member);
+
 		log.info(memberLoginRequest.getEmail() + "登入系統");
 		return "redirect:index";
 	}
@@ -119,6 +122,37 @@ public class MemberController {
 		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
 	
+
+
+//	@GetMapping("/index/checklogin")
+//	public String checklogin (HttpSession session) {
+//		String getEmail = (String)session.getAttribute("loginEmail");
+//		System.out.println(getEmail);
+//		System.out.println("ok111");
+//		
+//	if(getEmail != null) {
+//		return "index" ;
+//	}else {
+//	return "login";
+//	}
+//	}
+	@GetMapping("/index/checklogin")//驗證是否為會員狀態
+	public ResponseEntity<Member> checklogin(HttpSession session) {
+		Member getEmail = (Member)session.getAttribute("loginEmail");
+		System.out.println(getEmail);
+		System.out.println("ok111");
+		
+		if(getEmail!=null) {
+			System.out.println("ok"+getEmail);
+		return (ResponseEntity<Member>) ResponseEntity.status(HttpStatus.OK).body(getEmail);
+		}else {
+			System.out.println("no"+getEmail);
+		return (ResponseEntity<Member>) ResponseEntity.status(HttpStatus.NOT_FOUND).body(getEmail);
+		}
+	}
+
+
+
 	//登入會員中心畫面
 	@GetMapping("/memberCentre")
 	public String memberCentre (@ModelAttribute MemberLoginRequest memberLoginRequest) {	
@@ -136,4 +170,5 @@ public class MemberController {
 		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
 	
+
 }
