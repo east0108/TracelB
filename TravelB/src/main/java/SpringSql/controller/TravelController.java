@@ -58,12 +58,16 @@ public class TravelController {
 //				return "ok";					
 //		}
 //		
-//		
-//		Page<jpaTravel>  page =travelService.listAll(currentPage);
-//		long totalItems =page.getTotalElements();
-//		int totalPages =page.getTotalPages();
-//	
-//		List<jpaTravel> listTravels =page.getContent(); 
+		@GetMapping("/find")
+		public String traveldata(Model model) {
+		
+		List<Travel>  travel =travelService.getTravelAll();
+		
+		model.addAttribute("listTravel",travel);
+		
+		return "Find";
+	
+		}
 //		model.addAttribute("currentPage",currentPage);
 //		model.addAttribute("totalItems",totalItems);
 //		model.addAttribute("totalPages",totalPages);
