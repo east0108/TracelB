@@ -11,6 +11,5 @@ public class OrderDaoImpl implements OrderDao{
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-	
-	
+
 }
