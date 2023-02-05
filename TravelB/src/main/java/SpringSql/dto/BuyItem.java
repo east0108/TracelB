@@ -7,29 +7,28 @@ import javax.validation.constraints.NotNull;
 public class BuyItem {
 	
 	@NotNull
-	private Integer travelId;
+	private Integer productId;
 	
 	@NotNull
-	private Integer quInteger;
+	private Integer quantity;
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	
-	public Integer gettravelId() {
-		return travelId;
-	}
-
-
-	public void settravelId(Integer travelId) {
-		this.travelId = travelId;
-	}
-
-
-	public Integer getQuInteger() {
-		return quInteger;
-	}
-
-
-	public void setQuInteger(Integer quInteger) {
-		this.quInteger = quInteger;
-	}
+	
 
 
 

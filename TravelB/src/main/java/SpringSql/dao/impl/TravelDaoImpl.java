@@ -23,7 +23,7 @@ public class TravelDaoImpl implements TravelDao {
 	@Override
 	public List<Travel> getTravelByTown(String travelQueryParams) {
 		
-			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
+			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			
 			
@@ -44,7 +44,7 @@ public class TravelDaoImpl implements TravelDao {
 	public List<Travel> getTravelAll() {
 		
 		try {
-			String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2 ";
+			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture FROM travel2 ";
 			Map<String,Object> map=new HashMap<>();
 					
 			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
@@ -53,15 +53,15 @@ public class TravelDaoImpl implements TravelDao {
 				return  travelList;
 			
 			}catch (Exception e) {
-				return null;
+				return null ;
 			}
-		
-	}
+			}
+		 
 
 	@Override
 	public Travel getTravelById(Integer travelId) {
 		
-		String sql= "SELECT id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE id  = :travelId";
+		String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE product_id  = :travelId";
 		Map<String,Object> map=new HashMap<>();
 		
 		
