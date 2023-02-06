@@ -15,11 +15,10 @@ import SpringSql.dto.CreateOrderRequest;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
 import SpringSql.model.Travel;
-import SpringSql.service.OrderService;
-
+import SpringSql.service.OrderSevice;
 
 @Component
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderSevice{
 	
 	@Autowired
 	private OrderDao orderDao;
@@ -28,58 +27,57 @@ public class OrderServiceImpl implements OrderService{
 	private TravelDao travelDao;
 	
 	
+	
+	
+	
+	
 	@Override
-	public Order getOrderById(Integer orderId) {
-		Order order = orderDao.getOrderById(orderId);
+	public Order getOrderById(String orderId) {
 		
-		List<OrderItem> orderItemsList = orderDao.getOrderItemsByOrderId(orderId);
+		Order order =orderDao.getOrderById(orderId);
 		
-		order.setOrderItemList(orderItemsList);
+		List<OrderItem> orderItemList= orderDao.getOrderItemsByOrderId(orderId);
+		
+		order.setOrderItemList(orderItemList);
 		
 		return order;
 	}
-	
+
+
+
+
+
+
 	@Transactional
 	@Override
-	public Integer createOrder(Integer userId, CreateOrderRequest createOrderRequest) { 
+	public String createOrder(String userId, CreateOrderRequest createOrderRequest) {
 		
-		
-		
+		int Amount = 0;
 		int totalAmount=0;
-		
 		List<OrderItem> orderItemList =new ArrayList<>();
 		
 		for(BuyItem buyItem : createOrderRequest.getBuyItemList()) {
 			Travel travel = travelDao.getTravelById(buyItem.getProductId());
 			
-		//計算總價錢
-		int amount =buyItem.getQuantity() * travel.getTicket(); 
-		totalAmount = totalAmount + amount;
+			totalAmount = travel.getTicket();
+			Amount +=travel.getTicket();
 		
-		
-		// 轉換 buyItem to OrderItem
-		OrderItem orderItem =new OrderItem();
-		orderItem.setProductId(buyItem.getProductId());
-		orderItem.setQuantity(buyItem.getQuantity());
-		orderItem.setAmount(amount);
-		
-		orderItemList.add(orderItem);
-		
+			OrderItem orderItem =new OrderItem();
+			
+			orderItem.setProductId(buyItem.getProductId());
+			orderItem.setAmount(totalAmount);
+			
+			orderItemList.add(orderItem);
+			
 		}
 		
-		//創建清單
-		Integer orderId = orderDao.createOrder(userId,totalAmount);
-								//讓orderItemList對應到orderId的訂單上面
-		orderDao.createOrderItems(orderId, orderItemList);
+		//創建訂單
+		String orderId=orderDao.createOrder(userId,Amount);
+		
+		orderDao.createOrderItem(orderId,orderItemList);
 		
 		return orderId;
 	}
-
-
-
-
-
-
-
-
+	
+	
 }
