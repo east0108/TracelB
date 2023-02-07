@@ -1,14 +1,19 @@
 package SpringSql.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
-
+	
 	private Integer orderId;
-	private Integer userId;
+	private String email;
 	private Integer totalAmount;
-	private Date createdDate;
-	private Date lastModifiedDate;
+	private Date  createdDate;
+	private Date  lastModifieDate;
+	
+	private List<OrderItem> orderItemList;
+	
+	
 	
 	public Integer getOrderId() {
 		return orderId;
@@ -16,12 +21,12 @@ public class Order {
 	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
-	public Integer getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+	public void setEmail(String email) {
+		this.email = email;
+	}	
 	public Integer getTotalAmount() {
 		return totalAmount;
 	}
@@ -34,11 +39,18 @@ public class Order {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
+	public Date getLastModifieDate() {
+		return lastModifieDate;
 	}
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
+	public void setLastModifieDate(Date lastModifieDate) {
+		this.lastModifieDate = lastModifieDate;
 	}
+	public List<OrderItem> getOrderItemList() {
+		return orderItemList;
+	}
+	public void setOrderItemList(List<OrderItem> orderItemList) {
+		this.orderItemList = orderItemList;
+	}
+	
 	
 }

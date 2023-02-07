@@ -15,7 +15,7 @@ public class TravelRowMapper implements RowMapper<Travel> {
 			 
 			Travel travel =new Travel();
 			
-			travel.setId(rs.getInt("id"));
+			travel.setId(rs.getInt("product_id"));
 			travel.setName(rs.getString("name"));
 			travel.setTown(rs.getString("town"));
 			travel.setAddress(rs.getString("address"));
