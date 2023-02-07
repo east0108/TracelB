@@ -24,6 +24,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+
 	@Override
 	public String createOrder(String userId, Integer totalAmount) {
 
@@ -105,5 +106,6 @@ public class OrderDaoImpl implements OrderDao {
 	
 	return orderItemList;
 	}
+
 
 }
