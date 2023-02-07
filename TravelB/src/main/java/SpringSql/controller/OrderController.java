@@ -1,5 +1,7 @@
 package SpringSql.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,22 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import SpringSql.dto.CreateOrderRequest;
-import SpringSql.service.OrderService;
+import SpringSql.model.Order;
+import SpringSql.service.OrderSevice;
 
 @Controller
 public class OrderController {
 	
 	@Autowired
-	private OrderService orderService;
+	private OrderSevice orderSevice;
 	
-	//創建清單					//userId=使用者帳號
 	@PostMapping("/users/{userId}/orders")
-	public ResponseEntity<?> createOrder(@PathVariable Integer userId,
-										 @RequestBody CreateOrderRequest createOrderRequest){
-	Integer	orderId = orderService.createOrder(userId,createOrderRequest);
-	 
-	return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
-	
-	
+	public ResponseEntity<?> createOrder(@PathVariable String userId,
+										 @RequestBody @Valid CreateOrderRequest createOrderRequest){
+			System.out.println("傳入值"+createOrderRequest);
+			String orderId= orderSevice.createOrder(userId,createOrderRequest);
+			
+			Order order = orderSevice.getOrderById(orderId);
+			
+			return ResponseEntity.status(HttpStatus.CREATED).body(order);
 	}
 }

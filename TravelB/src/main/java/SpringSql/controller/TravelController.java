@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,17 +71,29 @@ public class TravelController {
 //				return "ok";					
 //		}
 //		
-	@GetMapping("/find")
-	public String traveldata(Model model) {
 
-		List<Travel> travel = travelService.getTravelAll();
-
-		model.addAttribute("listTravel", travel);
+		@GetMapping("/find")
+		public String traveldata(Model model) {
 		
+//		List<Travel>  travel =travelService.getTravelAll();
+//		
+//		model.addAttribute("listTravel",travel);
 		
 		return "Find";
+	
+		}
+		
+		@GetMapping("/findList")
+		public ResponseEntity<List<Travel>> travelList(Model model) {
+		
+		List<Travel>  travel =travelService.getTravelAll();
 
-	}
+		
+		
+
+		return ResponseEntity.status(HttpStatus.OK).body(travel);
+	
+		}
 //		model.addAttribute("currentPage",currentPage);
 //		model.addAttribute("totalItems",totalItems);
 //		model.addAttribute("totalPages",totalPages);

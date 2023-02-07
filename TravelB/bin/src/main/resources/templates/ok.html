@@ -55,11 +55,6 @@
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
-                </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -78,7 +73,7 @@
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
+            <a href="index" class="navbar-brand p-0">
                 <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Tourist</h1>
                 <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
@@ -88,35 +83,23 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
-                    <a th:href="@{'/find'}" class="nav-item nav-link">商品資訊</a>
-                    <a href="service" class="nav-item nav-link">Services</a>
-                    <a href="package" class="nav-item nav-link">分類</a>
+                    <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="destination" class="dropdown-item">Destination</a>
-                            <a href="booking" class="dropdown-item">Booking</a>
-                            <a href="team" class="dropdown-item">Travel Guides</a>
-                            <a href="testimonial" class="dropdown-item">Testimonial</a>
-                            <a href="404" class="dropdown-item">404 Page</a>
-                        </div>
                     </div>
+
                     <a href="contact" class="nav-item nav-link">Contact</a>
-                <a th:if="${session.loginEmail ==  null}" href="register" class="nav-item nav-link">註冊</a>
-                    
-                    <a  th:if="${session.loginEmail !=  null}" class="menu-item" href="http://localhost:8080/travel/logout">
-                        <div class="menu-item-img"><img th:src="@{/images/exit_to_app.png}"></div>
-                        <span>登出</span>
-                    </a>
-                    
-                    <span th:if="${session.loginEmail !=  null}" th:text="${session.loginEmail}" class="nav-item nav-link"></span>
+
+               
                		</div>
 
-               		 <a th:if="${session.loginEmail ==  null}" href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>
+                 
+                         </div>
+                 
 
-            </div>
+         
+
         </nav>
-
+  </div>
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
@@ -176,6 +159,7 @@
 
     <!-- Template Javascript -->
     <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/session.js}"></script>
 </body>
 
 </html>
