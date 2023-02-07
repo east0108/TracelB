@@ -31,14 +31,15 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-
     <link th:href="@{/css/style.css}" rel="stylesheet">
 
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <style>
-
+        #textEmail{
+            color: red;
+            font-size: 15px;
+        }
     </style>
-
 </head>
 
 <body>
@@ -56,13 +57,6 @@
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York,
-                        USA</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
-                </div>
 
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -95,47 +89,50 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
-                    <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
-                    <div class="nav-item dropdown">
-                    </div>
+                <div class="navbar-nav ms-auto py-0" id="registerToBack">
+                    <a href="index" class="nav-item nav-link">首頁</a>
+
+                    <a href="find" class="nav-item nav-link">旅遊資訊</a>
+
+
+
                 </div>
-                <a href="login" class="btn btn-primary rounded-pill py-2 px-4">會員登錄</a>
+
             </div>
         </nav>
 
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
-
                     <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                         <!--col-lg-10 pt-lg-5 mt-lg-5 text-center-->
                         <h1 class="display-3 text-white animated slideInDown">註冊</h1>
                         <!----------------------- 會員註冊 ---------------->
                         <section class="form-block">
-                            <form class="register-form" id="registerForm" th:Object="${memberRegisterRequest}" method="POST"
-                                enctype="text/plain" autocomplete="off">
-        
+                            <form class="register-form" id="registerForm" th:Object="${memberRegisterRequest}"
+                                method="POST" enctype="text/plain" autocomplete="off">
+
                                 <section class="form-input-block">
                                     <div class="input-label">帳號/Email</div>
                                     <div class="input-area">
                                         <div class="input-img"><img th:src="@{/images/person.png}"></div>
-                                        <input id="email" type="email" name="email" maxlength="64" placeholder="請輸入帳號" />
+                                        <input id="email" type="email" name="email" maxlength="64"
+                                            placeholder="請輸入帳號" />
                                     </div>
                                 </section>
-                                <P id="text" style="color: red;font-size: 3px;"></P>
+                                <P id="textEmail"></P>
                                 <section class="form-input-block">
                                     <div class="input-label">密碼</div>
                                     <div class="input-area">
                                         <div class="input-img"><img th:src="@{/images/lock.png}"></div>
-                                        <input  id="password" type="password" name="password" maxlength="16" placeholder="請輸入密碼" />
+                                        <input id="password" type="password" name="password" maxlength="16"
+                                            placeholder="請輸入密碼" />
                                     </div>
                                 </section>
-                                
-                                <section class="form-link">
+
+                                <sectio class="form-link">
                                     <span>已經有帳號?</span><a th:href="@{/login}">立即登入</a>
-                                </section>
+                                </sectio>
                             </form>
                             <button type="submit" id="btnPostUser" onclick="register()">註冊</button>
                         </section>
@@ -148,78 +145,27 @@
                 <div class="row g-2 pt-2">
                     <div class="col-4">
                         <img class="img-fluid bg-light p-1" src="img/package-1.jpg" alt="">
-
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
-                            <h5>Hotel Reservation</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/package-2.jpg" alt="">
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
-                            <h5>Travel Guides</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/package-3.jpg" alt="">
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
-                            <h5>Event Management</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/package-2.jpg" alt="">
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5>WorldWide Tours</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/package-3.jpg" alt="">
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
-                            <h5>Hotel Reservation</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
-                            <h5>Travel Guides</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item rounded pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
-                            <h5>Event Management</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/package-1.jpg" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Service End -->
-
-
+    <!-- Navbar & Hero End -->
 
 
 
@@ -273,7 +219,7 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a href="">Home</a>
+                            <a href="index">Home</a>
                             <a href="">Cookies</a>
                             <a href="">Help</a>
                             <a href="">FQAs</a>
@@ -303,13 +249,22 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/register.js}"></script>
-    <script>
-
-    </script>
-
+    <script src="js/session.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        body.yes #textEmail{
+            
+            color: greenyellow;
+            font-size: 30px;
+        }
+        body.no #textEmail{
+            
+            color: red;
+            font-size: 30px;
+        }
+    </style>
 </body>
 
 </html>
