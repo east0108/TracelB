@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
 
-
 public interface OrderDao {
+
 		
 	String createOrder(String userId, Integer totalAmount);
 

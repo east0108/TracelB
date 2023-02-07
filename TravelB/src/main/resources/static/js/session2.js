@@ -24,6 +24,8 @@ function clickEmail(data) {
             "productId": 11
         }
     ]
+    
+   
 };
 
 	
@@ -35,7 +37,9 @@ function clickEmail(data) {
   	data: JSON.stringify(createOrderRequest),
    
     success:function() {
-		console.log("ok2");
+    // var a = document.getElementById("travelvalue").innerText
+    var a = $("#travelvalue+span").text();
+		console.log(a);
     },
 	error:function (){
 		console.log("no");

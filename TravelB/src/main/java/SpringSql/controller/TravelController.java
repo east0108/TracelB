@@ -2,6 +2,9 @@ package SpringSql.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Page;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,10 +33,12 @@ public class TravelController {
 	
 		@GetMapping("/find")
 		public String traveldata() {
-		
+
 		return "Find";
 	
 		}
+		
+		
 		
 //		@GetMapping("/findList")
 //		public ResponseEntity<List<Travel>> traveldata2() {
