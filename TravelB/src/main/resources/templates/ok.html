@@ -7,48 +7,72 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    
+
 
     <!-- Favicon -->
     <link th:href="@{/img/favicon.ico}" rel="icon">
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect"  th:href="@{https://fonts.googleapis.com}">
-    <link rel="preconnect"  th:href="@{https://fonts.gstatic.com}" crossorigin>
-    <link  th:href="@{https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap}" rel="stylesheet">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link
+        th:href="@{https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap}"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link  th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css}" rel="stylesheet">
-    <link  th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-  <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
-  <link th:href="@{/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
-  <link th:href="@{/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
+    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
-    
 
-<style type="text/css">
 
-	td img{width:200px;height:100px;}
-	
-</style>
+    <style type="text/css">
+        .img-fluid {
+            max-width: 600px;
+            max-height: 300px;
+        }
+
+        /*圖片敘事的CSS*/
+        p1 {
+            width: auto;
+            padding: 10px;
+            border: 1px solid #4d4d4d;
+            overflow: scroll;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            box-sizing: border-box;
+
+        }
+
+        /*圖片卡滑動隱藏*/
+        p1::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
     <!-- Spinner End -->
+
 
 
     <!-- Topbar Start -->
@@ -58,11 +82,16 @@
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
+                            class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -83,31 +112,90 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0" id="registerToBack">
                     <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
-                    <a th:href="@{'/find'}" class="nav-item nav-link"  >商品資訊</a>
+                    <a th:href="@{'/find'}" class="nav-item nav-link">旅遊資訊</a>
                 </div>
             </div>
         </nav>
-  </div>
-        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
-            <div class="container py-5">
-                <div class="row justify-content-center py-5">
-                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-3 text-white mb-3 animated slideInDown">Enjoy Your Vacation With Us</h1>
-                        <p class="fs-4 text-white mb-4 animated slideInDown">Tempor erat elitr rebum at clita diam amet diam et eos erat ipsum lorem sit</p>
-                        <div class="position-relative w-75 mx-auto animated slideInDown">
-                            <form method="post">
-                            <input name="travelId"  class="border-0 rounded-pill w-100 py-3 ps-4 pe-5" style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
-                            <button class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 15px;">Search</button>
-                            </form>
-                        </div>
+    </div>
+    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+        <div class="container py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-3 text-white mb-3 ">探索你的玩樂世界</h1>
+                    <p class="fs-4 text-white mb-4 ">找尋在地體驗或到遠方探險，隨時隨地探索屬於你的玩樂世界</p>
+                    <div class="position-relative w-75 mx-auto ">
+                        <form method="post">
+                            <input name="travelId" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
+                                style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
+                            <button class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+                                style="margin-top: 15px;">Search
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
     <!-- Navbar & Hero End -->
+    <!-- 商品資訊 -->
+    <div class="container-xxl py-5 destination">
+        <div class="container">
+            <div>
+                <h1 >
+                    <a th:href="@{'/index'}">首頁></a>
+                    <a th:text="${travel[0].town}"></a>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-xxl py-5">
+        <div1 class="row col-*-* gy-8 gx-4 justify-content-center">
+            <tr th:each="travel : ${travel }">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" th:src="${travel.picture}" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-map-marker-alt text-primary me-2"></i><span
+                                    th:text="${travel.town}"></span></small>
 
-   <table>
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-map-marker-alt text-primary me-2"></i><span
+                                    th:text="${travel.name}"></span></small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i><span
+                                    th:text="${travel.tel}"></span></small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h3 class="mb-0"><a>NT$  </a><span th:text="${travel.ticket}"></span></h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p1><span class="overflow-auto" th:text="${travel.introduce}"></span></p1>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="#" class="btn btn-sm btn-primary px-3 border-end"
+                                    style="border-radius: 30px 0 0 30px;">Read
+                                    More</a>
+                                <a href="#" class="btn btn-sm btn-primary px-3"
+                                    style="border-radius: 0 30px 30px 0;">Book
+                                    Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </tr>
+        </div1>
+    </div>
+
+    <!-- <table>
     <colgroup span="8"></colgroup>
     <tr>
         <th>地點</th>
@@ -128,11 +216,12 @@
     	<td th:text="${travel.introduce}"></td>
     	<td id="img"><img th:src="@{(${travel.picture})}"/></td>      
   </tr>
-</table>
+</table> -->
 
 
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    
+
 
     <!-- JavaScript Libraries -->
     <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>

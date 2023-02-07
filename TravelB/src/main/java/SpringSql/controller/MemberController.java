@@ -45,12 +45,13 @@ public class MemberController {
 	
 	//新增會員
 	@PostMapping("/register")
-	public ResponseEntity<Member> register(@RequestBody @Valid MemberRegisterRequest memberRegisterRequest) {
+	public ResponseEntity<Member> register(@RequestBody @Valid MemberRegisterRequest memberRegisterRequest,
+			HttpSession session) {
 
 		Integer memberId = memberService.register(memberRegisterRequest);
 
 		Member member = memberService.getMemberById(memberId);
-
+		session.setAttribute("loginEmail", member);
 		return ResponseEntity.status(HttpStatus.CREATED).body(member);
 	}
 
@@ -139,14 +140,14 @@ public class MemberController {
 	@GetMapping("/index/checklogin")//驗證是否為會員狀態
 	public ResponseEntity<Member> checklogin(HttpSession session) {
 		Member getEmail = (Member)session.getAttribute("loginEmail");
-		System.out.println(getEmail);
-		System.out.println("ok111");
+//		System.out.println(getEmail);
+//		System.out.println("ok111");
 		
 		if(getEmail!=null) {
-			System.out.println("ok"+getEmail);
+//			System.out.println("ok"+getEmail);
 		return (ResponseEntity<Member>) ResponseEntity.status(HttpStatus.OK).body(getEmail);
 		}else {
-			System.out.println("no"+getEmail);
+//			System.out.println("no"+getEmail);
 		return (ResponseEntity<Member>) ResponseEntity.status(HttpStatus.NOT_FOUND).body(getEmail);
 		}
 	}

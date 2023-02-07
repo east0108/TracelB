@@ -35,7 +35,10 @@
 
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <style>
-
+        #textEmail{
+            color: red;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -54,7 +57,7 @@
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-            
+
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -85,16 +88,16 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
-            <div class="collapse navbar-collapse"  id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0" id="registerToBack">
-                    <a href="index" class="nav-item nav-link" >首頁</a>
+                    <a href="index" class="nav-item nav-link">首頁</a>
 
-                    <a href="find" class="nav-item nav-link">商品資訊</a>
-                   
+                    <a href="find" class="nav-item nav-link">旅遊資訊</a>
 
-                    
+
+
                 </div>
-                
+
             </div>
         </nav>
 
@@ -106,30 +109,32 @@
                         <h1 class="display-3 text-white animated slideInDown">註冊</h1>
                         <!----------------------- 會員註冊 ---------------->
                         <section class="form-block">
-                            <form class="register-form" id="registerForm" th:Object="${memberRegisterRequest}" method="POST"
-                                enctype="text/plain" autocomplete="off">
-        
+                            <form class="register-form" id="registerForm" th:Object="${memberRegisterRequest}"
+                                method="POST" enctype="text/plain" autocomplete="off">
+
                                 <section class="form-input-block">
                                     <div class="input-label">帳號/Email</div>
                                     <div class="input-area">
                                         <div class="input-img"><img th:src="@{/images/person.png}"></div>
-                                        <input id="email" type="email" name="email" maxlength="64" placeholder="請輸入帳號" />
+                                        <input id="email" type="email" name="email" maxlength="64"
+                                            placeholder="請輸入帳號" />
                                     </div>
                                 </section>
-                                <P id="text" style="color: red;font-size: 3px;"></P>
+                                <P id="textEmail"></P>
                                 <section class="form-input-block">
                                     <div class="input-label">密碼</div>
                                     <div class="input-area">
                                         <div class="input-img"><img th:src="@{/images/lock.png}"></div>
-                                        <input  id="password" type="password" name="password" maxlength="16" placeholder="請輸入密碼" />
+                                        <input id="password" type="password" name="password" maxlength="16"
+                                            placeholder="請輸入密碼" />
                                     </div>
                                 </section>
-                                
+
                                 <sectio class="form-link">
                                     <span>已經有帳號?</span><a th:href="@{/login}">立即登入</a>
                                 </sectio>
                             </form>
-                            <button  type="submit" id="btnPostUser" onclick="register()">註冊</button>
+                            <button type="submit" id="btnPostUser" onclick="register()">註冊</button>
                         </section>
                     </div>
 
@@ -247,9 +252,19 @@
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/register.js}"></script>
     <script src="js/session.js"></script>
-    <script>
-
-    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        body.yes #textEmail{
+            
+            color: greenyellow;
+            font-size: 30px;
+        }
+        body.no #textEmail{
+            
+            color: red;
+            font-size: 30px;
+        }
+    </style>
 </body>
 
 </html>

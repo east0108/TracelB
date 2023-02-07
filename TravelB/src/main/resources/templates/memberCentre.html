@@ -70,7 +70,7 @@
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-               
+
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -101,16 +101,16 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
-            <div class="collapse navbar-collapse"  id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0" id="registerToBack">
-                    <a href="index" class="nav-item nav-link" >首頁</a>
+                    <a href="index" class="nav-item nav-link">首頁</a>
 
-                    <a href="find" class="nav-item nav-link">商品資訊</a>
-                   
+                    <a href="find" class="nav-item nav-link">旅遊資訊</a>
 
-                    
+
+
                 </div>
-                
+
             </div>
         </nav>
 
@@ -179,7 +179,8 @@
                                     <label class="text">電子信箱</label>
                                     <div class="w3l-div">
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                        <input type="email" id="email" name="email" th:value="${session.loginEmail.getEmail}" />
+                                        <input type="email" id="email" name="email"
+                                            th:value="${session.loginEmail.getEmail}" />
 
                                     </div>
                                 </div>
@@ -262,7 +263,7 @@
                     </form>
                     <div class="clear"></div>
                     <div class="w3ls-submit">
-                        <input type="submit" value="儲存" onclick="upMember()">
+                        <input id="upData" type="submit" value="儲存" onclick="upMember()">
                     </div>
                 </div>
 
@@ -358,38 +359,9 @@
     <script th:src="@{/js/main.js}"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/session.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        $(function () {
-            $("#datepicker,#datepicker1").datepicker();
-        });
-
-
-        function upMember() {
-            const data = {
-                name: document.getElementById('name').value,
-                gender: document.getElementById('gender').value,
-                birthday: document.getElementById('birthday').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                city: document.getElementById('city').value
-            };
-            $.ajax({
-                type: "PUT",
-                url: "http://localhost:8080/travel/memberCentre",
-
-                data: JSON.stringify(data),
-                dataType: "json",
-                contentType: "application/json;charset:UTF-8",
-                success: () => {
-                    console.log("OK");
-                },
-                error: () => {
-                    console.log("NO");
-                }
-            });
-        };
+      
     </script>
 </body>
 
