@@ -15,9 +15,13 @@ body {
 #error-link {
     font-size: 150px;
     padding: 10px;
+    color: #85b717;
 }
 
 .bigfont {
     font-size: 70px;
+}
+#E {
+    color: #b7173c;
 }
 
