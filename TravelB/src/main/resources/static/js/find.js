@@ -5,10 +5,10 @@ $(document).ready(function () {
     datalist();
 });
 $("#search").click(function () {
+
     // console.log(123);
-    // console.log($("#travelTown").val());
-
-
+    
+    
     datalist();
 });
 
@@ -20,9 +20,9 @@ $("#search").click(function () {
 function datalist() {
     var url = "http://localhost:8080/travel/products";
     if ($("#travelTown").val() != "") {
-        console.log("123")
+         
         url += "?town=" + $("#travelTown").val()
-
+        // console.log(url)
     }
 
     $.ajax({
@@ -52,7 +52,7 @@ function Info(data) {
     $.each(data, function (index, item) {
 
 
-        // console.log(data)
+        //  console.log(data)
 
 
 
