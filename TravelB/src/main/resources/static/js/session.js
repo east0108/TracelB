@@ -19,13 +19,11 @@ function Checklogin() {
 		
 				$("#navbarCollapse").append(html);
     },error:function (){
-		var html=' <div id="toLogin">'
-					+	'<a  href="register" class="nav-item nav-link" >註冊</a>'
-               		+	'</div>'
-          			+	'<div>'
-          			+	'<a  href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>'
-					+	'</div>'	
-		$("#navbarCollapse").append(html);
+		var html='<a  href="register" class="nav-item nav-link">註冊</a>';
+          		          
+		$("#registerToBack").append(html);
+    var html2= '<a  href="login" class="btn btn-primary rounded-pill py-2 px-4">登入</a>';
+    $("#navbarCollapse").append(html2);
     }
   });
 }

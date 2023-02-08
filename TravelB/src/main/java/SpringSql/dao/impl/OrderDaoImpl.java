@@ -26,13 +26,13 @@ public class OrderDaoImpl implements OrderDao {
 
 
 	@Override
-	public String createOrder(String userId, Integer totalAmount) {
+	public String createOrder(String userEmail, Integer totalAmount) {
 
 		String sql = "INSERT INTO `order`(email, total_amount, created_date, last_modified_date)"
 				+ "VALUES (:email, :totalAmount, :createdDate, :lastModifiedDate)";
 
 		Map<String, Object> map = new HashMap<>();
-		map.put("email", userId);
+		map.put("email", userEmail);
 		map.put("totalAmount", totalAmount);
 
 		Date now = new Date();
@@ -45,7 +45,7 @@ public class OrderDaoImpl implements OrderDao {
 
 //		int orderId = keyHolder.getKey().intValue();
 		System.out.println("ok1");
-		return userId;
+		return userEmail;
 
 	}
 
