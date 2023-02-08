@@ -176,11 +176,13 @@
     
     function datalist() {
         var url = "http://localhost:8080/travel/products";
-        if($("#travelTown").val()!=""){
-            console.log("123")
+         if($("#travelTown").val()!=""){
+            
             url+="?town="+$("#travelTown").val()
+             console.log(url)
 
-        }
+
+         }
         
         $.ajax({
             type:"GET",
@@ -190,7 +192,7 @@
             success:function(data) {
                 
                 Info(data);
-                console.log("ok");
+                console.log(data);
                
             }
         });
@@ -246,7 +248,8 @@
 </div>`
     $("#dataList").append(html);
     });
-    }
+}
+    
 
     
     </script>
@@ -255,6 +258,7 @@
 </body>
 
 </html>
+
 <!--<table border="1" witch="100">-->
 
 <!--    <tr>-->
