@@ -1,7 +1,8 @@
 //要丟，使用者的ID，跟我所購買商品的編號和數量
-function myFunction() {
+function myFunction(travelid) {
 	
-	
+
+  
 	
 	
 	
@@ -21,7 +22,7 @@ function clickEmail(data) {
 	var createOrderRequest = {
     "buyItemList": [
         {
-            "productId": 11
+            "productId": 10
         }
     ]
     
@@ -36,10 +37,11 @@ function clickEmail(data) {
     contentType: "application/json ; charset=utf-8",
   	data: JSON.stringify(createOrderRequest),
    
-    success:function() {
-    // var a = document.getElementById("travelvalue").innerText
-    var a = $("#travelvalue+span").text();
-		console.log(a);
+    success:function(data) {
+     //var a = document.getElementById("travelvalue").innerHTML
+      // var a = $("#travelvalue+span");
+		 console.log(createOrderRequest);
+   
     },
 	error:function (){
 		console.log("no");

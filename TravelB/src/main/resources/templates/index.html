@@ -121,14 +121,15 @@
                         <h1 class="display-3 text-white mb-3 ">探索你的玩樂世界</h1>
                         <p class="fs-4 text-white mb-4 ">找尋在地體驗或到遠方探險，隨時隨地探索屬於你的玩樂世界</p>
                         <div class="position-relative w-75 mx-auto ">
-                            <form method="post">
-                                <input name="travelId" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
-                                    style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
-                                <button
-                                    class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 15px;">Search
-                                </button>
-                            </form>
+
+                            <input id="travelTown" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
+                                style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
+                            <button id="search"
+                                class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+                                style="margin-top: 15px;">Search
+                            </button>
+
+
                         </div>
                     </div>
                 </div>
@@ -337,6 +338,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/session.js"></script>
+    <script src="js/find.js"></script>
     <script>
         function goToFind() {
             document.location.href = "http://localhost:8080/travel/find";

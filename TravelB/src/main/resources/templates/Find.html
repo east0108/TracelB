@@ -15,41 +15,30 @@
     <!-- Favicon -->
     <link th:href="@{/img/favicon.ico}" rel="icon">
     <!-- Google Web Fonts -->
-    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
-    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+
+    <link rel="preconnect" href=https://fonts.googleapis.com>
+    <link rel="preconnect" href=https://fonts.gstatic.com crossorigin>
     <link
-        th:href="@{https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap}"
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
         rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css}" rel="stylesheet">
-    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Libraries Stylesheet -->
-    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
-    <link th:href="@{/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
-    <link th:href="@{/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
+
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
     <!-- Customized Bootstrap Stylesheet -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Template Stylesheet -->
-    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 
-    <!-- JavaScript Libraries -->
-    <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/lib/wow/wow.min.js}"></script>
-    <script th:src="@{/lib/easing/easing.min.js}"></script>
-    <script th:src="@{/lib/waypoints/waypoints.min.js}"></script>
-    <script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
-    <script th:src="@{/lib/tempusdominus/js/moment.min.js}"></script>
-    <script th:src="@{/lib/tempusdominus/js/moment-timezone.min.js}"></script>
-    <script th:src="@{/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
 
-    <!-- Template Javascript -->
-    <script th:src="@{/js/main.js}"></script>
 
-    <script th:src="@{/js/session.js}"></script>
-    <script th:src="@{/js/session2.js}"></script>
-    <script th:src="@{/js/find.js}"></script>
     <style type="text/css">
         .img-fluid {
             max-width: 600px;
@@ -78,12 +67,7 @@
         .margin-top {
             margin-top: 10px;
         }
-    
     </style>
-
-<body>
-
-</body>
 
 
 
@@ -101,30 +85,10 @@
         </div>
 
     </div>
+
+    </div>
     <!-- Spinner End -->
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-        <div class="row gx-0">
-            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-            </div>
-            <div class="col-lg-4 text-center text-lg-end">
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                            class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                            class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                            class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                            class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
-                            class="fab fa-youtube fw-normal"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
 
 
     <!-- 導航欄 -->
@@ -138,13 +102,15 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0" id="registerToBack">
-                    <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
-                    <a th:href="@{'/find'}" class="nav-item nav-link active">旅遊資訊</a>
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index" class="nav-item nav-link">首頁</a>
+                    <a href="find" class="nav-item nav-link">商品資訊</a>
+                    <div class="nav-item dropdown">
 
+                    </div>
                 </div>
-
             </div>
+
         </nav>
 
 
@@ -155,66 +121,59 @@
                         <h1 class="display-3 text-white mb-3 ">探索你的玩樂世界</h1>
                         <p class="fs-4 text-white mb-4 ">找尋在地體驗或到遠方探險，隨時隨地探索屬於你的玩樂世界</p>
                         <div class="position-relative w-75 mx-auto ">
-                            <form method="post">
-                                <input name="travelId" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
-                                    style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
-                                <button
-                                    class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 15px;">Search
-                                </button>
-                            </form>
+
+                            <input id="travelTown" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
+                                style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
+                            <button id="search"
+                                class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+                                style="margin-top: 15px;">Search
+                            </button>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
 
 
-    <!-- 商品資訊 -->
+
+
+
     <div class="container-xxl py-5">
-        <div class="margin-top">
-            <h1>台中</h1>
-            <h5>台中地處台灣西半部交通樞紐位置，是中台灣地區的政經文化中心，終年陽光普照，四季氣候宜人，曾被評選為「台灣最宜居城市」。</h5>
-            <button id="button-travel">查看更多</button>
-            <div id="info" class="row col-*-* gy-8 gx-4 justify-content-center">
-            </div>
-        </div>
-        <div class="margin-top">
-            <h1>台南</h1>
-            <h5>台南是台灣最古老的城市，古色古香的文化古蹟還有吃不完的台南美食是其城市魅力，吸引旅人一再來訪。</h5>
-            <button id="button-travel">查看更多</button>
-            <div id="info2" class="row col-*-* gy-8 gx-4 justify-content-center">
-            </div>
-        </div>
-        <div class="margin-top">
-            <h1>桃園</h1>
-            <h5>桃園市擁有多元的文化，加上北橫豐富的山水景觀、兩蔣文化園區的獨特歷史文化及「草花王國的故鄉」、「千塘之鄉」等美名，
-                成就桃園為觀光大市，也因這些屬於桃園特別的風華面貌，讓民眾在此相遇，留下了精彩回憶</h5>
-            <button id="button-travel">查看更多</button>
-            <div id="info3" class="row col-*-* gy-8 gx-4 justify-content-center">
-            </div>
-        </div>
-        <div class="margin-top">
-            <h1>雲林</h1>
-            <h5>雲林對文化產業的深耕也不能被忽略，臺灣的布袋戲就是從雲林開始發跡，揚名於世，也讓雲林縣享有布袋戲之鄉的美譽。</h5>
-            <button id="button-travel">查看更多</button>
-            <div id="info4" class="row col-*-* gy-8 gx-4 justify-content-center">
-            </div>
-        </div>
 
+        <div id="dataList" class="row col-*-* gy-8 gx-4 justify-content-center">
+
+        </div>
+    </div>
 
 
 
     </div>
 
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+  
+
 
 </body>
-
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+        <!-- Template Javascript -->
+    
+    
+        <script src="js/main.js"></script>
+        <script src="js/session.js"></script>
+        <script src="js/session2.js"></script>
+        <script src="js/find.js"></script>
 </html>
-<script>
-
-</script>
