@@ -1,7 +1,7 @@
 body {
     font-family: 'Microsoft Yahei', '微软雅黑', 'Nova Flat', cursive, 'Times New Roman', 'Arial', 'Helvetica', 'sans-serif';
-    background-color: #b3c0da;
-    color: #fff;
+    background-color: #fdfdfd;
+    color: #85b717;
 }
 
 .pad-top {
@@ -20,3 +20,4 @@ body {
 .bigfont {
     font-size: 70px;
 }
+
