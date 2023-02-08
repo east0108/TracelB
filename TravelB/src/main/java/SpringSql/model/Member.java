@@ -62,7 +62,7 @@ public class Member implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 	public String getPhone() {
 		return phone;
 	}

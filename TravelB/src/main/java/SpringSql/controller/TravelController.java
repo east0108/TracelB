@@ -18,13 +18,12 @@ import SpringSql.service.TravelService;
 
 @Controller
 public class TravelController {
-	
-	@Autowired
-	private  TravelService travelService;
-	
 
+	@Autowired
+	private TravelService travelService;
 
 	@GetMapping("/index")
+
 	public String home () {
 	
 
@@ -34,21 +33,13 @@ public class TravelController {
 		@GetMapping("/find")
 		public String traveldata() {
 
+
 		return "Find";
 	
 		}
 		
 		
-		
-//		@GetMapping("/findList")
-//		public ResponseEntity<List<Travel>> traveldata2() {
-//		
-//		System.out.println("ok");
-//		List<Travel>  travel =travelService.getTravelAll();
-//			
-//		return ResponseEntity.status(HttpStatus.OK).body(travel);
-//	
-//		}
+
 			
 		@GetMapping("/products")
 	    public ResponseEntity<List<Travel>> getProducts(
@@ -85,7 +76,4 @@ public class TravelController {
 	
 
 
-	
-
-
-	
+}
