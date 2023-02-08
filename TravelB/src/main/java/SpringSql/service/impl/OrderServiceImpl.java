@@ -32,11 +32,11 @@ public class OrderServiceImpl implements OrderSevice{
 	
 	
 	@Override
-	public Order getOrderById(String orderId) {
+	public Order getOrderById(String userEmail) {
 		
-		Order order =orderDao.getOrderById(orderId);
+		Order order =orderDao.getOrderById(userEmail);
 		
-		List<OrderItem> orderItemList= orderDao.getOrderItemsByOrderId(orderId);
+		List<OrderItem> orderItemList= orderDao.getOrderItemsByOrderId(userEmail);
 		
 		order.setOrderItemList(orderItemList);
 		
@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderSevice{
 
 	@Transactional
 	@Override
-	public String createOrder(String userEmail, CreateOrderRequest createOrderRequest) {
+	public String createOrder(String Email, CreateOrderRequest createOrderRequest) {
 		
 		int Amount = 0;
 		int totalAmount=0;
@@ -72,11 +72,25 @@ public class OrderServiceImpl implements OrderSevice{
 		}
 		
 		//創建訂單
-		String orderId=orderDao.createOrder(userEmail,Amount);
+		String orderEmail=orderDao.createOrder(Email,Amount);
 		
-		orderDao.createOrderItem(orderId,orderItemList);
+		orderDao.createOrderItem(orderEmail,orderItemList);
 		
-		return orderId;
+		return orderEmail;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

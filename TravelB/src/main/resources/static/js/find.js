@@ -52,7 +52,7 @@ function Info(data) {
     $.each(data, function (index, item) {
 
 
-        //  console.log(data)
+          console.log(item)
 
 
 

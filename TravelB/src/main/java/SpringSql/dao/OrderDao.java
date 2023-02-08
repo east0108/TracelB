@@ -10,7 +10,7 @@ import SpringSql.model.OrderItem;
 public interface OrderDao {
 
 		
-	String createOrder(String userEmail, Integer totalAmount);
+	String createOrder(String Email, Integer totalAmount);
 
 	void createOrderItem(String orderId, List<OrderItem> orderItemList);
 
@@ -18,7 +18,7 @@ public interface OrderDao {
 
 	List<OrderItem> getOrderItemsByOrderId(String orderId);
 	
-	
+
 	
 	
 }

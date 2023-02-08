@@ -11,7 +11,7 @@ function Checklogin() {
 		var html='<div  id="toMember" class="nav-item dropdown">'
                   +  '<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><img src="images/person.png"></a>'
                   +  '<span class="dropdown-menu m-0">'
-                  +	 '<a href="" class="dropdown-item">購買紀錄</a>'
+                  +	 '<a href="CIC" class="dropdown-item">購買紀錄</a>'
                   +  '<a href="memberCentre" class="dropdown-item">會員中心</a>'
                   +  '<a href="http://localhost:8080/travel/logout" class="dropdown-item">登出</a>'
                   + '</span>'

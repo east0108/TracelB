@@ -26,13 +26,13 @@ public class OrderDaoImpl implements OrderDao {
 
 
 	@Override
-	public String createOrder(String userEmail, Integer totalAmount) {
+	public String createOrder(String Email, Integer totalAmount) {
 
 		String sql = "INSERT INTO `order`(email, total_amount, created_date, last_modified_date)"
 				+ "VALUES (:email, :totalAmount, :createdDate, :lastModifiedDate)";
 
 		Map<String, Object> map = new HashMap<>();
-		map.put("email", userEmail);
+		map.put("email", Email);
 		map.put("totalAmount", totalAmount);
 
 		Date now = new Date();
@@ -45,15 +45,15 @@ public class OrderDaoImpl implements OrderDao {
 
 //		int orderId = keyHolder.getKey().intValue();
 		System.out.println("ok1");
-		return userEmail;
+		return Email;
 
 	}
 
 	@Override
-	public void createOrderItem(String orderId, List<OrderItem> orderItemList) {
+	public void createOrderItem(String orderEmail, List<OrderItem> orderItemList) {
 
 		System.out.println("ok2");
-		String sql = "INSERT INTO order_item(email, product_id,amount)" + "VALUES (:orderId, :productId, :amount)";
+		String sql = "INSERT INTO order_item(email, product_id,amount)" + "VALUES (:Email, :productId, :amount)";
 
 		MapSqlParameterSource[] parameterSources = new MapSqlParameterSource[orderItemList.size()];
 
@@ -61,7 +61,7 @@ public class OrderDaoImpl implements OrderDao {
 			OrderItem orderItem = orderItemList.get(i);
 
 			parameterSources[i] = new MapSqlParameterSource();
-			parameterSources[i].addValue("orderId", orderId);
+			parameterSources[i].addValue("Email", orderEmail);
 			parameterSources[i].addValue("productId", orderItem.getProductId());
 			parameterSources[i].addValue("amount", orderItem.getAmount());
 
@@ -72,33 +72,37 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public Order getOrderById(String orderId) {
+	public Order getOrderById(String userEmail) {
 
 		String sql = "SELECT order_id, email, total_amount, created_date, last_modified_date"+
-				" FROM `order` WHERE email = :orderId";
+				" FROM `order` WHERE email = :userEmail";
 				
 				Map<String,Object> map =new HashMap<>();
-				map.put("orderId", orderId);
-				System.out.println("ok3"+"  "+orderId);
+				map.put("userEmail", userEmail);
+				System.out.println("ok3"+"  "+userEmail);
 				
 				List<Order> orderList =namedParameterJdbcTemplate.query(sql, map,new OrderRowMapper());
 				
 				if(orderList.size()>0) {
-					return orderList.get(0);
-				}else {
-					return null;
+					for(int i =0 ;i<orderList.size();i++) {
+							return orderList.get(i);
+							
+					 
+					}
 				}
+					return null;
+				
 	}
 
 	@Override
-	public List<OrderItem> getOrderItemsByOrderId(String orderId) {
+	public List<OrderItem> getOrderItemsByOrderId(String userEmail) {
 		String sql ="SELECT oi.order_item_id, oi.email,oi.product_id,oi.amount,t.name,t.town,t.address,t.tel,t.tickets,t.introduce,t.picture " +
 				" FROM order_item as oi " +
 				" LEFT JOIN travel2 as t ON oi.product_id = t.product_id " +
-				" WHERE oi.email = :orderId ";
+				" WHERE oi.email = :userEmail ";
 	
 	Map<String,Object> map =new HashMap<>();
-	map.put("orderId", orderId);
+	map.put("userEmail", userEmail);
 	
 	List<OrderItem> orderItemList = namedParameterJdbcTemplate.query(sql, map,new OrderItemRowMapper());
 	
@@ -106,6 +110,8 @@ public class OrderDaoImpl implements OrderDao {
 	
 	return orderItemList;
 	}
+
+
 
 
 }

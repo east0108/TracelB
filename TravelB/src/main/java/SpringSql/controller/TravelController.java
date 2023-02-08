@@ -24,56 +24,46 @@ public class TravelController {
 
 	@GetMapping("/index")
 
-	public String home () {
-	
+	public String home() {
 
 		return "index";
 	}
-	
-		@GetMapping("/find")
-		public String traveldata() {
 
+	@GetMapping("/find")
+	public String traveldata() {
 
 		return "Find";
-	
-		}
-		
-		
 
-			
-		@GetMapping("/products")
-	    public ResponseEntity<List<Travel>> getProducts(
-	            //查詢條件Filtering
-	           @RequestParam (required = false) TravelCategory town,
-	           @RequestParam (required = false) String search,
+	}
 
-	           //排序sorting
-	           @RequestParam (defaultValue = "product_id") String orderBy,
-	           @RequestParam (defaultValue = "asc") String sort	  
-	    )
-		{
-	        TravelQueryParams travelQueryParams = new TravelQueryParams();
+	@GetMapping("/CIC")
+	public String products() {
 
-	        travelQueryParams.setTown(town);
-	        travelQueryParams.setSearch(search);
-	        travelQueryParams.setOrderBy(orderBy);
-	        travelQueryParams.setSort(sort);	        
+		return "CIC";
 
-
-	        //取得 product list
-	        List<Travel> travelList = travelService.getTravelByTown(travelQueryParams);
-	     
-	        return ResponseEntity.status(HttpStatus.OK).body(travelList);
-	    }	
-
-					
-				
 	}
 	
 	
-	
-	
-	
 
+	@GetMapping("/products")
+	public ResponseEntity<List<Travel>> getProducts(
+			// 查詢條件Filtering
+			@RequestParam(required = false) TravelCategory town, @RequestParam(required = false) String search,
 
+			// 排序sorting
+			@RequestParam(defaultValue = "product_id") String orderBy,
+			@RequestParam(defaultValue = "asc") String sort) {
+		TravelQueryParams travelQueryParams = new TravelQueryParams();
 
+		travelQueryParams.setTown(town);
+		travelQueryParams.setSearch(search);
+		travelQueryParams.setOrderBy(orderBy);
+		travelQueryParams.setSort(sort);
+
+		// 取得 product list
+		List<Travel> travelList = travelService.getTravelByTown(travelQueryParams);
+
+		return ResponseEntity.status(HttpStatus.OK).body(travelList);
+	}
+
+}

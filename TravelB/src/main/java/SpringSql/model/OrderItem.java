@@ -2,23 +2,19 @@ package SpringSql.model;
 
 public class OrderItem {
 
+	
 	private Integer orderItemId;
-	private String	orderId;
+	
+	
+	private String	Email;
 	private Integer productId;
 	private Integer amount;
-	
 	private String name;
-
 	private String town;
-
 	private String address;
-
 	private String tel;
-
 	private Integer tickets;
-
 	private String introduce;
-	
 	private String picture;
 	
 	
@@ -28,11 +24,13 @@ public class OrderItem {
 	public void setOrderItemId(Integer orderItemId) {
 		this.orderItemId = orderItemId;
 	}
-	public String getOrderId() {
-		return orderId;
+	
+
+	public String getEmail() {
+		return Email;
 	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setEmail(String email) {
+		Email = email;
 	}
 	public Integer getProductId() {
 		return productId;
