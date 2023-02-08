@@ -210,16 +210,26 @@
             contentType: "application/json ; charset=utf-8", 
             success:function(data) {
                 
+                // console.log(data);
                 Info(data);
-                console.log("ok");
-               
-            }
+              
+            
+            },
+            error:()=>{
+
+
+
+            } 
         });
     }
     function Info(data){
+        $("#dataList").empty();
+        // console.log(data)
         var html =""
         $.each(data,function(index,item){
-
+            
+            
+            // console.log(data)
           
        
         
@@ -237,8 +247,8 @@
 
                         <small class="flex-fill text-center border-end py-2"><i
                                 class="fa fa-map-marker-alt text-primary me-2"></i>
-                                <span>${item.name}</span></small>
-                        <small id="travelvalue" class="flex-fill text-center py-2"><i
+                                <span id="travelvalue">${item.name}</span></small>
+                        <small  class="flex-fill text-center py-2"><i
                                 class="fa fa-user text-primary me-2"></i>
                                 <span>${item.id}</span></small>
                     </div>
@@ -254,7 +264,7 @@
                         </div>
                         <p1><span class="overflow-auto">${item.introduce}</span></p1>
                         <div class="d-flex justify-content-center mb-2">
-                            <button onclick="myFunction()"  class="btn btn-sm btn-primary px-3 border-end"
+                            <button onclick="myFunction(${item.id})"  class="btn btn-sm btn-primary px-3 border-end"
                                style="border-radius: 30px 0 0 30px;">購買
                                 </button>
                         </div>

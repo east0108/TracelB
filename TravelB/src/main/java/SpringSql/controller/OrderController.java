@@ -20,11 +20,11 @@ public class OrderController {
 	@Autowired
 	private OrderSevice orderSevice;
 	
-	@PostMapping("/users/{userId}/orders")
-	public ResponseEntity<?> createOrder(@PathVariable String userId,
+	@PostMapping("/users/{userEmail}/orders")
+	public ResponseEntity<?> createOrder(@PathVariable String userEmail,
 										 @RequestBody @Valid CreateOrderRequest createOrderRequest){
 			System.out.println("傳入值"+createOrderRequest);
-			String orderId= orderSevice.createOrder(userId,createOrderRequest);
+			String orderId= orderSevice.createOrder(userEmail,createOrderRequest);
 			
 			Order order = orderSevice.getOrderById(orderId);
 			

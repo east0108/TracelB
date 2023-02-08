@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderSevice{
 
 	@Transactional
 	@Override
-	public String createOrder(String userId, CreateOrderRequest createOrderRequest) {
+	public String createOrder(String userEmail, CreateOrderRequest createOrderRequest) {
 		
 		int Amount = 0;
 		int totalAmount=0;
@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderSevice{
 		}
 		
 		//創建訂單
-		String orderId=orderDao.createOrder(userId,Amount);
+		String orderId=orderDao.createOrder(userEmail,Amount);
 		
 		orderDao.createOrderItem(orderId,orderItemList);
 		

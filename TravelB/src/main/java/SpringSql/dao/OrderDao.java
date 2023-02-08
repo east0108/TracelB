@@ -10,7 +10,7 @@ import SpringSql.model.OrderItem;
 public interface OrderDao {
 
 		
-	String createOrder(String userId, Integer totalAmount);
+	String createOrder(String userEmail, Integer totalAmount);
 
 	void createOrderItem(String orderId, List<OrderItem> orderItemList);
 
