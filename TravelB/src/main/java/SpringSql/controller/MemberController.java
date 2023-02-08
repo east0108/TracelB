@@ -37,7 +37,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	//登入會員畫面
+	//登入註冊畫面
 	@GetMapping("register")
 	public String register (@ModelAttribute MemberLoginRequest memberLoginRequest) {	
 		return "register";
@@ -55,48 +55,46 @@ public class MemberController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(member);
 	}
 
-	//登入
-//	@PostMapping("/login")
-//	public ResponseEntity<Member> login(@RequestBody @Valid MemberLoginRequest memberLoginRequest,
-//			HttpSession session) {
-//
-//		Member member = memberService.login(memberLoginRequest);
-//
-//		session.setAttribute("uid", member.getUserid());
-//		session.setAttribute("email", member.getEmail());
-//
-//		return ResponseEntity.status(HttpStatus.OK).body(member);
-//
-//	}
+	//登入會員畫面
+	@PostMapping("/login")
+	public ResponseEntity<Member> login(@RequestBody @Valid MemberLoginRequest memberLoginRequest,
+			HttpSession session) {
+
+		Member member = memberService.login(memberLoginRequest);
+
+		session.setAttribute("loginEmail", member);
+		
+
+		return ResponseEntity.status(HttpStatus.OK).body(member);
+
+	}
 	
-	//登入註冊畫面
+	//登入畫面
 	@GetMapping("/login")
 	public String Member (@ModelAttribute MemberLoginRequest memberLoginRequest) {	
 		return "login";
 	}
 	
-	//登入會員-thymeleaf
-	@PostMapping("/login")
-	public String doLogin(
-			@ModelAttribute MemberLoginRequest memberLoginRequest, 
-			Model model,
-			HttpSession session) {
-		System.out.println("OK");
-		Member member = memberService.login(memberLoginRequest);
-		if(member == null) {
-			log.warn(memberLoginRequest.getEmail() + "嘗試登入系統");
-			return "redirect:login";
-		}
-
-
-		// 設置Session
-		session.setAttribute("loginEmail", member);
-
-		log.info(memberLoginRequest.getEmail() + "登入系統");
-		return "redirect:index";
-	}
-	
-	
+//	//登入會員-thymeleaf
+//	@PostMapping("/login")
+//	public String doLogin(
+//			@ModelAttribute MemberLoginRequest memberLoginRequest, 
+//			Model model,
+//			HttpSession session) {
+//		System.out.println("OK");
+//		Member member = memberService.login(memberLoginRequest);
+//		if(member == null) {
+//			log.warn(memberLoginRequest.getEmail() + "嘗試登入系統");
+//			return "redirect:login";
+//		}
+//
+//
+//		// 設置Session
+//		session.setAttribute("loginEmail", member);
+//
+//		log.info(memberLoginRequest.getEmail() + "登入系統");
+//		return "redirect:index";
+//	}
 	
 	//session登出
 	@RequestMapping(value = "/logout", method = {RequestMethod.GET})
@@ -123,20 +121,6 @@ public class MemberController {
 		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
 	
-
-
-//	@GetMapping("/index/checklogin")
-//	public String checklogin (HttpSession session) {
-//		String getEmail = (String)session.getAttribute("loginEmail");
-//		System.out.println(getEmail);
-//		System.out.println("ok111");
-//		
-//	if(getEmail != null) {
-//		return "index" ;
-//	}else {
-//	return "login";
-//	}
-//	}
 	@GetMapping("/index/checklogin")//驗證是否為會員狀態
 	public ResponseEntity<Member> checklogin(HttpSession session) {
 		Member getEmail = (Member)session.getAttribute("loginEmail");
