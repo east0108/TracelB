@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import Spring.constant.TravelCategory;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
@@ -22,26 +21,13 @@ public class TravelDaoImpl implements TravelDao {
 	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 
 	@Override
-	public List<Travel> getTravelByTown(TravelQueryParams travelQueryParams) {
+	public List<Travel> getTravelByTown(String travelQueryParams) {
 		
-			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture " + " FROM travel2 WHERE 1=1 " ;
-			
+			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			
-			if(travelQueryParams.getTown() != null) {
-				sql= sql + " AND town = :town";
-				map.put("town", travelQueryParams.getTown().name());
-				
-			}
 			
-			if(travelQueryParams.getSearch() != null) {
-				sql= sql + " AND name LIKE :search";
-				map.put("search", "%" + travelQueryParams.getSearch() + "%");
-				
-			}
-			
-			sql =sql + " ORDER BY " + travelQueryParams.getOrderBy() + " " + travelQueryParams.getSort();
-			
+			map.put("travelId", travelQueryParams); 
 					
 			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
 			
