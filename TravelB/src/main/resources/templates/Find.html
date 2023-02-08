@@ -47,9 +47,9 @@
     <!-- Template Javascript -->
     <script th:src="@{/js/main.js}"></script>
 
-	<script th:src="@{/js/session.js}"></script>
-	<script th:src="@{/js/session2.js}"></script>
-
+    <script th:src="@{/js/session.js}"></script>
+    <script th:src="@{/js/session2.js}"></script>
+    <script th:src="@{/js/find.js}"></script>
     <style type="text/css">
         .img-fluid {
             max-width: 600px;
@@ -74,6 +74,11 @@
         p1::-webkit-scrollbar {
             display: none;
         }
+
+        .margin-top {
+            margin-top: 10px;
+        }
+    
     </style>
 
 <body>
@@ -165,103 +170,51 @@
         </div>
     </div>
 
-</div>
+    </div>
 
 
-<!-- 商品資訊 -->
-<div class="container-xxl py-5">
-<div id="info" class="row col-*-* gy-8 gx-4 justify-content-center"></div>
+    <!-- 商品資訊 -->
+    <div class="container-xxl py-5">
+        <div class="margin-top">
+            <h1>台中</h1>
+            <h5>台中地處台灣西半部交通樞紐位置，是中台灣地區的政經文化中心，終年陽光普照，四季氣候宜人，曾被評選為「台灣最宜居城市」。</h5>
+            <button id="button-travel">查看更多</button>
+            <div id="info" class="row col-*-* gy-8 gx-4 justify-content-center">
+            </div>
+        </div>
+        <div class="margin-top">
+            <h1>台南</h1>
+            <h5>台南是台灣最古老的城市，古色古香的文化古蹟還有吃不完的台南美食是其城市魅力，吸引旅人一再來訪。</h5>
+            <button id="button-travel">查看更多</button>
+            <div id="info2" class="row col-*-* gy-8 gx-4 justify-content-center">
+            </div>
+        </div>
+        <div class="margin-top">
+            <h1>桃園</h1>
+            <h5>桃園市擁有多元的文化，加上北橫豐富的山水景觀、兩蔣文化園區的獨特歷史文化及「草花王國的故鄉」、「千塘之鄉」等美名，
+                成就桃園為觀光大市，也因這些屬於桃園特別的風華面貌，讓民眾在此相遇，留下了精彩回憶</h5>
+            <button id="button-travel">查看更多</button>
+            <div id="info3" class="row col-*-* gy-8 gx-4 justify-content-center">
+            </div>
+        </div>
+        <div class="margin-top">
+            <h1>雲林</h1>
+            <h5>雲林對文化產業的深耕也不能被忽略，臺灣的布袋戲就是從雲林開始發跡，揚名於世，也讓雲林縣享有布袋戲之鄉的美譽。</h5>
+            <button id="button-travel">查看更多</button>
+            <div id="info4" class="row col-*-* gy-8 gx-4 justify-content-center">
+            </div>
+        </div>
 
 
 
 
-
-<div>&nbsp;</div>
-<div>
-<!--    Total Items:[[${totalItems}]] - Page [[${currentPage}]] of [[${totalPages}]]-->
-<!--    &nbsp;-->
-
-<!--    <a th:if="${currentPage > 1}" th:href="@{'/page/'+${currentPage - 1}}">Previous</a>-->
-<!--    <span th:unless="${currentPage > 1}">Previous</span>-->
-
-<!--    <span th:each="i: ${#numbers.sequence(1,totalPages)}">-->
-<!--			<a th:if="${i != currentPage} " th:href="@{'/page/'+${i}}">[[${i}]]</a>-->
-<!--			<span th:unless="${i != currentPage} ">[[${i}]]</span>-->
-<!--			&nbsp;&nbsp;-->
-<!--		</span>-->
-
-<!--    <a th:if="${currentPage < totalPages}" th:href="@{'/page/'+${currentPage + 1}}">Next</a>-->
-<!--    <span th:unless="${currentPage < totalPages}">Next</span>-->
-
+    </div>
 
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 </body>
 
 </html>
-
-
-
-
 <script>
-$.ajax({
-    method: "get",
-    url: "/travel/findList",
-    success:function(data) {
-		console.log(data);
-        getInfo(data);
-    }
-  });
-  
- 
 
-function getInfo(data) {
-    var html = "";
-    $.each(data, function(index, item)  {
-        console.log(item);
-
-
-    html += `
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
-                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <div class="package-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="${item.picture}" alt="">
-                    </div>
-                    <div class="d-flex border-bottom">
-                        <small class="flex-fill text-center border-end py-2"><i
-                                class="fa fa-map-marker-alt text-primary me-2"></i>
-                                <span ${item.town}</span></small>
-
-                        <small class="flex-fill text-center border-end py-2"><i
-                                class="fa fa-map-marker-alt text-primary me-2"></i>
-                                <span>${item.address}</span></small>
-                        <small  class="flex-fill text-center py-2"><i
-                        		id="travelvalue"
-                                class="fa fa-user text-primary me-2"></i
-                                ><span>${item.id}</span></small>
-                    </div>
-                    <div class="text-center p-4">
-                        <h3 class="mb-0"><span>${item.ticket}</span></h3>
-                        <div class="mb-3">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                        </div>
-                        <p1><span class="overflow-auto">${item.introduce}</span></p1>
-                        <div class="d-flex justify-content-center mb-2">
-                            <button onclick="myFunction()"  class="btn btn-sm btn-primary px-3 border-end"
-                               style="border-radius: 30px 0 0 30px;">購買
-                                </button>
-                        </div>
-                    </div>
-                </div>
-                </div>`;
-
-            })
-    $("#info").append(html);
-}
 </script>
-

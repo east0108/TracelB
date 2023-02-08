@@ -160,19 +160,20 @@ function login() {
         email: document.getElementById('email').value,
         password: document.getElementById('password').value
     }
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/travel/login",
 
-    const http = new XMLHttpRequest();
-    http.withCredentials = true;
-    http.open('POST', 'http://localhost:8080/travel/login', true);//'https://cors-anywhere.herokuapp.com/'+
-    http.setRequestHeader("Content-Type", "application/json");
-    http.send(JSON.stringify(params));// Make sure to stringify //JSON.stringify(params)
-    http.onreadystatechange = function () {
-        if (http.status >= 200 && http.status < 400) {
-
+        data: JSON.stringify(params),
+        dataType: "json",
+        contentType: "application/json;charset:UTF-8",
+        success: () => {
             document.location.href = "http://localhost:8080/travel/index";
-
+        },
+        error: () => {
+            swal("登入錯誤!", "請再次檢查是否輸入正確!", "error");
         }
-    }
+    });
 };
 
 //檢查註冊郵件
@@ -222,6 +223,4 @@ $(() => {
         $(".mobile-menu-content").addClass("active");
     });
 })
-
-
 
