@@ -55,13 +55,13 @@ function Info(data) {
 
     var html = ""  
 
-    $.each(data, function (index, item) {
+    // $.each(data, function (index, item) {
         
-        console.log(item[0])
-       html= `
-        <span>${item.orderId}</span>
+    //     console.log(item[0])
+    //    html= `
+    //     <span>${item.orderId}</span>
         
-        `
+    //     `
         
         
         
@@ -80,32 +80,27 @@ function Info(data) {
         
         // <span>${data.results[0].createdDate}</span>
       
-    //     for(i=0;i<=data.total;i++){
-           
-    //         for(s=0;s<data.results[i].orderItemList.length;s++){
-    //     html =
-        
-    //         `           
-    //         <div>
-            
-    //         <span>${data.results[i].email}</span>
-    //         <span>${data.results[i].orderId}</span>
-    //         <span>${data.results[i].createdDate}</span>       
-            
-    //         </div>
-    //         `
-    //         +
-            
-    //         `
-    //         <span>${data.results[i].orderItemList[s].name}</span>
-    //         `             
-             $("#selectItemOrder").append(html);
-    //          }
-             
-    //   }
+        for(i=0;i<=data.total;i++){
+            html = 
+            `
+            <div>
+              <span>${data.results[i].email}</span>
+              <span>${data.results[i].orderId}</span>
+              <span>${data.results[i].createdDate}</span>
+            </div>
+            `
+            $("#selectItemOrder").append(html);
+          
+            for(s=1;s<data.results[i].orderItemList.length;s++){
+              html = `<div>
+                      <span>${data.results[i].orderItemList[s].name}</span>
+                      </div>`
+              $("#selectItemOrder").append(html);
+            }
+          }
 
-            });
-    }
+            }
+    
 
        
   

@@ -30,7 +30,7 @@ function clickEmail(data,traveldata) {
   };
 	
 	$.ajax({
-    url: "http://localhost:8080/travel/users/" + data.email + "/orders",
+    url: "http://localhost:8080/travel/user/" + data.email + "/orderitem",
     type: "POST",
     dataType : 'json',
     contentType: "application/json ; charset=utf-8",
