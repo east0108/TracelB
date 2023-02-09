@@ -4,19 +4,24 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
 
 public interface OrderDao {
 
 		
-	String createOrder(String Email, Integer totalAmount);
+	Integer createOrder(String Email, Integer totalAmount);
 
-	void createOrderItem(String orderId, List<OrderItem> orderItemList);
+	void createOrderItem(Integer orderId, List<OrderItem> orderItemList);
 
-	Order getOrderById(String orderId);
+	Order getOrderById(Integer orderId);
 
-	List<OrderItem> getOrderItemsByOrderId(String orderId);
+	List<OrderItem> getOrderItemsByOrderId(Integer orderId);
+
+	List<Order> getOrders(OrderQueryParams orderQueryParams);
+
+	Integer countOrder(OrderQueryParams orderQueryParams);
 	
 
 	

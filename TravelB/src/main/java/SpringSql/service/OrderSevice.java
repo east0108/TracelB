@@ -1,15 +1,22 @@
 package SpringSql.service;
 
+import java.util.List;
+
 import SpringSql.dto.CreateOrderRequest;
+import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 
 public interface OrderSevice {
 	
 		
 	
-		String createOrder(String Email,CreateOrderRequest createOrderRequest);
+		Integer createOrder(String Email,CreateOrderRequest createOrderRequest);
 
-		Order getOrderById(String orderId);
+		Order getOrderById(Integer orderId);
+
+		List<Order> getOrders(OrderQueryParams orderQueryParams);
+
+		Integer countOrder(OrderQueryParams orderQueryParams);
 
 		
 

@@ -27,7 +27,7 @@ function selectorderitem(data) {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/travel/user/" + data.email + "/orderitem",
+        url: "http://localhost:8080/travel/users/" + data.email + "/orders",
         dataType: 'json',
         contentType: "application/json ; charset=utf-8",
         success: function (data) {
@@ -46,38 +46,67 @@ function selectorderitem(data) {
 }
 //
 function Info(data) {
-    console.log(data);
+    //console.log(data);
     $("#selectItemOrder").empty();
 
-    var a = data.orderItemList;
+    
   
   
 
     var html = ""  
 
-
-    for(i=0;i<a.length;i++){
+    $.each(data, function (index, item) {
         
+        console.log(item[0])
+       html= `
+        <span>${item.orderId}</span>
+        
+        `
+        
+        
+        
+        
+
+
+
+
+   
+
     
+        
+        // <span>${data.total}</span>
+        // <span>${data.results[i].orderItemList[i].name}</span>
+        //<span>${data.results[0].totalAmount}</span>
+        
+        // <span>${data.results[0].createdDate}</span>
+      
+    //     for(i=0;i<=data.total;i++){
+           
+    //         for(s=0;s<data.results[i].orderItemList.length;s++){
+    //     html =
+        
+    //         `           
+    //         <div>
+            
+    //         <span>${data.results[i].email}</span>
+    //         <span>${data.results[i].orderId}</span>
+    //         <span>${data.results[i].createdDate}</span>       
+            
+    //         </div>
+    //         `
+    //         +
+            
+    //         `
+    //         <span>${data.results[i].orderItemList[s].name}</span>
+    //         `             
+             $("#selectItemOrder").append(html);
+    //          }
+             
+    //   }
 
-        html =
-            `           
-            <div>
-            <span>${data.orderItemList[i].orderItemId}</span>
-            <span>${data.orderItemList[i].name}</span>
-            <span>${data.orderItemList[i].town}</span>
-            <span>${data.orderItemList[i].tel}</span>
-            <span>${data.orderItemList[i].amount}</span>
-            <span>${data.createdDate}</span>
-            </div>
-              
-            `
-            $("#selectItemOrder").append(html);
+            });
     }
-
-
-
 
        
   
-}
+ 

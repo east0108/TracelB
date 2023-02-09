@@ -10,7 +10,7 @@ public class Order {
 	private Integer totalAmount;
 	private Date  createdDate;
 	private Date  lastModifieDate;
-	
+	private Integer count;
 	private List<OrderItem> orderItemList;
 	
 	
@@ -32,6 +32,17 @@ public class Order {
 	}
 	public void setTotalAmount(Integer totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+	
+	
+	
+
+	
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 	public Date getCreatedDate() {
 		return createdDate;

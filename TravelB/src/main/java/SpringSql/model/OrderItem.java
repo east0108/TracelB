@@ -4,9 +4,8 @@ public class OrderItem {
 
 	
 	private Integer orderItemId;
-	
-	
-	private String	Email;
+		
+	private Integer	orderId;
 	private Integer productId;
 	private Integer amount;
 	private String name;
@@ -25,12 +24,11 @@ public class OrderItem {
 		this.orderItemId = orderItemId;
 	}
 	
-
-	public String getEmail() {
-		return Email;
+	public Integer getOrderId() {
+		return orderId;
 	}
-	public void setEmail(String email) {
-		Email = email;
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
 	}
 	public Integer getProductId() {
 		return productId;
