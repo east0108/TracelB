@@ -1,16 +1,17 @@
 //要丟，使用者的ID，跟我所購買商品的編號和數量
-function myFunction(travelid) {
+function myFunction(traveldata) {
 	
-
+    
   
 	
 	
 	
-    $.ajax({
+    $.ajax({ 
     url: "http://localhost:8080/travel/index/checklogin",
     success:function(data) {
-	
-		clickEmail(data);
+      
+    console.log(traveldata);
+		clickEmail(data,traveldata);
 		
     },error:function (){
 		document.location.href = "http://localhost:8080/travel/login";
@@ -18,20 +19,18 @@ function myFunction(travelid) {
   });
 }
 
-function clickEmail(data) {
-	var createOrderRequest = {
+function clickEmail(data,traveldata) {
+	
+  var createOrderRequest = {
     "buyItemList": [
         {
-            "productId": 10
+            "productId": traveldata
         }
     ]
-    
-   
-};
-
+  };
 	
 	$.ajax({
-    url: "http://localhost:8080/travel/users/" + data.email + "/orders",
+    url: "http://localhost:8080/travel/user/" + data.email + "/orderitem",
     type: "POST",
     dataType : 'json',
     contentType: "application/json ; charset=utf-8",
@@ -40,10 +39,10 @@ function clickEmail(data) {
     success:function(data) {
      //var a = document.getElementById("travelvalue").innerHTML
       // var a = $("#travelvalue+span");
-		 console.log(createOrderRequest);
+		 console.log(data);
    
     },
-	error:function (){
+	  error:function (){
 		console.log("no");
     }
 });

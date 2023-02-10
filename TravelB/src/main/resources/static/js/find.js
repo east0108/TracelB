@@ -4,10 +4,12 @@ var pages;
 //搜尋按下後觸發
 $("#search").click(function () {
 
+
     //把Cookie 帶到搜尋頁面
     setCookie("city", $("#travelTown").val(), 365);
     // console.log(city);
     document.location.href = "http://localhost:8080/travel/find";
+
     datalist();
 
 });
@@ -41,11 +43,13 @@ var cookies;
 //全部+搜尋
 var url = "http://localhost:8080/travel/products?";
 function datalist() {
+
     //從Cookie中 尋找city的Value值後進行搜尋
     cookies = getCookie("city");
     console.log(cookies);
     if (getCookie("city") != "") {
         url += "town=" + cookies;
+
     }
 
     $.ajax({

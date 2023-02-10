@@ -12,6 +12,7 @@ import SpringSql.dao.OrderDao;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.BuyItem;
 import SpringSql.dto.CreateOrderRequest;
+import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
 import SpringSql.model.Travel;
@@ -32,7 +33,7 @@ public class OrderServiceImpl implements OrderSevice{
 	
 	
 	@Override
-	public Order getOrderById(String orderId) {
+	public Order getOrderById(Integer orderId) {
 		
 		Order order =orderDao.getOrderById(orderId);
 		
@@ -50,7 +51,7 @@ public class OrderServiceImpl implements OrderSevice{
 
 	@Transactional
 	@Override
-	public String createOrder(String userEmail, CreateOrderRequest createOrderRequest) {
+	public Integer createOrder(String Email, CreateOrderRequest createOrderRequest) {
 		
 		int Amount = 0;
 		int totalAmount=0;
@@ -59,24 +60,67 @@ public class OrderServiceImpl implements OrderSevice{
 		for(BuyItem buyItem : createOrderRequest.getBuyItemList()) {
 			Travel travel = travelDao.getTravelById(buyItem.getProductId());
 			
-			totalAmount =travel.getTicket();
-			Amount +=travel.getTicket();
+			Amount =travel.getTicket();
+			totalAmount +=travel.getTicket();
 		
 			OrderItem orderItem =new OrderItem();
 			
 			orderItem.setProductId(buyItem.getProductId());
-			orderItem.setAmount(totalAmount);
+			orderItem.setAmount(Amount);
 			
 			orderItemList.add(orderItem);
 			
 		}
 		
 		//創建訂單
-		String orderId=orderDao.createOrder(userEmail,Amount);
+		Integer orderId=orderDao.createOrder(Email,totalAmount);
 		
 		orderDao.createOrderItem(orderId,orderItemList);
 		
 		return orderId;
 	}
+
+
+
+
+
+
+	@Override
+	public List<Order> getOrders(OrderQueryParams orderQueryParams) {
+		List<Order> orderList=orderDao.getOrders(orderQueryParams);
+		
+		for(Order order : orderList) {
+			List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(order.getOrderId());
+			
+			order.setOrderItemList(orderItemList);
+		}
+		
+		return orderList;
+	}
+
+
+
+
+
+
+	@Override
+	public Integer countOrder(OrderQueryParams orderQueryParams) {
+		
+		return orderDao.countOrder(orderQueryParams);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
