@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Query;
 
-import Spring.constant.TravelCategory;
 import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
 import SpringSql.model.jpaTravel;
 
 public interface TravelService {
 	
-	List<Travel> getTravelByTown(TravelQueryParams travelQueryParams);
+	List<Travel> getTravelByTown(String travelQueryParams);
 	
 	List<Travel> getTravelAll();
 

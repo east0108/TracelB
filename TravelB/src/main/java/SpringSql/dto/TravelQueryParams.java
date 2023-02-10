@@ -1,9 +1,8 @@
 package SpringSql.dto;
 
-import Spring.constant.TravelCategory;
-
 public class TravelQueryParams {
 	
+
 	private TravelCategory town;
 	private String search;
 	private String orderBy;
