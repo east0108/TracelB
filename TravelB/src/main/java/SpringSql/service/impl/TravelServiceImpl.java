@@ -51,8 +51,11 @@ public class TravelServiceImpl  implements TravelService{
 
 
 
-
-
+	@Override
+	public Integer countTravel(TravelQueryParams travelQueryParams) {
+		
+		return travelDao.countTravel(travelQueryParams);
+	}
 
 
 

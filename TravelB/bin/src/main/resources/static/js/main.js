@@ -107,15 +107,51 @@ function register() {
     http.send(JSON.stringify(params));// Make sure to stringify //JSON.stringify(params)
     http.onreadystatechange = function () {
         if (http.status >= 200 && http.status < 400) {
-           
-                document.location.href = "http://localhost:8080/travel/index";
-            
+            swal("註冊成功!", "恭喜你成為會員!", "success");
+            document.location.href = "http://localhost:8080/travel/index";
+
+        } else {
+            swal("註冊失敗!", "麻煩檢查Email是否已註冊過", "error");
         }
     }
 };
 
 //更新會員
+$(function () {
+    $("#datepicker,#datepicker1").datepicker();
+});
 
+function upMember() {
+    const data = {
+        name: document.getElementById('name').value,
+        gender: document.getElementById('gender').value,
+        birthday: document.getElementById('birthday').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value
+    };
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/travel/memberCentre",
+
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json;charset:UTF-8",
+        success: () => {
+
+            swal("儲存成功!", "您已變更會員資訊!", "success");
+
+            console.log("ok");
+        },
+        error: () => {
+
+            swal("儲存失敗!", "請您再檢查欄位是否填寫正確!", "error");
+
+            console.log("NO");
+        }
+    });
+};
 
 //登入帳號
 function login() {
@@ -132,9 +168,9 @@ function login() {
     http.send(JSON.stringify(params));// Make sure to stringify //JSON.stringify(params)
     http.onreadystatechange = function () {
         if (http.status >= 200 && http.status < 400) {
-           
-                document.location.href = "http://localhost:8080/travel/index";
-            
+
+            document.location.href = "http://localhost:8080/travel/index";
+
         }
     }
 };
@@ -142,37 +178,46 @@ function login() {
 //檢查註冊郵件
 const buttonElement = document.getElementById('email');
 
-if (document.getElementById('email').value != null) {
-    buttonElement.addEventListener('click', function () {
-        const params = {
-            email: document.getElementById('email').value
-        }
-        var xml = new XMLHttpRequest();
-        xml.withCredentials = true;
-        xml.open('POST', 'http://localhost:8080/travel/members/checkEmail', true);
-        xml.onreadystatechange = function () {
+buttonElement.addEventListener('click', function () {
+    const params = {
+        email: document.getElementById('email').value
+    }
 
-            if (xml.status >= 200 && xml.status < 400) {
+    var xml = new XMLHttpRequest();
+    xml.withCredentials = true;
+    xml.open('POST', 'http://localhost:8080/travel/members/checkEmail', true);
+    xml.onreadystatechange = function () {
+
+        if (xml.status >= 200 && xml.status < 400) {
+            if (document.getElementById('email').value === "") {
+                var myVar = 4;
+                document.body.className = (myVar == 5 ? "yes" : "no");
+                document.getElementById("textEmail").innerText = "請輸入郵件/Email";
+            } else {
                 console.log(document.getElementById('email').value);
-                document.getElementById("text").innerHTML = "尚未註冊";
-            };
-            if (xml.status >= 400) {
-                console.log("XX");
-                document.getElementById("text").innerHTML = "已註冊";
+                var myVar = 4;
+                document.body.className = (myVar == 5 ? "yes" : "no");
+                document.getElementById("textEmail").innerText = "此Email尚未註冊";
             }
+        } else {
+            console.log("XX");
+            var myVar = 5;
+            document.body.className = (myVar == 5 ? "yes" : "no");
+            document.getElementById("textEmail").innerText = "此Email已註冊";
         };
-        xml.setRequestHeader("Content-Type", "application/json");
-        xml.send(JSON.stringify(params));
-    });
-};
+    };
+    xml.setRequestHeader("Content-Type", "application/json");
+    xml.send(JSON.stringify(params));
+
+});
 
 
 $(() => {
-    $(".background-gray").on("click", function() {
+    $(".background-gray").on("click", function () {
         $(".active").removeClass("active");
     });
 
-    $(".mobile-menu").on("click", function() {
+    $(".mobile-menu").on("click", function () {
         $(".background-gray").addClass("active");
         $(".mobile-menu-content").addClass("active");
     });

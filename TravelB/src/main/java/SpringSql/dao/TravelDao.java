@@ -17,6 +17,6 @@ public interface TravelDao {
 
 	List<Travel> getTravelAll();
 	
-	
+	Integer countTravel(TravelQueryParams travelQueryParams);
 	
 }

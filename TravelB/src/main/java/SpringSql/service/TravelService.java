@@ -15,16 +15,11 @@ public interface TravelService {
 	
 	List<Travel> getTravelAll();
 
-
+	Integer countTravel(TravelQueryParams travelQueryParams);
 
 
 	
 //
 //	Page<jpaTravel> listAll(int pageNumber);
 
-
-
-
-
-	
 	}

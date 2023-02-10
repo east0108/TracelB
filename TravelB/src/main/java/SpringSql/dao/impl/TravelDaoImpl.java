@@ -26,9 +26,29 @@ public class TravelDaoImpl implements TravelDao {
 			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
 			Map<String,Object> map=new HashMap<>();
 			
+
+			//查詢條件
+			if(travelQueryParams.getTown() != null) {
+				sql= sql + " AND town = :town";
+				map.put("town", travelQueryParams.getTown().name());
+				
+			}
 			
+			if(travelQueryParams.getSearch() != null) {
+				sql= sql + " AND name LIKE :search";
+				map.put("search", "%" + travelQueryParams.getSearch() + "%");
+				
+			}
+			
+			//排序
+			sql =sql + " ORDER BY " + travelQueryParams.getOrderBy() + " " + travelQueryParams.getSort();
+			
+			//分頁
+			sql =sql + " LIMIT :limit OFFSET :offset";
+			map.put("limit", travelQueryParams.getLimit());
+			map.put("offset", travelQueryParams.getOffset());
 			map.put("travelId", travelQueryParams); 
-					
+
 			List<Travel> travelList = namedParameterJdbcTemplate.query(sql, map,new TravelRowMapper());
 			
 			
@@ -76,6 +96,31 @@ public class TravelDaoImpl implements TravelDao {
 		}
 			return null;
 	
+	}
+
+	
+	//取得總比數
+	@Override
+	public Integer countTravel(TravelQueryParams travelQueryParams) {
+		String sql = "SELECT COUNT(*) FROM travel2 WHERE 1=1";
+		
+		Map<String,Object> map=new HashMap<>();
+		//查詢條件
+		if(travelQueryParams.getTown() != null) {
+			sql= sql + " AND town = :town";
+			map.put("town", travelQueryParams.getTown().name());
+			
+		}
+		
+		if(travelQueryParams.getSearch() != null) {
+			sql= sql + " AND name LIKE :search";
+			map.put("search", "%" + travelQueryParams.getSearch() + "%");
+			
+		}
+		
+		Integer total = namedParameterJdbcTemplate.queryForObject(sql, map, Integer.class); 
+		
+		return total;
 	}
 
 	
