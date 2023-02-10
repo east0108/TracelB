@@ -80,24 +80,61 @@ function Info(data) {
         
         // <span>${data.results[0].createdDate}</span>
       
-        for(i=0;i<=data.total;i++){
+        for(i=0;i<=data.results.length;i++){
             html = 
-            `
-            <div>
-              <span>${data.results[i].orderId}</span>
-              <span>${data.results[i].email}</span>        
-              <span>${data.results[i].createdDate}</span>
-              <span>${data.results[i].totalAmount}</span>
-            </div>
+
+           `    
+
+           <style>
+           table, th, td {
+             border:1px solid black;
+             border-collapse: collapse;
+   	         width: 100%; 	
+        	 /*自動斷行*/
+   	         word-wrap: break-word;
+   	         table-layout: fixed;
+           }
+           </style>
+
+
+            <table style="width:100%">     
+            <tr>
+                <th>訂單編號</th>
+               
+                <th>創建時間</th>
+                <th>訂單總額</th>
+            </tr>
+            
+            <tr>
+                <td>${data.results[i].orderId}</td>
+                       
+                <td>${data.results[i].createdDate}</td>
+                <td>${data.results[i].totalAmount}</td>
+              </tr>
+            </table>
             `
             $("#selectItemOrder").append(html);
           
             for(s=0;s<data.results[i].orderItemList.length;s++){
-              html = `<div>
-                      <span>${data.results[i].orderItemList[s].name}</span>
-                      <span>${data.results[i].orderItemList[s].town}</span>
-                      <span>${data.results[i].orderItemList[s].tickets}</span>
-                      </div>`
+              html = `
+                      <table style="width:100%">
+                       
+                      <tr>
+                         <th>景點名稱</th>
+                         <th>景點地區</th>
+                         <th>景點地址</th>
+                         <th>門票價格</th>
+                      </tr>
+
+                      
+                      <tr>
+                        <td>${data.results[i].orderItemList[s].name}</td>
+                        <td>${data.results[i].orderItemList[s].town}</td>
+                        <td>${data.results[i].orderItemList[s].address}</td>
+                        <td>${data.results[i].orderItemList[s].tickets}</td>
+                      </tr>
+                      </table>
+                      `
               $("#selectItemOrder").append(html);
             }
           }
