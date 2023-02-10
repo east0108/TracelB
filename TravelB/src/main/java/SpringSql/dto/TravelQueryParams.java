@@ -1,13 +1,14 @@
 package SpringSql.dto;
 
-import Spring.constant.TravelCategory;
-
 public class TravelQueryParams {
 	
+
 	private TravelCategory town;
 	private String search;
 	private String orderBy;
 	private String sort;
+	private Integer limit;
+	private Integer offset;
 	
 	public String getOrderBy() {
 		return orderBy;
@@ -52,14 +53,20 @@ public class TravelQueryParams {
 		this.travel = travel;
 	}
 
-	private Integer limit;
-
 	public Integer getLimit() {
 		return limit;
 	}
 
 	public void setLimit(Integer limit) {
 		this.limit = limit;
+	}
+
+	public Integer getOffset() {
+		return offset;
+	}
+
+	public void setOffset(Integer offset) {
+		this.offset = offset;
 	}
 	
 }

@@ -9,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import Spring.constant.TravelCategory;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
@@ -31,7 +30,7 @@ public class TravelServiceImpl  implements TravelService{
 
 
 	@Override
-	public List<Travel> getTravelByTown(TravelQueryParams travelQueryParams) {
+	public List<Travel> getTravelByTown(String travelQueryParams) {
 		
 		return travelDao.getTravelByTown(travelQueryParams);
 	}
@@ -52,8 +51,11 @@ public class TravelServiceImpl  implements TravelService{
 
 
 
-
-
+	@Override
+	public Integer countTravel(TravelQueryParams travelQueryParams) {
+		
+		return travelDao.countTravel(travelQueryParams);
+	}
 
 
 

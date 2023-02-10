@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import Spring.constant.TravelCategory;
-
 @Entity
 @Table(name="travel2")
 public class Travel {
@@ -19,7 +17,7 @@ public class Travel {
 		@Column
 		private String name;
 		@Column
-		private TravelCategory town;
+		private String town;
 		@Column
 		private String address;
 		@Column
@@ -43,10 +41,10 @@ public class Travel {
 		public void setName(String name) {
 			this.name = name;
 		}
-		public TravelCategory getTown() {
+		public String getTown() {
 			return town;
 		}
-		public void setTown(TravelCategory town) {
+		public void setTown(String town) {
 			this.town = town;
 		}
 		public String getAddress() {

@@ -212,15 +212,9 @@ buttonElement.addEventListener('click', function () {
 
 });
 
-
-$(() => {
-    $(".background-gray").on("click", function () {
-        $(".active").removeClass("active");
-    });
-
-    $(".mobile-menu").on("click", function () {
-        $(".background-gray").addClass("active");
-        $(".mobile-menu-content").addClass("active");
-    });
-})
-
+//設置找全部商品資訊
+function findAll(){
+    setCookie("city", "", 365);
+    document.location.href = "http://localhost:8080/travel/find";
+    datalist();
+}
