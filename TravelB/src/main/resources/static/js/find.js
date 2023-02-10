@@ -9,7 +9,7 @@ $("#search").click(function () {
     // console.log(city);
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
-   
+
 });
 
 //設置Cookie
@@ -68,8 +68,8 @@ function datalist() {
     });
 
 }
- //輸出頁碼
- function setPage(pageCount) {
+//輸出頁碼
+function setPage(pageCount) {
     //var pageCount = data.pageCount;
     var pageHtml = '';
     var start, end;
@@ -119,17 +119,17 @@ $('body').on('click', '.page_show span', function () {
         changePage(listPage);
     }
     //根據頁碼獲取當前頁列表數據
-   setPage(pages)
+    setPage(pages)
 });
 
 var listPage = 1;
 
 function changePage(page) {
     var offset = limit * (page - 1);
-    
+
     $.ajax({
         type: "GET",
-        url: url+"&offset="+offset,
+        url: url + "&offset=" + offset,
         success: function (data) {
             Info(data);
         }
@@ -143,10 +143,13 @@ function Info(data) {
     $("#dataList").empty();
     //商品資訊
     var result = data.result;
-        limit = data.limit;
-        pages= Math.ceil(data.total / data.limit);
-       
-    var html = ""
+    limit = data.limit;
+    pages = Math.ceil(data.total / data.limit);
+
+    var html2 = `<a style="font-size: 35px;">${data.result[0].town}</a>`;
+    $("#titlefont").empty();
+    $("#titlefont").append(html2);
+    var html = ``;
     $.each(result, function (index, item) {
 
         html = `
@@ -197,6 +200,8 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 
 
 //按下圖片後到搜尋畫面，並搜尋各縣市
+
+
 function goToTainan() {
     setCookie("city", "台南", 365);
     document.location.href = "http://localhost:8080/travel/find";
