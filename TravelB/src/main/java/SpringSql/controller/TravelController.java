@@ -24,6 +24,11 @@ public class TravelController {
 	@Autowired
 	private TravelService travelService;
 	
+	@GetMapping("/NO")
+	public String error() {
+		return "NO";
+	}
+	
 	@GetMapping("/index")
 	public String home() {
 		return "index";

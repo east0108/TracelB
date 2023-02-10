@@ -66,7 +66,7 @@ function datalist() {
         },
         error: () => {
 
-
+            document.location.href="http://localhost:8080/travel/NO"
 
         }
     });
