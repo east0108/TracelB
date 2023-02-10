@@ -46,7 +46,7 @@ function selectorderitem(data) {
 }
 //
 function Info(data) {
-    //console.log(data);
+    console.log(data);
     $("#selectItemOrder").empty();
 
     
@@ -84,16 +84,19 @@ function Info(data) {
             html = 
             `
             <div>
-              <span>${data.results[i].email}</span>
               <span>${data.results[i].orderId}</span>
+              <span>${data.results[i].email}</span>        
               <span>${data.results[i].createdDate}</span>
+              <span>${data.results[i].totalAmount}</span>
             </div>
             `
             $("#selectItemOrder").append(html);
           
-            for(s=1;s<data.results[i].orderItemList.length;s++){
+            for(s=0;s<data.results[i].orderItemList.length;s++){
               html = `<div>
                       <span>${data.results[i].orderItemList[s].name}</span>
+                      <span>${data.results[i].orderItemList[s].town}</span>
+                      <span>${data.results[i].orderItemList[s].tickets}</span>
                       </div>`
               $("#selectItemOrder").append(html);
             }
