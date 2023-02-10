@@ -58,17 +58,12 @@ function datalist() {
         dataType: 'json',
         contentType: "application/json ; charset=utf-8",
         success: function (data) {
-
             console.log(data);
             Info(data);
             setPage(Math.ceil(data.total / data.limit))
-
         },
         error: () => {
             document.location.href="http://localhost:8080/travel/NO";
-
-
-
         }
     });
 
@@ -105,7 +100,6 @@ function setPage(pageCount) {
     }
     $('.page_show').empty().append(pageHtml);
 }
-
 //切換頁面
 $('body').on('click', '.page_show span', function () {
     var $this = $(this);
@@ -140,9 +134,6 @@ function changePage(page) {
         }
     })
 }
-
-
-
 //得到後端值 進行append到頁面上
 function Info(data) {
     $("#dataList").empty();
