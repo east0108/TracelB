@@ -1,28 +1,51 @@
-
-$(document).ready(function () {
-
-
-    datalist();
-});
+var city = "";
+var limit;
+var pages;
+//搜尋按下後觸發
 $("#search").click(function () {
-    // console.log(123);
-    // console.log($("#travelTown").val());
 
-
+    //把Cookie 帶到搜尋頁面
+    setCookie("city", $("#travelTown").val(), 365);
+    // console.log(city);
+    document.location.href = "http://localhost:8080/travel/find";
     datalist();
+   
 });
 
+//設置Cookie
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+//得到Cookie
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
+var cookies;
 
-
-
-//全部+收尋
+//全部+搜尋
+var url = "http://localhost:8080/travel/products?";
 function datalist() {
-    var url = "http://localhost:8080/travel/products";
-    if ($("#travelTown").val() != "") {
-        console.log("123")
-        url += "?town=" + $("#travelTown").val()
-
+    //從Cookie中 尋找city的Value值後進行搜尋
+    cookies = getCookie("city");
+    console.log(cookies);
+    if (getCookie("city") != "") {
+        url += "town=" + cookies;
     }
 
     $.ajax({
@@ -32,9 +55,9 @@ function datalist() {
         contentType: "application/json ; charset=utf-8",
         success: function (data) {
 
-            // console.log(data);
+            console.log(data);
             Info(data);
-
+            setPage(Math.ceil(data.total / data.limit))
 
         },
         error: () => {
@@ -43,18 +66,88 @@ function datalist() {
 
         }
     });
+
 }
-//
+ //輸出頁碼
+ function setPage(pageCount) {
+    //var pageCount = data.pageCount;
+    var pageHtml = '';
+    var start, end;
+    if (listPage < 6) {
+        start = 1;
+    } else {
+        start = listPage - 5;
+    }
+    if (listPage > pageCount - 5) {
+        end = pageCount;
+    } else {
+        end = listPage + 5;
+    }
+
+    if (listPage > 1) {
+        pageHtml += '<span>上一頁</span>';
+    }
+    for (var i = start, page_cur = ''; i <= end; i++) {
+        if (listPage == i) {
+            page_cur = 'page_cur active';
+        } else {
+            page_cur = '';
+        }
+        pageHtml += '<span class="' + page_cur + '">' + i + '</span>';
+    }
+    if (listPage < pageCount) {
+        pageHtml += '<span>下一頁</span>';
+    }
+    $('.page_show').empty().append(pageHtml);
+}
+
+//切換頁面
+$('body').on('click', '.page_show span', function () {
+    var $this = $(this);
+    if ($this.hasClass('page_cur')) {
+        return;
+    }
+    var page = $this.html();
+    if (page == '上一頁') {
+        listPage = listPage - 1;
+        changePage(listPage);
+    } else if (page == '下一頁') {
+        listPage = listPage + 1;
+        changePage(listPage);
+    } else {
+        listPage = parseInt(page);
+        changePage(listPage);
+    }
+    //根據頁碼獲取當前頁列表數據
+   setPage(pages)
+});
+
+var listPage = 1;
+
+function changePage(page) {
+    var offset = limit * (page - 1);
+    
+    $.ajax({
+        type: "GET",
+        url: url+"&offset="+offset,
+        success: function (data) {
+            Info(data);
+        }
+    })
+}
+
+
+
+//得到後端值 進行append到頁面上
 function Info(data) {
     $("#dataList").empty();
-    // console.log(data)
+    //商品資訊
+    var result = data.result;
+        limit = data.limit;
+        pages= Math.ceil(data.total / data.limit);
+       
     var html = ""
-    $.each(data, function (index, item) {
-
-
-        // console.log(data)
-
-
+    $.each(result, function (index, item) {
 
         html = `
 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
@@ -102,3 +195,26 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
     });
 }
 
+
+//按下圖片後到搜尋畫面，並搜尋各縣市
+function goToTainan() {
+    setCookie("city", "台南", 365);
+    document.location.href = "http://localhost:8080/travel/find";
+    datalist();
+}
+
+function goToTaichung() {
+    setCookie("city", "台中", 365);
+    document.location.href = "http://localhost:8080/travel/find";
+    datalist();
+}
+function goToTaoyuan() {
+    setCookie("city", "桃園", 365);
+    document.location.href = "http://localhost:8080/travel/find";
+    datalist();
+}
+function goToYunlin() {
+    setCookie("city", "雲林", 365);
+    document.location.href = "http://localhost:8080/travel/find";
+    datalist();
+}

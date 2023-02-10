@@ -172,30 +172,32 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)),url(../img/bg-hero2.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.hero-header2 {
-    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)),url(../img/bg-hero2.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.hero-header3 {
-    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)),url(../img/bg-hero3.jpg);
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/bg-hero.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.carousel-item>img{
+.hero-header2 {
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/bg-hero2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-header3 {
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/bg-hero3.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.carousel-item>img {
     background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7));
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    
+
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
@@ -525,7 +527,36 @@ body {
     cursor: pointer;
     margin: 5px;
 }
+
 #button-travel:hover {
     background-color: #4CAF50;
     color: white;
+}
+
+
+/* 分頁按鈕 */
+.page_show {
+    display: inline-block;
+}
+
+.pagination-center {
+    text-align: center;
+}
+
+.page_show span {
+    color: black;
+    float: left;
+    padding: 18px 26px;
+    text-decoration: none;
+}
+
+.page_show span.active {
+    background-color: #86B817;
+    color: white;
+    border-radius: 5px;
+}
+
+.page_show span:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
 }
