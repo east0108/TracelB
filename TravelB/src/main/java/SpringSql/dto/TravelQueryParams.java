@@ -1,5 +1,7 @@
 package SpringSql.dto;
 
+import Spring.constant.TravelCategory;
+
 public class TravelQueryParams {
 	
 

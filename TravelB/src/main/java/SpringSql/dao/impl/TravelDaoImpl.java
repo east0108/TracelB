@@ -21,9 +21,9 @@ public class TravelDaoImpl implements TravelDao {
 	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
 
 	@Override
-	public List<Travel> getTravelByTown(String travelQueryParams) {
+	public List<Travel> getTravelByTown(TravelQueryParams travelQueryParams) {
 		
-			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture FROM travel2  WHERE town  = :travelId";
+			String sql= "SELECT product_id,name,town,address,tel,tickets,introduce,picture" + " FROM travel2  WHERE 1 = 1";
 			Map<String,Object> map=new HashMap<>();
 			
 

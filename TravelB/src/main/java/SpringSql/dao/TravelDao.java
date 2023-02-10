@@ -13,7 +13,7 @@ public interface TravelDao {
 
 	Travel getTravelById(Integer travelId);
 	
-	List<Travel> getTravelByTown(String travelQueryParams);
+	List<Travel> getTravelByTown(TravelQueryParams travelQueryParams);
 
 	List<Travel> getTravelAll();
 	

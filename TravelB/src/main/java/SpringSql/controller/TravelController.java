@@ -1,35 +1,21 @@
 package SpringSql.controller;
 
 import java.util.List;
-<
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-
-import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
-import SpringSql.dto.MemberLoginRequest;
-import SpringSql.model.Member;
+import Spring.constant.TravelCategory;
+import SpringSql.dto.TravelQueryParams;
 import SpringSql.model.Travel;
-import SpringSql.model.jpaTravel;
 import SpringSql.service.TravelService;
 @Validated
 @Controller
@@ -37,30 +23,16 @@ public class TravelController {
 
 	@Autowired
 	private TravelService travelService;
-
+	
 	@GetMapping("/index")
-	public String home(Model model) {// @SessionAttribute("MemberSession") Member member
-		List<Travel> travel = travelService.getTravelAll();
-
-
 	public String home() {
-
-
-//		System.err.println(member.toString());
 		return "index";
 	}
 
 
 	@GetMapping("/find")
 	public String traveldata() {
-
-
-	
-
-		
 		return "Find";
-
-
 	}
 
 	@GetMapping("/CIC")
@@ -68,8 +40,6 @@ public class TravelController {
 
 		return "CIC";
 
-
-	
 		}
 		
 	
@@ -119,9 +89,4 @@ public class TravelController {
 				
 
 	}
-	
-	
-
-	
-
-}
+		

@@ -5,6 +5,8 @@ import java.sql.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class MemberLoginRequest {
 	@NotBlank
 	@Email
@@ -16,6 +18,7 @@ public class MemberLoginRequest {
 	private String phone;
 	private String address;
 	private String city;
+	 @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date birthday;
 
 	public String getEmail() {

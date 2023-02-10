@@ -11,7 +11,7 @@ import SpringSql.model.jpaTravel;
 
 public interface TravelService {
 	
-	List<Travel> getTravelByTown(String travelQueryParams);
+	List<Travel> getTravelByTown(TravelQueryParams travelQueryParams);
 	
 	List<Travel> getTravelAll();
 

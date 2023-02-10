@@ -45,7 +45,7 @@ public class MemberController {
 	
 	//新增會員
 	@PostMapping("/register")
-	public ResponseEntity<Member> register(@RequestBody @Valid MemberRegisterRequest memberRegisterRequest,
+	public ResponseEntity<Member> register(@RequestBody  MemberRegisterRequest memberRegisterRequest,
 			HttpSession session) {
 
 		Integer memberId = memberService.register(memberRegisterRequest);

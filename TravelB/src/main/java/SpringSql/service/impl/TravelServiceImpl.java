@@ -30,7 +30,7 @@ public class TravelServiceImpl  implements TravelService{
 
 
 	@Override
-	public List<Travel> getTravelByTown(String travelQueryParams) {
+	public List<Travel> getTravelByTown(TravelQueryParams travelQueryParams) {
 		
 		return travelDao.getTravelByTown(travelQueryParams);
 	}
