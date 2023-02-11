@@ -153,7 +153,7 @@ function Info(data) {
 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 <div class="package-item">
     <div class="overflow-hidden">
-        <img src="${item.picture}" class="img-fluid" alt="">
+        <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal" alt="" data-bs-target="#exampleModal">
     </div>
     <div class="d-flex border-bottom">
         <small class="flex-fill text-center border-end py-2"><i
@@ -219,3 +219,12 @@ function goToYunlin() {
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
+// $('.package-item').click(function () {
+//     var item = $(this).data('item');
+//     $('#exampleModalLabel').text(item.name);
+//     $('.modal-body img').attr('src', item.picture);
+//     $('.modal-body #travelvalue').text(item.town);
+//
+//     $('#exampleModal').modal('show');
+// });
+
