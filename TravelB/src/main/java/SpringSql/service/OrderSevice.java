@@ -18,6 +18,11 @@ public interface OrderSevice {
 
 		Integer countOrder(OrderQueryParams orderQueryParams);
 
+		void deleteOrderById(Integer orderId);
+
+
+	
+
 		
 
 	

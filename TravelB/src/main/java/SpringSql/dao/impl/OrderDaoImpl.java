@@ -13,6 +13,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import SpringSql.dao.OrderDao;
+import SpringSql.dto.CreateOrderRequest;
 import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
@@ -151,6 +152,20 @@ public class OrderDaoImpl implements OrderDao {
 		
 		return sql;
 	}
+
+	@Override
+	public void delectOrderById(Integer orderId) {
+		
+		String sql ="DELETE o,oi FROM `order` o JOIN order_item oi ON o.order_Id = oi.order_Id WHERE o.order_Id = :orderId";
+				
+		Map<String,Object> map =new HashMap<>();
+		
+		map.put("orderId", orderId);
+		
+		namedParameterJdbcTemplate.update(sql, map);
+	}
+
+	
 
 
 

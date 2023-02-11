@@ -12,6 +12,7 @@ import SpringSql.dao.OrderDao;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.BuyItem;
 import SpringSql.dto.CreateOrderRequest;
+import SpringSql.dto.DelectItem;
 import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
@@ -114,6 +115,11 @@ public class OrderServiceImpl implements OrderSevice{
 
 
 
+	@Override
+	public void deleteOrderById(Integer orderId) {
+		orderDao.delectOrderById(orderId);
+		
+	}
 
 
 
@@ -123,4 +129,22 @@ public class OrderServiceImpl implements OrderSevice{
 
 
 
-}
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
