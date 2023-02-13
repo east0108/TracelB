@@ -155,6 +155,7 @@ function Info(data) {
     $("#titlefont").append(html2);
     var html = ``;
     $.each(result, function (index, item) {
+        
 
         html = `
 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"

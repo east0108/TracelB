@@ -55,7 +55,7 @@ public class OrderDaoImpl implements OrderDao {
 	public void createOrderItem(Integer orderId, List<OrderItem> orderItemList) {
 
 		System.out.println("ok2");
-		String sql = "INSERT INTO order_item(order_id, product_id,amount)" + "VALUES (:orderId, :productId, :amount)";
+		String sql = "INSERT INTO order_item(order_id, product_id, quantity, amount)" + "VALUES (:orderId, :productId, :quantity, :amount)";
 
 		MapSqlParameterSource[] parameterSources = new MapSqlParameterSource[orderItemList.size()];
 
@@ -65,6 +65,9 @@ public class OrderDaoImpl implements OrderDao {
 			parameterSources[i] = new MapSqlParameterSource();
 			parameterSources[i].addValue("orderId", orderId);
 			parameterSources[i].addValue("productId", orderItem.getProductId());
+			System.out.println(orderItem.getProductId());
+			parameterSources[i].addValue("quantity", orderItem.getQuantity());
+			System.out.println(orderItem.getQuantity());
 			parameterSources[i].addValue("amount", orderItem.getAmount());
 
 		}
@@ -95,7 +98,7 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {
-		String sql ="SELECT oi.order_item_id, oi.order_id,oi.product_id,oi.amount,t.name,t.town,t.address,t.tel,t.tickets,t.introduce,t.picture " +
+		String sql ="SELECT oi.order_item_id, oi.order_id,oi.product_id,oi.quantity,oi.amount,t.name,t.town,t.address,t.tel,t.tickets,t.introduce,t.picture " +
 				" FROM order_item as oi " +
 				" LEFT JOIN travel2 as t ON oi.product_id = t.product_id " +
 				" WHERE oi.order_id = :orderId ";

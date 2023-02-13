@@ -61,12 +61,13 @@ public class OrderServiceImpl implements OrderSevice{
 		for(BuyItem buyItem : createOrderRequest.getBuyItemList()) {
 			Travel travel = travelDao.getTravelById(buyItem.getProductId());
 			
-			Amount =travel.getTicket();
-			totalAmount +=travel.getTicket();
+			Amount =buyItem.getQuantity()*travel.getTicket();
+			totalAmount += Amount;
 		
 			OrderItem orderItem =new OrderItem();
 			
 			orderItem.setProductId(buyItem.getProductId());
+			orderItem.setQuantity(buyItem.getQuantity());
 			orderItem.setAmount(Amount);
 			
 			orderItemList.add(orderItem);
