@@ -28,7 +28,10 @@ public class TravelController {
 	public String home() {
 		return "index";
 	}
-
+	@GetMapping("/NO")
+	public String error() {
+		return "NO";
+	}
 
 	@GetMapping("/find")
 	public String traveldata() {
