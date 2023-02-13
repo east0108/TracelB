@@ -5,10 +5,10 @@
 // Add item
 
 
-
+var cartArray ;
 
 function displayCart() {
-        var cartArray = shoppingCart.listCart();
+        cartArray = shoppingCart.listCart();
         var output = "";
         for (var i in cartArray) {
             output += "<tr>"
@@ -25,10 +25,13 @@ function displayCart() {
         $('.show-cart').html(output);
         $('.total-cart').html(shoppingCart.totalCart());
         $('.total-count').html(shoppingCart.totalCount());
-        console.log(cartArray);
+        // console.log(cartArray);
+
     }
 
-
+// $.getScript("js/session2.js", function(){
+//     document.write(myFunction(cartArray));
+// });
     // Delete item button
 
     $('.show-cart').on("click", ".delete-item", function (event) {
