@@ -12,6 +12,7 @@ import SpringSql.dao.OrderDao;
 import SpringSql.dao.TravelDao;
 import SpringSql.dto.BuyItem;
 import SpringSql.dto.CreateOrderRequest;
+import SpringSql.dto.DelectItem;
 import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
@@ -60,12 +61,13 @@ public class OrderServiceImpl implements OrderSevice{
 		for(BuyItem buyItem : createOrderRequest.getBuyItemList()) {
 			Travel travel = travelDao.getTravelById(buyItem.getProductId());
 			
-			Amount =travel.getTicket();
-			totalAmount +=travel.getTicket();
+			Amount =buyItem.getQuantity()*travel.getTicket();
+			totalAmount += Amount;
 		
 			OrderItem orderItem =new OrderItem();
 			
 			orderItem.setProductId(buyItem.getProductId());
+			orderItem.setQuantity(buyItem.getQuantity());
 			orderItem.setAmount(Amount);
 			
 			orderItemList.add(orderItem);
@@ -114,6 +116,11 @@ public class OrderServiceImpl implements OrderSevice{
 
 
 
+	@Override
+	public void deleteOrderById(Integer orderId) {
+		orderDao.delectOrderById(orderId);
+		
+	}
 
 
 
@@ -123,4 +130,22 @@ public class OrderServiceImpl implements OrderSevice{
 
 
 
-}
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

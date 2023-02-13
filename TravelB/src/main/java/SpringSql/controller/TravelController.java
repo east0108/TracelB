@@ -31,6 +31,7 @@ public class TravelController {
     }
 
 
+
     @GetMapping("/find")
     public String traveldata() {
         return "Find";
@@ -40,6 +41,7 @@ public class TravelController {
     public String error() {
         return "NO";
     }
+
 
     @GetMapping("/CIC")
     public String products() {
@@ -90,3 +92,4 @@ public class TravelController {
 
 }
 		
+
