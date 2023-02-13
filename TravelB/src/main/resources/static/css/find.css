@@ -4,7 +4,7 @@
 }
 
 /*圖片敘事的CSS*/
-p1 {
+p1u {
     width: auto;
     padding: 10px;
     border: 1px solid #4d4d4d;
@@ -16,10 +16,7 @@ p1 {
     box-sizing: border-box;
 
 }
-/*圖片卡滑動隱藏*/
-p1::-webkit-scrollbar {
-    display: none;
-}
+
 
 .margin-top {
     margin-top: 10px;
