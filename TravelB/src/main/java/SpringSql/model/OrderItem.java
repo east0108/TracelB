@@ -4,7 +4,7 @@ public class OrderItem {
 
 	
 	private Integer orderItemId;
-	private Integer quantity;
+
 	private Integer	orderId;
 	private Integer productId;
 	private Integer amount;
@@ -15,7 +15,7 @@ public class OrderItem {
 	private Integer tickets;
 	private String introduce;
 	private String picture;
-	
+	private Integer quantity;
 	
 	public Integer getOrderItemId() {
 		return orderItemId;
@@ -27,12 +27,7 @@ public class OrderItem {
 	
 	
 	
-	public Integer getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+
 	public Integer getOrderId() {
 		return orderId;
 	}
@@ -93,6 +88,11 @@ public class OrderItem {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-	
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	
 }
