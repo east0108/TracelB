@@ -1,6 +1,19 @@
 var city = "";
 var limit;
 var pages;
+
+//購物車JS(Shopping Cart API)
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------
 //搜尋按下後觸發
 $("#search").click(function () {
 
@@ -187,9 +200,12 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
         </div>
         <p1><span class="overflow-auto">${item.introduce}</span></p1>
         <div class="d-flex justify-content-center mb-2">
-            <button onclick="myFunction(${item.id})" class="btn btn-sm btn-primary px-3 border-end"
-                style="border-radius: 30px 0 0 30px;">購買
-            </button>
+<!--            <button onclick="myFunction()" class="btn btn-sm btn-primary px-3 border-end"-->
+<!--                style="border-radius: 30px 0 0 30px;">購買-->
+         
+<!--            </button>-->
+            
+            <a data-id= ${item.id} data-name=${item.name} data-price=${item.ticket}   class="add-to-cart btn btn-primary" >購買</a>
         </div>
     </div>
 </div>
@@ -199,7 +215,34 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 </div>
 </div>`
         $("#dataList").append(html);
+
+
+
     });
+
+
+    // $('.add-to-cart').click(function(event) {
+    //     event.preventDefault();
+    //     var name = $(this).data('name');
+    //     var price = Number($(this).data('price'));
+    //     shoppingCart.addItemToCart(name, price, 1);
+    //     displayCart();
+    // });
+
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault();
+        var name = $(this).data('name');
+        var price = Number($(this).data('price'));
+        var id = $(this).data(`id`);
+        shoppingCart.addItemToCart(name, price,1,id);
+        displayCart();
+    });
+    displayCart();
+
+
+
+
+
 }
 
 
@@ -227,3 +270,9 @@ function goToYunlin() {
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
+
+
+
+
+//-------------------------------------------------------------------------------------------
+

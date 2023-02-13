@@ -2,7 +2,7 @@
 function myFunction(traveldata) {
 	
     
-  
+  console.log(traveldata);
 	
 	
 	
