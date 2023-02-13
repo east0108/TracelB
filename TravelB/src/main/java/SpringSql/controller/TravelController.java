@@ -22,63 +22,74 @@ import SpringSql.service.TravelService;
 @Controller
 public class TravelController {
 
-	@Autowired
-	private TravelService travelService;
+    @Autowired
+    private TravelService travelService;
 
-	@GetMapping("/NO")
-	public String error() {
-		return "NO";
-	}
+    @GetMapping("/index")
+    public String home() {
+        return "index";
+    }
 
-	@GetMapping("/index")
-	public String home() {
-		return "index";
-	}
 
-	@GetMapping("/find")
-	public String traveldata() {
-		return "Find";
-	}
 
-	@GetMapping("/CIC")
-	public String products() {
+    @GetMapping("/find")
+    public String traveldata() {
+        return "Find";
+    }
 
-		return "CIC";
+    @GetMapping("/NO")
+    public String error() {
+        return "NO";
+    }
 
-	}
-	//查詢商品
-	@GetMapping("/products")
-	public ResponseEntity<SpringSql.util.Page<Travel>> getProducts(
-			// 查詢條件Filtering
-			@RequestParam(required = false) TravelCategory town, @RequestParam(required = false) String search,
 
-			// 排序sorting
-			@RequestParam(defaultValue = "product_id") String orderBy, @RequestParam(defaultValue = "asc") String sort,
-			@RequestParam(defaultValue = "6") @Max(1000) @Min(0) Integer limit,
-			@RequestParam(defaultValue = "0") @Min(0) Integer offset) {
-		TravelQueryParams travelQueryParams = new TravelQueryParams();
+    @GetMapping("/CIC")
+    public String products() {
 
-		travelQueryParams.setTown(town);
-		travelQueryParams.setSearch(search);
-		travelQueryParams.setOrderBy(orderBy);
-		travelQueryParams.setSort(sort);
-		travelQueryParams.setLimit(limit);
-		travelQueryParams.setOffset(offset);
+        return "CIC";
 
-		// 取得 product list
-		List<Travel> travelList = travelService.getTravelByTown(travelQueryParams);
+    }
 
-		// 取得 product 總數
-		Integer total = travelService.countTravel(travelQueryParams);
 
-		// 分頁
-		SpringSql.util.Page<Travel> page = new SpringSql.util.Page<>();
-		page.setLimit(limit);
-		page.setOffset(offset);
-		page.setTotal(total);
-		page.setResult(travelList);
+    @GetMapping("/products")
+    public ResponseEntity<SpringSql.util.Page<Travel>> getProducts(
+            //查詢條件Filtering
+            @RequestParam(required = false) TravelCategory town,
+            @RequestParam(required = false) String search,
 
-		return ResponseEntity.status(HttpStatus.OK).body(page);
-	}
+            //排序sorting
+            @RequestParam(defaultValue = "product_id") String orderBy,
+            @RequestParam(defaultValue = "asc") String sort,
+            @RequestParam(defaultValue = "6") @Max(1000) @Min(0) Integer limit,
+            @RequestParam(defaultValue = "0") @Min(0) Integer offset
+    ) {
+        TravelQueryParams travelQueryParams = new TravelQueryParams();
+
+        travelQueryParams.setTown(town);
+        travelQueryParams.setSearch(search);
+        travelQueryParams.setOrderBy(orderBy);
+        travelQueryParams.setSort(sort);
+        travelQueryParams.setLimit(limit);
+        travelQueryParams.setOffset(offset);
+
+
+        //取得 product list
+        List<Travel> travelList = travelService.getTravelByTown(travelQueryParams);
+
+        //取得 product 總數
+        Integer total = travelService.countTravel(travelQueryParams);
+
+        //分頁
+        SpringSql.util.Page<Travel> page = new SpringSql.util.Page<>();
+        page.setLimit(limit);
+        page.setOffset(offset);
+        page.setTotal(total);
+        page.setResult(travelList);
+
+        return ResponseEntity.status(HttpStatus.OK).body(page);
+    }
+
 
 }
+		
+

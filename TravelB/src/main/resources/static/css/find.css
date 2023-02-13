@@ -1,0 +1,26 @@
+.img-fluid {
+    max-width: 600px;
+    max-height: 300px;
+}
+
+/*圖片敘事的CSS*/
+p1 {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #4d4d4d;
+    overflow: scroll;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    box-sizing: border-box;
+
+}
+/*圖片卡滑動隱藏*/
+p1::-webkit-scrollbar {
+    display: none;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
