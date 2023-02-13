@@ -58,16 +58,12 @@ function datalist() {
         dataType: 'json',
         contentType: "application/json ; charset=utf-8",
         success: function (data) {
-
             console.log(data);
             Info(data);
             setPage(Math.ceil(data.total / data.limit))
-
         },
         error: () => {
-
-
-
+            document.location.href="http://localhost:8080/travel/NO";
         }
     });
 
@@ -104,7 +100,6 @@ function setPage(pageCount) {
     }
     $('.page_show').empty().append(pageHtml);
 }
-
 //切換頁面
 $('body').on('click', '.page_show span', function () {
     var $this = $(this);
@@ -139,9 +134,6 @@ function changePage(page) {
         }
     })
 }
-
-
-
 //得到後端值 進行append到頁面上
 function Info(data) {
     $("#dataList").empty();
@@ -161,7 +153,7 @@ function Info(data) {
 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 <div class="package-item">
     <div class="overflow-hidden">
-        <img src="${item.picture}" class="img-fluid" alt="">
+        <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal" alt="" data-bs-target="#exampleModal">
     </div>
     <div class="d-flex border-bottom">
         <small class="flex-fill text-center border-end py-2"><i
@@ -227,3 +219,12 @@ function goToYunlin() {
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
+// $('.package-item').click(function () {
+//     var item = $(this).data('item');
+//     $('#exampleModalLabel').text(item.name);
+//     $('.modal-body img').attr('src', item.picture);
+//     $('.modal-body #travelvalue').text(item.town);
+//
+//     $('#exampleModal').modal('show');
+// });
+
