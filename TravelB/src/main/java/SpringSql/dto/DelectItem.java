@@ -2,14 +2,10 @@ package SpringSql.dto;
 
 import javax.validation.constraints.NotNull;
 
-
-
-public class BuyItem {
-	
+public class DelectItem {
 	@NotNull
 	private Integer productId;
-	@NotNull
-	private Integer quantity;
+	
 
 
 	public Integer getProductId() {
@@ -20,22 +16,5 @@ public class BuyItem {
 		this.productId = productId;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-
-	
-	
-
-
-
-
-	
-	
-	
 }
