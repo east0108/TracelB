@@ -1,6 +1,19 @@
 var city = "";
 var limit;
 var pages;
+
+//購物車JS(Shopping Cart API)
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------
 //搜尋按下後觸發
 $("#search").click(function () {
 
@@ -15,15 +28,14 @@ $("#search").click(function () {
 });
 
 //設置Cookie
-function setCookie (cname, cvalue, exdays) {
+function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-
 //得到Cookie
-function getCookie (cname) {
+function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
@@ -43,8 +55,7 @@ var cookies;
 
 //全部+搜尋
 var url = "http://localhost:8080/travel/products?";
-
-function datalist () {
+function datalist() {
 
     //從Cookie中 尋找city的Value值後進行搜尋
     cookies = getCookie("city");
@@ -65,17 +76,17 @@ function datalist () {
             setPage(Math.ceil(data.total / data.limit))
         },
         error: () => {
-            document.location.href = "http://localhost:8080/travel/NO";
 
-            document.location.href="http://localhost:8080/travel/NO"
+
+            document.location.href = "http://localhost:8080/travel/NO"
+
 
         }
     });
 
 }
-
 //輸出頁碼
-function setPage (pageCount) {
+function setPage(pageCount) {
     //var pageCount = data.pageCount;
     var pageHtml = '';
     var start, end;
@@ -106,7 +117,6 @@ function setPage (pageCount) {
     }
     $('.page_show').empty().append(pageHtml);
 }
-
 //切換頁面
 $('body').on('click', '.page_show span', function () {
     var $this = $(this);
@@ -130,7 +140,7 @@ $('body').on('click', '.page_show span', function () {
 
 var listPage = 1;
 
-function changePage (page) {
+function changePage(page) {
     var offset = limit * (page - 1);
 
     $.ajax({
@@ -138,14 +148,14 @@ function changePage (page) {
         url: url + "&offset=" + offset,
         success: function (data) {
             Info(data);
+        },
+        error: () => {
+            document.location.href = "http://localhost:8080/travel/NO"
         }
     })
 }
-
-
-
 //得到後端值 進行append到頁面上
-function Info (data) {
+function Info(data) {
     $("#dataList").empty();
     //商品資訊
     var result = data.result;
@@ -157,6 +167,7 @@ function Info (data) {
     $("#titlefont").append(html2);
     var html = ``;
     $.each(result, function (index, item) {
+        
 
         html = `
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
@@ -256,7 +267,34 @@ function Info (data) {
 </div>`
 
         $("#dataList").append(html);
+
+
+
     });
+
+
+    // $('.add-to-cart').click(function(event) {
+    //     event.preventDefault();
+    //     var name = $(this).data('name');
+    //     var price = Number($(this).data('price'));
+    //     shoppingCart.addItemToCart(name, price, 1);
+    //     displayCart();
+    // });
+
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault();
+        var name = $(this).data('name');
+        var price = Number($(this).data('price'));
+        var id = $(this).data(`id`);
+        shoppingCart.addItemToCart(name, price,1,id);
+        displayCart();
+    });
+    displayCart();
+
+
+
+
+
 }
 
 
@@ -284,3 +322,14 @@ function goToYunlin() {
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
+
+// $('.package-item').click(function () {
+//     var item = $(this).data('item');
+//     $('#exampleModalLabel').text(item.name);
+//     $('.modal-body img').attr('src', item.picture);
+//     $('.modal-body #travelvalue').text(item.town);
+//
+//     $('#exampleModal').modal('show');
+// });
+
+
