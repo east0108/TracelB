@@ -79,9 +79,9 @@ function Info(data) {
 
      var html = ""  
 
-     $.each(data, function (index, item) {
+    //  $.each(data, function (index, item) {
         
-        console.log(item[0])
+    //     console.log(item[0])
         
     //     <span>${item.orderId}</span>
         
@@ -100,8 +100,8 @@ function Info(data) {
       
 
        
-        for(i=0;i<=data.results.length;i++){
-            html = 
+        // for(i=0;i<=data.results.length;i++){
+        //     html = 
 
         // for(i=0;i<=data.results.length;i++){
 
@@ -163,23 +163,23 @@ function Info(data) {
                         //<td>${data.results[i].orderItemList[s].tickets}</td>
                       //</tr>
                     //  </table>
-                      `
-              $("#selectItemOrder").append(html);
-            }
-          }
+//                       `
+//               $("#selectItemOrder").append(html);
+//             }
+//           }
         
-        });
-    }
-=======
-        //               <tr>
-        //                 <td>${data.results[i].orderItemList[s].name}</td>
-        //                 <td>${data.results[i].orderItemList[s].town}</td>
-        //                 <td>${data.results[i].orderItemList[s].address}</td>
-        //                 <td>${data.results[i].orderItemList[s].tickets}</td>
-        //                 <td>${data.results[i].orderItemList[s].quantity}</td>
-        //               </tr>
-        //               </table>
-        //               `
+//         });
+//     }
+// =======
+//         //               <tr>
+//         //                 <td>${data.results[i].orderItemList[s].name}</td>
+//         //                 <td>${data.results[i].orderItemList[s].town}</td>
+//         //                 <td>${data.results[i].orderItemList[s].address}</td>
+//         //                 <td>${data.results[i].orderItemList[s].tickets}</td>
+//         //                 <td>${data.results[i].orderItemList[s].quantity}</td>
+//         //               </tr>
+//         //               </table>
+//         //               `
         //       $("#selectItemOrder").append(html);
         //     }
         //   }
@@ -288,12 +288,11 @@ html=
 `
 $("#selectItemOrder").append(html);  
 
-}
-}
-
-
-          
-
+                            }
+                        }
+                    }
+              
+            
             // var html = ""
             
             // html =` 
