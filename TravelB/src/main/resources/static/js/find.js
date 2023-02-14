@@ -183,7 +183,7 @@ function Info(data) {
 
         <small class="flex-fill text-center border-end py-2"><i
                 class="fa fa-map-marker-alt text-primary me-2"></i>
-            <span id="travelvalue">${item.name}</span> <button id="mabut" type="button">展開</button> </small>
+            <span id="travelvalue">${item.name}</span></small>
         <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>
             <span>${item.id}</span></small>
     </div>
@@ -211,18 +211,18 @@ function Info(data) {
 </div>
 </div>
 <!-- Modal -->
-     <div class="modal fade" id="exampleModal${item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="exampleModal${item.id}" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">商品詳細資訊</h5>
+                    <h5 class="modal-title" id="exampleModalLabel1">商品詳細資訊</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal" alt="" data-bs-target="#exampleModal">
+                            <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal" alt="" data-bs-target="#exampleModal1">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i
@@ -262,6 +262,7 @@ function Info(data) {
             </div>
         </div>
      </div>
+     
      
 </div>
 </div>`
