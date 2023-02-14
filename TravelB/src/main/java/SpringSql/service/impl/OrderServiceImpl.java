@@ -1,10 +1,16 @@
 package SpringSql.service.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import ecpay.payment.integration.AllInOne;
+import ecpay.payment.integration.domain.AioCheckOutALL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,9 +47,13 @@ public class OrderServiceImpl implements OrderSevice{
 		List<OrderItem> orderItemList= orderDao.getOrderItemsByOrderId(orderId);
 		
 		order.setOrderItemList(orderItemList);
+
+
 		
 		return order;
 	}
+
+
 
 
 
@@ -123,16 +133,39 @@ public class OrderServiceImpl implements OrderSevice{
 	}
 
 
+	@Override
+	public String getPay(Integer payOrderId) throws UnsupportedEncodingException {
+		AllInOne allInOne = new AllInOne("");
+		AioCheckOutALL aioCheckOutALL =new AioCheckOutALL();
+
+		Order pay = orderDao.getOrderById(payOrderId);
 
 
 
+		String orderId =  Integer.toString(pay.getOrderId()) ;
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String orderDate = dateFormat.format(pay.getCreatedDate());
+
+		String orderTotal = Integer.toString(pay.getTotalAmount());
 
 
 
+		 aioCheckOutALL.setMerchantID("123456");
+		 aioCheckOutALL.setMerchantTradeNo(orderId);
+		 aioCheckOutALL.setMerchantTradeDate(orderDate);
+		 aioCheckOutALL.setPeriodType("aio");
+		 aioCheckOutALL.setTotalAmount(orderTotal);
+		 aioCheckOutALL.setTradeDesc("");
+		 aioCheckOutALL.setReturnURL("");
+		 aioCheckOutALL.setChooseSubPayment("ALL");
+
+		String payOrder = allInOne.aioCheckOut(aioCheckOutALL,null);
 
 
-
+		return payOrder ;
 	}
+}
 
 
 

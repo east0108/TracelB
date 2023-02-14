@@ -97,6 +97,20 @@ function myFunction(traveldata) {
 
 function clickEmail(data,traveldata) {
 
+    var createOrderRequest ={
+        "buyItemList": []
+    }
+    for(i=0;i<traveldata.length;i++){
+        var OrderRequest ={
+            "productId":traveldata[i].id,
+            "quantity":traveldata[i].count
+        }
+        createOrderRequest.buyItemList.push(OrderRequest)
+    }
+
+    console.log(createOrderRequest);
+
+
 
   var createOrderRequest ={
     "buyItemList": []
@@ -108,7 +122,6 @@ function clickEmail(data,traveldata) {
     }
     createOrderRequest.buyItemList.push(OrderRequest)
   }
-	
   console.log(createOrderRequest);
 
 	$.ajax({

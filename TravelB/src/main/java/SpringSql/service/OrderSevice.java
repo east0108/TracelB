@@ -1,5 +1,6 @@
 package SpringSql.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import SpringSql.dto.CreateOrderRequest;
@@ -17,6 +18,8 @@ public interface OrderSevice {
 		List<Order> getOrders(OrderQueryParams orderQueryParams);
 
 		Integer countOrder(OrderQueryParams orderQueryParams);
+
+		String getPay(Integer payOrderId) throws UnsupportedEncodingException;
 
 		void deleteOrderById(Integer orderId);
 

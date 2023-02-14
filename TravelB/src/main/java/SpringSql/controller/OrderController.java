@@ -1,10 +1,12 @@
 package SpringSql.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import ecpay.payment.integration.AllInOneBase;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -62,6 +64,12 @@ public class OrderController {
 		orderSevice.deleteOrderById(orderId);
 		
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-	} 
+	}
 
+	@PostMapping("/pay")
+	public ResponseEntity<?> pay(@RequestBody Integer orderId) throws UnsupportedEncodingException {
+		String payOrderId = orderSevice.getPay(orderId);
+
+		return ResponseEntity.status(HttpStatus.OK).body(payOrderId);
+	}
 }
