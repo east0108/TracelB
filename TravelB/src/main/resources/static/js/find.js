@@ -1,6 +1,19 @@
 var city = "";
 var limit;
 var pages;
+
+//購物車JS(Shopping Cart API)
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------
 //搜尋按下後觸發
 $("#search").click(function () {
 
@@ -58,15 +71,15 @@ function datalist() {
         dataType: 'json',
         contentType: "application/json ; charset=utf-8",
         success: function (data) {
-
             console.log(data);
             Info(data);
             setPage(Math.ceil(data.total / data.limit))
-
         },
         error: () => {
 
+
             document.location.href = "http://localhost:8080/travel/NO"
+
 
         }
     });
@@ -104,7 +117,6 @@ function setPage(pageCount) {
     }
     $('.page_show').empty().append(pageHtml);
 }
-
 //切換頁面
 $('body').on('click', '.page_show span', function () {
     var $this = $(this);
@@ -142,9 +154,6 @@ function changePage(page) {
         }
     })
 }
-
-
-
 //得到後端值 進行append到頁面上
 function Info(data) {
     $("#dataList").empty();
@@ -158,13 +167,14 @@ function Info(data) {
     $("#titlefont").append(html2);
     var html = ``;
     $.each(result, function (index, item) {
+        
 
         html = `
 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 <div class="package-item">
     <div class="overflow-hidden">
-        <img src="${item.picture}" class="img-fluid" alt="">
+        <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal" alt="" data-bs-target="#exampleModal">
     </div>
     <div class="d-flex border-bottom">
         <small class="flex-fill text-center border-end py-2"><i
@@ -190,9 +200,12 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
         </div>
         <p1><span class="overflow-auto">${item.introduce}</span></p1>
         <div class="d-flex justify-content-center mb-2">
-            <button onclick="myFunction(${item.id})" class="btn btn-sm btn-primary px-3 border-end"
-                style="border-radius: 30px 0 0 30px;">購買
-            </button>
+<!--            <button onclick="myFunction()" class="btn btn-sm btn-primary px-3 border-end"-->
+<!--                style="border-radius: 30px 0 0 30px;">購買-->
+         
+<!--            </button>-->
+            
+            <a data-id= ${item.id} data-name=${item.name} data-price=${item.ticket}   class="add-to-cart btn btn-primary" >購買</a>
         </div>
     </div>
 </div>
@@ -202,7 +215,34 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 </div>
 </div>`
         $("#dataList").append(html);
+
+
+
     });
+
+
+    // $('.add-to-cart').click(function(event) {
+    //     event.preventDefault();
+    //     var name = $(this).data('name');
+    //     var price = Number($(this).data('price'));
+    //     shoppingCart.addItemToCart(name, price, 1);
+    //     displayCart();
+    // });
+
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault();
+        var name = $(this).data('name');
+        var price = Number($(this).data('price'));
+        var id = $(this).data(`id`);
+        shoppingCart.addItemToCart(name, price,1,id);
+        displayCart();
+    });
+    displayCart();
+
+
+
+
+
 }
 
 
@@ -230,3 +270,14 @@ function goToYunlin() {
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
+
+// $('.package-item').click(function () {
+//     var item = $(this).data('item');
+//     $('#exampleModalLabel').text(item.name);
+//     $('.modal-body img').attr('src', item.picture);
+//     $('.modal-body #travelvalue').text(item.town);
+//
+//     $('#exampleModal').modal('show');
+// });
+
+
