@@ -43,11 +43,7 @@ public class TravelController {
         return "Find";
     }
 
-    @GetMapping("/NO")
-    public String error() {
-        return "NO";
-    }
-
+   
 
     @GetMapping("/CIC")
     public String products() {
