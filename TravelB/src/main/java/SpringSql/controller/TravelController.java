@@ -22,13 +22,19 @@ import SpringSql.service.TravelService;
 @Controller
 public class TravelController {
 
-    @Autowired
-    private TravelService travelService;
 
-    @GetMapping("/index")
-    public String home() {
-        return "index";
-    }
+	@Autowired
+	private TravelService travelService;
+	
+	@GetMapping("/index")
+	public String home() {
+		return "index";
+	}
+	@GetMapping("/NO")
+	public String error() {
+		return "NO";
+	}
+
 
 
 
