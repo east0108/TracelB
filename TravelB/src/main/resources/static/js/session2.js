@@ -96,22 +96,21 @@ function myFunction(traveldata) {
 }
 
 function clickEmail(data,traveldata) {
-   var createOrderRequest = {};
-  //   buyItemList: [] 
-  // };
-  var buyItemList =[];
-  for(i=0 ;i<traveldata.length;i++){
-    buyItemList.push({
-      "productId":traveldata[i].id ,
-      "quantity": traveldata[i].count
-  })
-  createOrderRequest.push(buyItemList);
-      
-    
-  };
-  console.log(createOrderRequest.buyItemList.productId[0]);
 
-}
+
+  var createOrderRequest ={
+    "buyItemList": []
+  }
+  for(i=0;i<traveldata.length;i++){
+    var OrderRequest ={
+      "productId":traveldata[i].id,
+      "quantity":traveldata[i].count
+    }
+    createOrderRequest.buyItemList.push(OrderRequest)
+  }
+	
+  console.log(createOrderRequest);
+
 	$.ajax({
     url: "http://localhost:8080/travel/user/" + data.email + "/orderitem",
     type: "POST",
