@@ -77,7 +77,9 @@ function datalist() {
         },
         error: () => {
 
-            document.location.href="http://localhost:8080/travel/NO";
+
+            document.location.href = "http://localhost:8080/travel/NO"
+
 
         }
     });
@@ -146,6 +148,9 @@ function changePage(page) {
         url: url + "&offset=" + offset,
         success: function (data) {
             Info(data);
+        },
+        error: () => {
+            document.location.href = "http://localhost:8080/travel/NO"
         }
     })
 }
