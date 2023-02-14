@@ -87,7 +87,8 @@ public class TravelController {
         page.setOffset(offset);
         page.setTotal(total);
         page.setResult(travelList);
-
+        	 
+        
         return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 
