@@ -76,33 +76,23 @@ function Info(data) {
   
   
 
-    var html = ""  
+     var html = ""  
 
-    // $.each(data, function (index, item) {
+     $.each(data, function (index, item) {
         
-    //     console.log(item[0])
-    //    html= `
+        console.log(item[0])
+        
     //     <span>${item.orderId}</span>
         
-    //     `
-        
-        
-        
-        
-
-
-
-
-   
-
-    
-        
+    //     
+              
         // <span>${data.total}</span>
         // <span>${data.results[i].orderItemList[i].name}</span>
         //<span>${data.results[0].totalAmount}</span>
         
         // <span>${data.results[0].createdDate}</span>
       
+       
         for(i=0;i<=data.results.length;i++){
             html = 
 
@@ -161,10 +151,86 @@ function Info(data) {
               $("#selectItemOrder").append(html);
             }
           }
+        
+        });
+    }
 
-            }
+            // var html = ""
+            
+            // html =` 
+            // <div id="content" class="section-padding">
+            // <div class="container">
+            //     <div class="row">
+            //         <div class="col-sm-12 col-md-8 col-lg-9">
+            //             <div class="page-content">
+            //                 <div class="inner-box">
+            //                     <div class="dashboard-box">
+            //                         <h2 class="dashbord-title">購買紀錄</h2>
+            //                     </div>
+            //                     <div class="dashboard-wrapper">
+            //                         <nav class="nav-table">
+            //                         </nav>
+            //                         <table class="table dashboardtable tablemyads">
+            //                             <thead>
+            //                             <tr>
+            //                                 <th>
+            //                                 </th>
+            //                                 <th>照片</th>
+            //                                 <th>標題</th>
+            //                                 <th>類別</th>
+            //                                 <th>商品</th>
+            //                                 <th>價格</th>
+            //                                 <th>狀態</th>
+            //                             </tr>
+            //                             </thead>
+            //                             <tbody>
+        
+        
+            //                             <tr data-category="active">
+            //                                 <td>
+            //                                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample"
+            //                                        role="button" aria-expanded="false" aria-controls="collapseExample">
+            //                                         商品詳細
+            //                                     </a>
+            //                                 </td>
+            //                               <!--購物車-->
+            //                                 <td class="photo"><img class="img-fluid" src=""
+            //                                                        alt=""></td>
+            //                                 <td data-title="Title">
+            //                                     <h3>HP Laptop 6560b core i3 3nd generation</h3>
+            //                                 </td>
+            //                                 <td data-title="Category"><span class="adcategories">Laptops & PCs</span>
+            //                                 </td>
+            //                                 <td data-title="Ad Status"><span
+            //                                         class="adstatus adstatusactive">active</span></td>
+            //                                 <td data-title="Price">
+            //                                     <h3>139$</h3>
+            //                                 </td>
+            //                                <!--按鈕-->
+            //                                 <td data-title="Action">
+            //                                     <div class="btns-actions">
+            //                                         <a class="btn-action btn-view" href="#"><i class="lni-eye">顯示</i></a>
+            //                                         <a class="btn-action btn-delete" href="#"><i class="lni-trash">刪除</i></a>
+            //                                     </div>
+            //                                 </td>
+            //                             </tr>
+        
+            //                             </tbody>
+            //                         </table>
+                                   
+            //                             </div>
+            //                     </div>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
+            
+            // `
+            
+            
+          
     
 
-       
-  
+
  
