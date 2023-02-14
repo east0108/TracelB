@@ -1,7 +1,7 @@
 //要丟，使用者的ID，跟我所購買商品的編號和數量
 function myFunction(traveldata) {
 	
-    
+    console.log(traveldata);
   
 	
 	

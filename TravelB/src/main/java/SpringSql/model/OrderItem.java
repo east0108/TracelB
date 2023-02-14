@@ -4,7 +4,7 @@ public class OrderItem {
 
 	
 	private Integer orderItemId;
-		
+	private Integer quantity;
 	private Integer	orderId;
 	private Integer productId;
 	private Integer amount;
@@ -24,6 +24,15 @@ public class OrderItem {
 		this.orderItemId = orderItemId;
 	}
 	
+	
+	
+	
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	public Integer getOrderId() {
 		return orderId;
 	}
