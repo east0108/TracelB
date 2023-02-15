@@ -23,9 +23,13 @@ function displayCart() {
             + "<td>" + cartArray[i].total + "</td>"
             + "</tr>";
     }
+    
     $('.show-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());
     $('.total-count').html(shoppingCart.totalCount());
+    // var total = shoppingCart.totalCart().val();
+   
+    // setCookie("total",total, 365);
     // console.log(cartArray);
 
 }
@@ -72,28 +76,39 @@ $('.clear-cart').click(function() {
 });
 
 displayCart();
-// myFunction(cartArray);
+myFunction(cartArray);
 //要丟，使用者的ID，跟我所購買商品的編號和數量
 
 function myFunction(traveldata) {
-	
+   
+    var total2 =0
+    console.log(traveldata.total)
+    console.log(traveldata[0].total)
+    for(i=0;i<traveldata.length;i++){
+      total2 += Number(traveldata[i].total)
+      
+    }
     
-  
-	
-	
-	
+   
+    
+     console.log(total2);
+     setCookie("total2",total2,365);
+   
     $.ajax({ 
     url: "http://localhost:8080/travel/index/checklogin",
         async:false,
     success:function(data) {
-
-    setCookie("total", traveldata[0].total, 365);
-    cookies = getCookie("total");
-    console.log(cookies);
+    
+    
+      
+      console.log(cookies);
+      clickEmailandCreateOrder(data,traveldata);
+      document.location.href="http://localhost:8080/travel/payindex"
 
    
-    //  paypal(data,traveldata);
-		//  clickEmailandCreateOrder(data,traveldata);
+      // paypal(data,traveldata);
+     // cookies = getCookie("total2");
+		 
 		
     },error:function (){
 		document.location.href = "http://localhost:8080/travel/login";
@@ -101,27 +116,27 @@ function myFunction(traveldata) {
   });
 }
 
-function paypal(data,traveldata){
+// function paypal(data,traveldata){
+  
+//    document.location.href="http://localhost:8080/travel/payindex"
 
-  // document.location.href="http://localhost:8080/travel/payindex"
-
- var html=""
+//  var html=""
  
- html=
-  `
-    <label for="price">Total</label>
-    <input type="text" id="price" name="price" value="${traveldata[0].total}">
-    <label for="currency">Currency</label>
-    <input type="text" id="currency" name="currency" value="TWD">
-    <label for="method">Payment Method</label>
-    <input type="text" id="method" name="method" value="paypal">
-    <label for="intent">Intent</label>
-    <input type="text" id="intent" name="intent" value="sale">
-    <label for="description">Payment Description</label>
-    <input type="text" id="description" name="description" value="testing"></input>
-  `
-  $("#paypalmenu").append(html);
-}
+//  html=
+//   `
+//     <label for="price">Total</label>
+//     <input type="text" id="price" name="price" value="${cookies}">
+//     <label for="currency">Currency</label>
+//     <input type="text" id="currency" name="currency" value="TWD">
+//     <label for="method">Payment Method</label>
+//     <input type="text" id="method" name="method" value="paypal">
+//     <label for="intent">Intent</label>
+//     <input type="text" id="intent" name="intent" value="sale">
+//     <label for="description">Payment Description</label>
+//     <input type="text" id="description" name="description" value="testing"></input>
+//   `
+//   $("#paypalmenu").append(html);
+// }
 
 
 
