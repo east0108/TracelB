@@ -171,7 +171,8 @@ function Info (data) {
 
 
         html = `
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+ 
+            <div class=" col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                 <div id="UC" class="package-item">
                     <div class="overflow-hidden">
@@ -181,13 +182,15 @@ function Info (data) {
                     <div class="d-flex border-bottom">
                         <small class="flex-fill text-center border-end py-2"><i
                                 class="fa fa-map-marker-alt text-primary me-2"></i>
-                            <span>${item.town}</span></small>
+                            <span >${item.town}</span></small>
 
                         <small class="flex-fill text-center border-end py-2"><i
                                 class="fa fa-map-marker-alt text-primary me-2"></i>
-                            <span id="travelvalue">${item.name}</span></small>
-                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>
-                            <span>${item.id}</span></small>
+                            <span id="travelvalue" >${item.name}</span>
+                       
+                            </small>
+                        <small class="flex-fill text-center py-2"><i class="bi bi-telephone-fill text-primary"></i>
+                            <span>${item.tel}</span></small>
                     </div>
                         <div class="text-center p-4">
                             <h3 class="mb-0">
@@ -216,6 +219,8 @@ function Info (data) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">商品詳細資訊</h5>
+                            <button class="img-fluid" data-bs-toggle="modal"
+                            alt="" data-bs-target="#exampleModal3${item.id}">展開地圖</button>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -232,9 +237,8 @@ function Info (data) {
                                     <small id="mapButton" class="flex-fill text-center border-end py-2"><i
                                             class="fa fa-map-marker-alt text-primary me-2"></i>
                                         <span id="travelvalue">${item.name}</span></small>
-                                    <small class="flex-fill text-center py-2"><i
-                                            class="fa fa-user text-primary me-2"></i>
-                                        <span>${item.id}</span></small>
+                                    <small class="flex-fill text-center py-2"><i class="bi bi-telephone-fill text-primary"></i>
+                                        <span>${item.tel}</span></small>
                                 </div>
                                 <div class="text-center p-4">
                                     <h3 class="mb-0">
@@ -258,11 +262,30 @@ function Info (data) {
                     </div>
                 </div>
             </div>
-          
-            <!-- CIC_Modal -->
-           
-
+            
+            
+       <!-- map_modal-->
+      <script> $("#mapInfo${item.id}").attr("src", \`https://www.google.com/maps?q=${item.address}&z=14&hl=zh-tw&output=embed\`);</script> 
+          <div class="modal fade" id="exampleModal3${item.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                           <div class="row m-auto col-12 justify-content-center">
+                            <iframe id="mapInfo${item.id}" width="100%" height="600px" style="border: none;"></iframe>
+                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+
+           
             
             </div>`
 
