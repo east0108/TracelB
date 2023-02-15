@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -64,15 +65,12 @@ public class OrderController {
 		orderSevice.deleteOrderById(orderId);
 		
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
 	} 
 	
-//	@PostMapping("/pay")
-//	public ResponseEntity<?> pay(@RequestBody Integer orderId,@RequestBody Integer tatol) throws UnsupportedEncodingException{
-//		AllInOne allInOne = new AllInOne("");
-//		Order orderId2=orderSevice.getOrderById(orderId);
-//		
-//		allInOne.aioCheckOut(allInOne, null);
-//		
-//		return ResponseEntity.status(HttpStatus.CREATED).body(null);
-//	}
-}
+
+
+	}
+
+	
+
