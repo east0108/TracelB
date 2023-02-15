@@ -8,15 +8,15 @@ import lombok.ToString;
 
 public class Order {
 
-	private double price;
+	private Integer price;
 	private String currency;
 	private String method;
 	private String intent;
 	private String description;
-	public double getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getCurrency() {

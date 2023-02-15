@@ -8,6 +8,7 @@
 var cartArray ;
 
 function displayCart() {
+    // document.write('<script src="js/shopcart2.js"></script>');
     cartArray = shoppingCart.listCart();
     var output = "";
     for (var i in cartArray) {
@@ -71,13 +72,13 @@ $('.clear-cart').click(function() {
 });
 
 displayCart();
-myFunction(cartArray);
+// myFunction(cartArray);
 //要丟，使用者的ID，跟我所購買商品的編號和數量
 
 function myFunction(traveldata) {
 	
     
-  // console.log(traveldata);
+  
 	
 	
 	
@@ -85,9 +86,14 @@ function myFunction(traveldata) {
     url: "http://localhost:8080/travel/index/checklogin",
         async:false,
     success:function(data) {
-      
-    // console.log(traveldata);
-		clickEmail(data,traveldata);
+
+    setCookie("total", traveldata[0].total, 365);
+    cookies = getCookie("total");
+    console.log(cookies);
+
+   
+    //  paypal(data,traveldata);
+		//  clickEmailandCreateOrder(data,traveldata);
 		
     },error:function (){
 		document.location.href = "http://localhost:8080/travel/login";
@@ -95,7 +101,32 @@ function myFunction(traveldata) {
   });
 }
 
-function clickEmail(data,traveldata) {
+function paypal(data,traveldata){
+
+  // document.location.href="http://localhost:8080/travel/payindex"
+
+ var html=""
+ 
+ html=
+  `
+    <label for="price">Total</label>
+    <input type="text" id="price" name="price" value="${traveldata[0].total}">
+    <label for="currency">Currency</label>
+    <input type="text" id="currency" name="currency" value="TWD">
+    <label for="method">Payment Method</label>
+    <input type="text" id="method" name="method" value="paypal">
+    <label for="intent">Intent</label>
+    <input type="text" id="intent" name="intent" value="sale">
+    <label for="description">Payment Description</label>
+    <input type="text" id="description" name="description" value="testing"></input>
+  `
+  $("#paypalmenu").append(html);
+}
+
+
+
+
+function clickEmailandCreateOrder(data,traveldata) {
 
     var createOrderRequest ={
         "buyItemList": []
@@ -135,8 +166,8 @@ function clickEmail(data,traveldata) {
      //var a = document.getElementById("travelvalue").innerHTML
       // var a = $("#travelvalue+span");
         shoppingCart.clearCart();
-		 console.log(data);
-        location.reload();
+		    console.log(data);
+         location.reload();
     },
 	  error:function (){
 		console.log("no");
@@ -145,3 +176,25 @@ function clickEmail(data,traveldata) {
 		
 }
 
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+      }
+  }
+  return "";
+}
