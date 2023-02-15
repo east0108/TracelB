@@ -1,5 +1,6 @@
 package SpringSql.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import SpringSql.dto.OrderQueryParams;
 import SpringSql.model.Order;
 import SpringSql.model.Page;
 import SpringSql.service.OrderSevice;
+import ecpay.payment.integration.AllInOne;
 
 @Controller
 public class OrderController {
@@ -63,5 +65,14 @@ public class OrderController {
 		
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	} 
-
+	
+//	@PostMapping("/pay")
+//	public ResponseEntity<?> pay(@RequestBody Integer orderId,@RequestBody Integer tatol) throws UnsupportedEncodingException{
+//		AllInOne allInOne = new AllInOne("");
+//		Order orderId2=orderSevice.getOrderById(orderId);
+//		
+//		allInOne.aioCheckOut(allInOne, null);
+//		
+//		return ResponseEntity.status(HttpStatus.CREATED).body(null);
+//	}
 }
