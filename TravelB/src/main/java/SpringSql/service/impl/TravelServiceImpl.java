@@ -59,7 +59,6 @@ public class TravelServiceImpl  implements TravelService{
 
 
 
-
 //
 //	@Override
 //	public Page<jpaTravel> listAll(int pageNumber) {
