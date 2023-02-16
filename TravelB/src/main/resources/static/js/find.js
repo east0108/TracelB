@@ -154,8 +154,9 @@ function changePage(page) {
         }
     })
 }
+
 //得到後端值 進行append到頁面上
-function Info(data) {
+function Info (data) {
     $("#dataList").empty();
     //商品資訊
     var result = data.result;
@@ -167,80 +168,150 @@ function Info(data) {
     $("#titlefont").append(html2);
     var html = ``;
     $.each(result, function (index, item) {
-        
+
 
         html = `
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
-style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-<div class="package-item">
-    <div class="overflow-hidden">
-        <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal" alt="" data-bs-target="#exampleModal">
-    </div>
-    <div class="d-flex border-bottom">
-        <small class="flex-fill text-center border-end py-2"><i
-                class="fa fa-map-marker-alt text-primary me-2"></i>
-            <span>${item.town}</span></small>
+ 
+            <div class=" col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                <div id="UC" class="package-item">
+                    <div class="overflow-hidden">
+                        <img id="img1" type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal"
+                            alt="" data-bs-target="#exampleModal${item.id}">
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i
+                                class="fa fa-map-marker-alt text-primary me-2"></i>
+                            <span >${item.town}</span></small>
 
-        <small class="flex-fill text-center border-end py-2"><i
-                class="fa fa-map-marker-alt text-primary me-2"></i>
-            <span id="travelvalue">${item.name}</span></small>
-        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>
-            <span>${item.id}</span></small>
-    </div>
-    <div class="text-center p-4">
-        <h3 class="mb-0">
-            <span>${item.ticket}</span>
-        </h3>
-        <div class="mb-3">
-            <small class="fa fa-star text-primary"></small>
-            <small class="fa fa-star text-primary"></small>
-            <small class="fa fa-star text-primary"></small>
-            <small class="fa fa-star text-primary"></small>
-            <small class="fa fa-star text-primary"></small>
-        </div>
-        <p1><span class="overflow-auto">${item.introduce}</span></p1>
-        <div class="d-flex justify-content-center mb-2">
-<!--            <button onclick="myFunction()" class="btn btn-sm btn-primary px-3 border-end"-->
-<!--                style="border-radius: 30px 0 0 30px;">購買-->
-         
-<!--            </button>-->
+                        <small class="flex-fill text-center border-end py-2"><i
+                                class="fa fa-map-marker-alt text-primary me-2"></i>
+                            <span id="travelvalue" >${item.name}</span>
+                       
+                            </small>
+                        <small class="flex-fill text-center py-2"><i class="bi bi-telephone-fill text-primary"></i>
+                            <span>${item.tel}</span></small>
+                    </div>
+                        <div class="text-center p-4">
+                            <h3 class="mb-0">
+                                <span>${item.ticket}$</span>
+                            </h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                          
+                            <div class="d-flex justify-content-center mb-2">
+                                <a data-id=${item.id} data-name=${item.name} data-price=${item.ticket}
+                                    class="add-to-cart btn btn-primary">加入購物車</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal${item.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen-md-down">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">商品詳細資訊</h5>
+                            <button class="img-fluid" data-bs-toggle="modal"
+                            alt="" data-bs-target="#exampleModal3${item.id}">展開地圖</button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="package-item">
+                                <div class="overflow-hidden">
+                                    <img type="button" src="${item.picture}" class="img-fluid" data-bs-toggle="modal"
+                                        alt="" data-bs-target="#exampleModal">
+                                </div>
+                                <div class="d-flex border-bottom">
+                                    <small class="flex-fill text-center border-end py-2"><i
+                                            class="fa fa-map-marker-alt text-primary me-2"></i>
+                                        <span>${item.town}</span></small>
+
+                                    <small id="mapButton" class="flex-fill text-center border-end py-2"><i
+                                            class="fa fa-map-marker-alt text-primary me-2"></i>
+                                        <span id="travelvalue">${item.name}</span></small>
+                                    <small class="flex-fill text-center py-2"><i class="bi bi-telephone-fill text-primary"></i>
+                                        <span>${item.tel}</span></small>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h3 class="mb-0">
+                                        <span>${item.ticket}$</span>
+                                    </h3>
+                                    <div class="mb-3">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                    </div>
+                                    <p1><span class="overflow-auto">${item.introduce}</span></p1>
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <a data-id=${item.id} data-name=${item.name} data-price=${item.ticket}
+                                            class="add-to-cart btn btn-primary">加入購物車</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <a data-id= ${item.id} data-name=${item.name} data-price=${item.ticket}   class="add-to-cart btn btn-primary" >購買</a>
-        </div>
-    </div>
-</div>
-</div>
+            
+       <!-- map_modal-->
+      <script> $("#mapInfo${item.id}").attr("src", \`https://www.google.com/maps?q=${item.address}&z=14&hl=zh-tw&output=embed\`);</script> 
+          <div class="modal fade" id="exampleModal3${item.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                           <div class="row m-auto col-12 justify-content-center">
+                            <iframe id="mapInfo${item.id}" width="100%" height="600px" style="border: none;"></iframe>
+                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
+           
+            
+            </div>`
 
-</div>
-</div>`
         $("#dataList").append(html);
-
 
 
     });
 
 
     // $('.add-to-cart').click(function(event) {
-    //     event.preventDefault();
-    //     var name = $(this).data('name');
-    //     var price = Number($(this).data('price'));
-    //     shoppingCart.addItemToCart(name, price, 1);
-    //     displayCart();
+    // event.preventDefault();
+    // var name = $(this).data('name');
+    // var price = Number($(this).data('price'));
+    // shoppingCart.addItemToCart(name, price, 1);
+    // displayCart();
     // });
 
-    $('.add-to-cart').click(function(event) {
+    $('.add-to-cart').click(function (event) {
         event.preventDefault();
         var name = $(this).data('name');
         var price = Number($(this).data('price'));
         var id = $(this).data(`id`);
-        shoppingCart.addItemToCart(name, price,1,id);
+        shoppingCart.addItemToCart(name, price, 1, id);
         displayCart();
     });
     displayCart();
-
-
-
 
 
 }
@@ -249,35 +320,35 @@ style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 //按下圖片後到搜尋畫面，並搜尋各縣市
 
 
-function goToTainan() {
+function goToTainan () {
     setCookie("city", "台南", 365);
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
 
-function goToTaichung() {
+function goToTaichung () {
     setCookie("city", "台中", 365);
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
-function goToTaoyuan() {
+
+function goToTaoyuan () {
     setCookie("city", "桃園", 365);
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
-function goToYunlin() {
+
+function goToYunlin () {
     setCookie("city", "雲林", 365);
     document.location.href = "http://localhost:8080/travel/find";
     datalist();
 }
 
 // $('.package-item').click(function () {
-//     var item = $(this).data('item');
-//     $('#exampleModalLabel').text(item.name);
-//     $('.modal-body img').attr('src', item.picture);
-//     $('.modal-body #travelvalue').text(item.town);
+// var item = $(this).data('item');
+// $('#exampleModalLabel').text(item.name);
+// $('.modal-body img').attr('src', item.picture);
+// $('.modal-body #travelvalue').text(item.town);
 //
-//     $('#exampleModal').modal('show');
+// $('#exampleModal').modal('show');
 // });
-
-

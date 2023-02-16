@@ -29,9 +29,11 @@ $.ajax({
                         </div>
                         <div class="row owl-carousel testimonial-carousel position-relative">
                         `;
+
     for (let i = 0; i < data.length; i++) {
         row = data[i];
         print += `
+
         <div class="row testimonial-item bg-white text-center border p-4">
             <h5 class="mb-0">${row.locationName}</h5>
             <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img-Weather/icon-${row.weatherElement[0].time[0].parameter.parameterValue}.svg"
@@ -53,7 +55,8 @@ $.ajax({
                 <p class="mb-0">${row.weatherElement[0].time[2].parameter.parameterName} | 
                 溫度 ${row.weatherElement[2].time[2].parameter.parameterName} ~ ${row.weatherElement[4].time[2].parameter.parameterName} ℃</p>
             </div>
-        </div>`;
+        </div>
+`;
     }
     print+=`
             </div>
