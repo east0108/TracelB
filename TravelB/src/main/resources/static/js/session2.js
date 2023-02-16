@@ -81,18 +81,10 @@ myFunction(cartArray);
 
 function myFunction(traveldata) {
    
-    var total2 =0
-    console.log(traveldata.total)
-    console.log(traveldata[0].total)
-    for(i=0;i<traveldata.length;i++){
-      total2 += Number(traveldata[i].total)
-      
-    }
+
     
    
-    
-     console.log(total2);
-     setCookie("total2",total2,365);
+  
    
     $.ajax({ 
     url: "http://localhost:8080/travel/index/checklogin",
@@ -101,8 +93,8 @@ function myFunction(traveldata) {
     
     
       
-      console.log(cookies);
-      document.location.href="http://localhost:8080/travel/payindex"
+      
+     
       
       clickEmailandCreateOrder(data,traveldata);
       
@@ -186,17 +178,14 @@ function clickEmailandCreateOrder(data,traveldata) {
      //var a = document.getElementById("travelvalue").innerHTML
       // var a = $("#travelvalue+span");
         shoppingCart.clearCart();
-<<<<<<< HEAD
+
 		    console.log(data);
-         location.reload();
-=======
-		 console.log(data);
         mypay(data);
-        // location.reload();
+
+		 
 
 
 
->>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
     },
 	  error:function (){
 		console.log("no");
@@ -205,29 +194,8 @@ function clickEmailandCreateOrder(data,traveldata) {
 
 }
 
-<<<<<<< HEAD
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  let expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
 
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-      }
-  }
-  return "";
-=======
+
 function mypay(data){
  var i ={"orderId":data.orderId};
 
@@ -242,5 +210,5 @@ function mypay(data){
             $('#tt').html(data);
         }
     });
->>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
+
 }

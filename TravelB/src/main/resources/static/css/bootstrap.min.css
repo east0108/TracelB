@@ -1350,7 +1350,7 @@ progress {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1240px) {
     .col-lg {
         flex: 1 0 0%
     }
@@ -2169,7 +2169,7 @@ progress {
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 840px) {
     .table-responsive-md {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
