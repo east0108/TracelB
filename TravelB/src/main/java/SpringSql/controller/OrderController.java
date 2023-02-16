@@ -70,12 +70,11 @@ public class OrderController {
 	
 
 
-	}
-
-<<<<<<< HEAD
 	
 
-=======
+
+
+
 	@PostMapping("/pay")
 	public ResponseEntity<?> pay(@RequestBody OrderQueryParams queryParams) throws UnsupportedEncodingException {
 
@@ -85,4 +84,4 @@ public class OrderController {
 		return ResponseEntity.status(HttpStatus.OK).body(payOrderId);
 	}
 }
->>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
+
