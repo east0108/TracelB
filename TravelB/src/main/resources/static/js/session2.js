@@ -116,6 +116,9 @@ function myFunction(traveldata) {
 		document.location.href = "http://localhost:8080/travel/login";
     }
   });
+
+
+
 }
 
 // function paypal(data,traveldata){
@@ -183,16 +186,26 @@ function clickEmailandCreateOrder(data,traveldata) {
      //var a = document.getElementById("travelvalue").innerHTML
       // var a = $("#travelvalue+span");
         shoppingCart.clearCart();
+<<<<<<< HEAD
 		    console.log(data);
          location.reload();
+=======
+		 console.log(data);
+        mypay(data);
+        // location.reload();
+
+
+
+>>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
     },
 	  error:function (){
 		console.log("no");
     }
 });
-		
+
 }
 
+<<<<<<< HEAD
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -214,4 +227,20 @@ function getCookie(cname) {
       }
   }
   return "";
+=======
+function mypay(data){
+ var i ={"orderId":data.orderId};
+
+    console.log(data);
+    $.ajax({
+        type:"POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/travel/pay",
+        data: JSON.stringify(i),
+
+        success:function(data) {
+            $('#tt').html(data);
+        }
+    });
+>>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
 }

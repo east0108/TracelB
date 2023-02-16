@@ -19,7 +19,11 @@ public interface OrderSevice {
 
 		Integer countOrder(OrderQueryParams orderQueryParams);
 
+<<<<<<< HEAD
 
+=======
+		String getPay(OrderQueryParams orderQueryParams) throws UnsupportedEncodingException;
+>>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
 
 		void deleteOrderById(Integer orderId);
 

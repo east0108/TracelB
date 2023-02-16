@@ -101,7 +101,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header3">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
@@ -109,8 +109,7 @@
                         <h1 class="display-3 text-white animated slideInDown">註冊</h1>
                         <!----------------------- 會員註冊 ---------------->
                         <section class="form-block">
-                            <form class="register-form" id="registerForm" th:Object="${memberRegisterRequest}"
-                                method="POST" enctype="text/plain" autocomplete="off">
+                            <div class="register-form" id="registerForm" autocomplete="off">
 
                                 <section class="form-input-block">
                                     <div class="input-label">帳號/Email</div>
@@ -133,8 +132,8 @@
                                 <sectio class="form-link">
                                     <span>已經有帳號?</span><a th:href="@{/login}">立即登入</a>
                                 </sectio>
-                            </form>
-                            <button type="submit" id="btnPostUser" onclick="register()">註冊</button>
+                                <button type="submit" id="btnPostUser" onclick="register()">註冊</button>
+                            </div>
                         </section>
                     </div>
 

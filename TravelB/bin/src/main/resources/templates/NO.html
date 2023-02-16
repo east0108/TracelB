@@ -33,15 +33,23 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/No404.css" rel="stylesheet">
 
 
     <style type="text/css">
-        #error {
-            color: red;
-            font-size: 48px;
+        #error p>span {
+            color: #fff !important;
+            font-size: 2rem;
             display: flex;
             justify-content: center;
-            height: 300px;
+            align-items: center
+        }
+
+        #error p {
+            color: red;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
             align-items: center
         }
     </style>
@@ -64,6 +72,7 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
             </div>
+
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
@@ -76,6 +85,7 @@
                             class="fab fa-instagram fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
                             class="fab fa-youtube fw-normal"></i></a>
+
                 </div>
             </div>
         </div>
@@ -83,7 +93,7 @@
     <!-- Topbar End -->
 
 
-    <!-- Navbar & Hero Start -->
+    <!-- 導航欄 -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="index" class="navbar-brand p-0">
@@ -94,41 +104,48 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0" id="registerToBack">
-                    <a th:href="@{'/index'}" class="nav-item nav-link">首頁</a>
-                    <a th:href="@{'/find'}" class="nav-item nav-link">旅遊資訊</a>
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index" class="nav-item nav-link">首頁</a>
+                    <a href="find" onclick="findAll()" class="nav-item nav-link">旅遊資訊</a>
+                    <div class="nav-item dropdown">
+
+                    </div>
                 </div>
             </div>
-        </nav>
-    </div>
 
-    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
-        <div class="container py-5">
-            <div class="row justify-content-center py-5">
-                <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-3 text-white mb-3 ">探索你的玩樂世界</h1>
-                    <p class="fs-4 text-white mb-4 ">找尋在地體驗或到遠方探險，隨時隨地探索屬於你的玩樂世界</p>
-                    <div class="position-relative w-75 mx-auto ">
-                        <form method="post">
-                            <input name="travelId" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
+        </nav>
+
+
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header2">
+            <div class="container py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white mb-3 ">探索你的玩樂世界</h1>
+                        <p class="fs-4 text-white mb-4 ">找尋在地體驗或到遠方探險，隨時隨地探索屬於你的玩樂世界</p>
+                        <div class="position-relative w-75 mx-auto ">
+                            <input id="travelTown" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
                                 style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
-                            <button class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+                            <button id="search"
+                                class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
                                 style="margin-top: 15px;">Search
                             </button>
-                        </form>
+                            <div id=error>
+                                <p>找不到相關<span id="errorCookie"></span>資訊，請再次重新搜尋</p>
+                                <p><span>或是查看我們為您推薦的熱門景點 > </span><span style="text-decoration:underline ;"
+                                        onclick="goToTaichung()">台中</span></p>
+                            </div>
+
+
+
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-
-
-    <div id=error th:text="${error}">
-
 
     </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
 
     <!-- Navbar & Hero End -->
 
@@ -147,7 +164,13 @@
 
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/session.js}"></script>
-
+    <script th:src="@{/js/find.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script>
+        var text = `${getCookie("city")}`;
+        $("#errorCookie").empty();
+        $("#errorCookie").append(text);
+    </script>
 </body>
 
 </html>

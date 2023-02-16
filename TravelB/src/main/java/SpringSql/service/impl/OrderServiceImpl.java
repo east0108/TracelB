@@ -132,7 +132,48 @@ public class OrderServiceImpl implements OrderSevice{
 	}
 
 
+<<<<<<< HEAD
 	
+=======
+	@Override
+	public String getPay(OrderQueryParams orderQueryParams) throws UnsupportedEncodingException {
+		AllInOne allInOne = new AllInOne("");
+		AioCheckOutALL aioCheckOutALL =new AioCheckOutALL();
+//		Integer intPayOderId = Integer.parseInt(payOrderId);
+		Order pay = orderDao.getOrderById(orderQueryParams.getOrderId());
+
+
+
+		String orderId =  Integer.toString(pay.getOrderId()) ;
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String orderDate = dateFormat.format(pay.getCreatedDate());
+
+		String orderTotal = Integer.toString(pay.getTotalAmount());
+
+
+
+
+
+		aioCheckOutALL.setMerchantTradeNo("3002607"+orderId);
+		aioCheckOutALL.setMerchantTradeDate("2023/02/15 16:22:30");
+		aioCheckOutALL.setPeriodType("aio");
+		aioCheckOutALL.setTotalAmount(orderTotal);
+		aioCheckOutALL.setTradeDesc("123");
+		aioCheckOutALL.setItemName("商店名稱");
+		aioCheckOutALL.setReturnURL("https://www.google.com.tw/");
+		aioCheckOutALL.setChooseSubPayment("ALL");
+		aioCheckOutALL.setPeriodType("");
+		aioCheckOutALL.setClientBackURL("http://localhost:8080/travel/CIC");
+
+		String payOrder = allInOne.aioCheckOut(aioCheckOutALL,null);
+
+
+
+
+		return payOrder ;
+	}
+>>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
 }
 
 

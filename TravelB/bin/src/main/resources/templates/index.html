@@ -32,6 +32,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -84,7 +85,7 @@
                 <div class="navbar-nav ms-auto py-0" id="registerToBack">
                     <a href="index" class="nav-item nav-link active">首頁</a>
 
-                    <a href="find" class="nav-item nav-link">旅遊資訊</a>
+                    <a href="find" onclick="findAll()" class="nav-item nav-link">旅遊資訊</a>
 
 
 
@@ -99,22 +100,55 @@
                         <h1 class="display-3 text-white mb-3 ">探索你的玩樂世界</h1>
                         <p class="fs-4 text-white mb-4 ">找尋在地體驗或到遠方探險，隨時隨地探索屬於你的玩樂世界</p>
                         <div class="position-relative w-75 mx-auto ">
-                            <form method="post">
-                                <input name="travelId" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
-                                    style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
-                                <button
-                                    class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
-                                    style="margin-top: 15px;">Search
-                                </button>
-                            </form>
+
+                            <input id="travelTown" class="border-0 rounded-pill w-100 py-3 ps-4 pe-5"
+                                style="margin-top: 7px;" placeholder="請輸入想要搜尋的縣市" />
+                            <button id="search"
+                                class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+                                style="margin-top: 15px;">Search
+                            </button>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
     <!-- Navbar & Hero End -->
 
+    <!-- Testimonial Start -->
+    <div id="dt" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <!-- <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
+                <h1 class="mb-5">Our Clients Say!!!</h1>
+            </div>
+            <div class="row owl-carousel testimonial-carousel position-relative">
+                <div class="row testimonial-item bg-white text-center border p-4">
+                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-1.jpg"
+                        style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">地區1</h5>
+                    <p>時間</p>
+                    <p class="mb-0">溫度</p>
+                    <div class="col-lg-6">
+                        <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-1.jpg"
+                            style="width: 80px; height: 80px;">
+                        <p>時間</p>
+                        <p class="mb-0">溫度</p>
+                    </div>
+                    <div class="col-lg-6s">
+                        <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="img/testimonial-1.jpg"
+                            style="width: 80px; height: 80px;">
+                        <p>時間</p>
+                        <p class="mb-0">溫度</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <!-- Testimonial End -->
 
     <!-- About Start -->
     <div class="container-xxl py-5">
@@ -127,76 +161,62 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to <span class="text-primary">Tourist</span></h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit.</p>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                    <h6 class="section-title bg-white text-center text-primary px-3">歡迎</h6>
+                    <h1 class="mb-4">選擇 <span class="text-primary">Tourist </span><span>的理由</span></h1>
+                    <p class="mb-4" style="font-weight:bolder;">無論何時何地，我們都能帶你找到最棒的吃喝玩樂體驗！</p>
+                    <p class="mb-4">想知道附近有什麼好吃好玩？或想來趟放鬆身心靈的旅行？ Tourist 通通有！輕鬆動動手指，玩樂一手掌握！</p>
+                    <p class="mb-4" style="font-weight:bolder;">帶領你探索玩樂靈感，盡情享受世界的一切美好</p>
+                    <p class="mb-4">無論是挖掘在地新玩法或出國旅行，距離不是問題，重要的是體驗當中的玩樂點滴</p>
                     </p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>First Class Flights</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>發掘玩樂靈感</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked Hotels</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>預訂簡單快速</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>5 Star Accommodations</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>玩樂品質保證</p>
                         </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Latest Model Vehicles</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>150 Premium City Tours
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7 Service</p>
-                        </div>
+
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="find" onclick="findAll()">查看更多景點</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
 
+
     <!-- Destination Start -->
     <div class="container-xxl py-5 destination">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Destination</h6>
-                <h1 class="mb-5">Popular Destination</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">目的地</h6>
+                <h1 class="mb-5">熱門景點</h1>
             </div>
             <div class="row g-3">
                 <div class="col-lg-7 col-md-6">
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+                            <a class="position-relative d-block overflow-hidden" onclick="goToTainan()">
                                 <img class="img-fluid" src="images/台南.jpg" alt="">
-                                <!-- <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                    30% OFF</div> -->
                                 <div
                                     class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
                                     台南</div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+                            <a class="position-relative d-block overflow-hiddessn" onclick="goToTaichung()">
                                 <img class="img-fluid" src="images/台中.jpg" alt="">
-                                <!-- <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                    25% OFF</div> -->
                                 <div
                                     class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
                                     台中</div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+                            <a class="position-relative d-block overflow-hidden" onclick="goToTaoyuan()">
                                 <img class="img-fluid" src="images/桃園.jpg" alt="">
-                                <!-- <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                    35% OFF</div> -->
                                 <div
                                     class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
                                     桃園</div>
@@ -205,11 +225,9 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="">
+                    <a class="position-relative d-block h-100 overflow-hidden" onclick="goToYunlin()">
                         <img class="img-fluid position-absolute w-100 h-100" src="images/雲林.jpg" alt=""
                             style="object-fit: cover;">
-                        <!-- <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">20% OFF
-                        </div> -->
                         <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
                             雲林</div>
                     </a>
@@ -305,9 +323,9 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/weather.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
@@ -316,32 +334,17 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- Template Javascript -->
-
-    <script src="js/main.js"></script>
+    
     <script src="js/session.js"></script>
+    <script src="js/find.js"></script>
+    <script src="js/main.js"></script>
+    
     <script>
-        function goToFind() {
-            document.location.href = "http://localhost:8080/travel/find";
-        }
-        function goToCity() {
-            var cityName = {
-                travelId: document.getElementById("cityName").innerText,
-            };
-            console.log(cityName.travelId);
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:8080/travel/find",
-                data: cityName,
-                contentType: "application/x-www-form-urlencoded",
-                success: (data) => {
 
-                    console.log(data);
-                }
-            });
-        }
+
 
 
     </script>
