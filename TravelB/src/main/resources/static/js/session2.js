@@ -102,8 +102,10 @@ function myFunction(traveldata) {
     
       
       console.log(cookies);
-      clickEmailandCreateOrder(data,traveldata);
       document.location.href="http://localhost:8080/travel/payindex"
+      
+      clickEmailandCreateOrder(data,traveldata);
+      
 
    
       // paypal(data,traveldata);
