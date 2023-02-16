@@ -23,6 +23,8 @@ import SpringSql.model.Order;
 import SpringSql.model.OrderItem;
 import SpringSql.model.Travel;
 import SpringSql.service.OrderSevice;
+import ecpay.payment.integration.AllInOne;
+import ecpay.payment.integration.domain.AioCheckOutALL;
 
 @Component
 public class OrderServiceImpl implements OrderSevice{
@@ -132,9 +134,7 @@ public class OrderServiceImpl implements OrderSevice{
 	}
 
 
-<<<<<<< HEAD
-	
-=======
+
 	@Override
 	public String getPay(OrderQueryParams orderQueryParams) throws UnsupportedEncodingException {
 		AllInOne allInOne = new AllInOne("");
@@ -173,7 +173,7 @@ public class OrderServiceImpl implements OrderSevice{
 
 		return payOrder ;
 	}
->>>>>>> branch 'main' of https://github.com/a92075123/TravelB.git
+
 }
 
 
