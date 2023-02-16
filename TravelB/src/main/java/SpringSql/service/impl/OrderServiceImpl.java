@@ -134,33 +134,39 @@ public class OrderServiceImpl implements OrderSevice{
 
 
 	@Override
-	public String getPay(Integer payOrderId) throws UnsupportedEncodingException {
+	public String getPay(OrderQueryParams orderQueryParams) throws UnsupportedEncodingException {
 		AllInOne allInOne = new AllInOne("");
 		AioCheckOutALL aioCheckOutALL =new AioCheckOutALL();
-
-		Order pay = orderDao.getOrderById(payOrderId);
+//		Integer intPayOderId = Integer.parseInt(payOrderId);
+		Order pay = orderDao.getOrderById(orderQueryParams.getOrderId());
 
 
 
 		String orderId =  Integer.toString(pay.getOrderId()) ;
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		String orderDate = dateFormat.format(pay.getCreatedDate());
 
 		String orderTotal = Integer.toString(pay.getTotalAmount());
 
 
 
-		 aioCheckOutALL.setMerchantID("123456");
-		 aioCheckOutALL.setMerchantTradeNo(orderId);
-		 aioCheckOutALL.setMerchantTradeDate(orderDate);
-		 aioCheckOutALL.setPeriodType("aio");
-		 aioCheckOutALL.setTotalAmount(orderTotal);
-		 aioCheckOutALL.setTradeDesc("");
-		 aioCheckOutALL.setReturnURL("");
-		 aioCheckOutALL.setChooseSubPayment("ALL");
+
+
+		aioCheckOutALL.setMerchantTradeNo("3002607"+orderId);
+		aioCheckOutALL.setMerchantTradeDate("2023/02/15 16:22:30");
+		aioCheckOutALL.setPeriodType("aio");
+		aioCheckOutALL.setTotalAmount(orderTotal);
+		aioCheckOutALL.setTradeDesc("123");
+		aioCheckOutALL.setItemName("商店名稱");
+		aioCheckOutALL.setReturnURL("https://www.google.com.tw/");
+		aioCheckOutALL.setChooseSubPayment("ALL");
+		aioCheckOutALL.setPeriodType("");
+		aioCheckOutALL.setClientBackURL("http://localhost:8080/travel/CIC");
 
 		String payOrder = allInOne.aioCheckOut(aioCheckOutALL,null);
+
+
 
 
 		return payOrder ;

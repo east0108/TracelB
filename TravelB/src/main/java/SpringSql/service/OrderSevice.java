@@ -19,7 +19,7 @@ public interface OrderSevice {
 
 		Integer countOrder(OrderQueryParams orderQueryParams);
 
-		String getPay(Integer payOrderId) throws UnsupportedEncodingException;
+		String getPay(OrderQueryParams orderQueryParams) throws UnsupportedEncodingException;
 
 		void deleteOrderById(Integer orderId);
 

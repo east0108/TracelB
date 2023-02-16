@@ -67,8 +67,10 @@ public class OrderController {
 	}
 
 	@PostMapping("/pay")
-	public ResponseEntity<?> pay(@RequestBody Integer orderId) throws UnsupportedEncodingException {
-		String payOrderId = orderSevice.getPay(orderId);
+	public ResponseEntity<?> pay(@RequestBody OrderQueryParams queryParams) throws UnsupportedEncodingException {
+
+
+		String payOrderId = orderSevice.getPay(queryParams);
 
 		return ResponseEntity.status(HttpStatus.OK).body(payOrderId);
 	}
