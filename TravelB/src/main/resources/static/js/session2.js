@@ -93,9 +93,26 @@ function myFunction(traveldata) {
 		document.location.href = "http://localhost:8080/travel/login";
     }
   });
+
+
+
 }
 
 function clickEmail(data,traveldata) {
+
+    var createOrderRequest ={
+        "buyItemList": []
+    }
+    for(i=0;i<traveldata.length;i++){
+        var OrderRequest ={
+            "productId":traveldata[i].id,
+            "quantity":traveldata[i].count
+        }
+        createOrderRequest.buyItemList.push(OrderRequest)
+    }
+
+    console.log(createOrderRequest);
+
 
 
   var createOrderRequest ={
@@ -108,7 +125,6 @@ function clickEmail(data,traveldata) {
     }
     createOrderRequest.buyItemList.push(OrderRequest)
   }
-	
   console.log(createOrderRequest);
 
 	$.ajax({
@@ -123,12 +139,31 @@ function clickEmail(data,traveldata) {
       // var a = $("#travelvalue+span");
         shoppingCart.clearCart();
 		 console.log(data);
-        location.reload();
+        mypay(data);
+        // location.reload();
+
+
+
     },
 	  error:function (){
 		console.log("no");
     }
 });
-		
+
 }
 
+function mypay(data){
+ var i ={"orderId":data.orderId};
+
+    console.log(data);
+    $.ajax({
+        type:"POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/travel/pay",
+        data: JSON.stringify(i),
+
+        success:function(data) {
+            $('#tt').html(data);
+        }
+    });
+}
