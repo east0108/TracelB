@@ -44,23 +44,38 @@ function selectorderitem (data) {
 }
 
 function deleteOrderId (data) {
-    console.log(data)
+    
+    swal({
+        title: "確定要刪除訂單?",
+        icon: "warning",
+        buttons: {
+            A: {
+                text: "確定",
+                value: "success"
+              },
+              B: {
+                text: "取消",
+                value: "error"
+              }
+        }
+    }).then((value)=>{
+        console.log(value)
+    if(value=="success"){
     $.ajax({
         type: "DELETE",
         url: "http://localhost:8080/travel/user/" + data + "/delectOrder",
         dataType: 'json',
         contentType: "application/json ; charset=utf-8",
+         
         success: function () {
 
             location.reload()
 
 
-        },
-        error: () => {
-
-
-        }
+        },  
     });
+    }
+})
 }
 
 
@@ -173,87 +188,99 @@ function Info (data) {
     //     }
     //   }
 
-    html = `
-<div class="dashboard-box">
-    <h2 class="dashbord-title">購買紀錄</h2>
-</div>
-
-`
-    $("#selectItemOrder").append(html);
 
     for (i = 0; i <= data.results.length; i++) {
         html =
             `
 <div id="content" class="section-padding">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-8 col-lg-9">
+        <div class="row mx-0 justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-9  ">
                 <div class="page-content">
-                    <div class="inner-box">         
+                    <div class="inner-box">
                         <div class="dashboard-wrapper">
                             <nav class="nav-table">
                             </nav>
                             <table class="table dashboardtable tablemyads">
                                 <thead>
-                                <tr>    
-                                    <th></th>                                                         
-                                    <th>訂單編號</th>             
+                                <tr>
+                                    <th></th>
+                                    <th>訂單編號</th>
                                     <th>創建時間</th>
                                     <th>訂單總額</th>
-                                    <th>刪除</th>  
+                                    <th>購買狀態</th>
+                                    <th>刪除</th>
                                 </tr>
-                              </thead>
+                                </thead>
                                 <tbody>
                                 <tr data-category="active">
                                     <td>
-                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample${data.results[i].orderId}"
-                                           role="button" aria-expanded="false" aria-controls="collapseExample${data.results[i].orderId}">
+                                        <a class="btn btn-primary" data-bs-toggle="collapse"
+                                           href="#collapseExample${data.results[i].orderId}"
+                                           role="button" aria-expanded="false"
+                                           aria-controls="collapseExample${data.results[i].orderId}">
                                             商品詳細
                                         </a>
-                                    </td>                                
+                                    </td>
                                     <td>${data.results[i].orderId}</td>
-                                    <td>${data.results[i].createdDate}</td>                            
+                                    <td>${data.results[i].createdDate}</td>
                                     <td data-title="Title">
                                         <h3>${data.results[i].totalAmount}</h3>
+                                        <th style="Color: #66DD00">已付款</th>
                                     </td>
                                     <td data-title="Action">
-                                        <div class="btns-actions">                            
-                                            <button onclick="deleteOrderId(${data.results[i].orderId})" class="btn-action btn-delete"><i class="lni-trash">刪除清單</i></button>
+                                        <div class="btns-actions">
+                                            <button onclick="deleteOrderId(${data.results[i].orderId})"
+                                                    class="btn btn-danger"><i class="lni-trash" >刪除清單</i>
+                                            </button>
                                         </div>
-                                    </td>                           
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
-                            `
+                                   </div>
+                                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`
         $("#selectItemOrder").append(html);
         for (s = 0; s < data.results[i].orderItemList.length; s++) {
             html = `
+<div id="content" class="section-padding">
+    <div class="container">
+        <div class="row mx-0 justify-content-center">
+            <div class="collapse col-sm-12 col-md-8 col-lg-9 row mx-auto justify-content-center "
+                 id="collapseExample${data.results[i].orderId}">
+                <div class="page-content">
+                    <div class="inner-box">
+                        <div class="dashboard-wrapper">
+                            <nav class="nav-table">
+                            </nav>
 
-                                
-                                <div class="collapse col-sm-12 col-md-8 col-lg-9" id="collapseExample${data.results[i].orderId}">
-                                    <div class="card card-body">
-                                                
-                                                  <table style="width:100%">
-                                                 
-                                                  <tr>
-                                                     <th>景點名稱</th>
-                                                     <th>景點地區</th>
-                                                     <th>景點地址</th>
-                                                     <th>門票價格</th>
-                                                     <th>門票張數</th>
-                                                   </tr>
-           
-                                                  <tr>
-                                                  <td>${data.results[i].orderItemList[s].name}</td>
-                                                  <td>${data.results[i].orderItemList[s].town}</td>
-                                                  <td>${data.results[i].orderItemList[s].address}</td>
-                                                  <td>${data.results[i].orderItemList[s].tickets}</td>
-                                                  <td>${data.results[i].orderItemList[s].quantity}</td>
-                                                  </tr>
-                                                  </table>
-                                                   
-                                    </div>
-                                </div>
+                            <div class="card card-body">
+
+                                <table style="width:100%">
+
+                                    <tr>
+                                        <th>景點名稱</th>
+                                        <th>景點地區</th>
+                                        <th>景點地址</th>
+                                        <th>門票價格</th>
+                                        <th>門票張數</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>${data.results[i].orderItemList[s].name}</td>
+                                        <td>${data.results[i].orderItemList[s].town}</td>
+                                        <td>${data.results[i].orderItemList[s].address}</td>
+                                        <td>${data.results[i].orderItemList[s].tickets}</td>
+                                        <td>${data.results[i].orderItemList[s].quantity}</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -261,15 +288,15 @@ function Info (data) {
         </div>
     </div>
 </div>
+                                                                           
 `
             $("#selectItemOrder").append(html);
 
 
-                            }
-                        }
-                    }
-              
 
+        }
+    }
+}
 
                     
             
@@ -348,6 +375,86 @@ function Info (data) {
 
      //   }
  //   }
+
+
+
+
+// var html = ""
+
+// html =`
+// <div id="content" class="section-padding">
+// <div class="container">
+//     <div class="row">
+//         <div class="col-sm-12 col-md-8 col-lg-9">
+//             <div class="page-content">
+//                 <div class="inner-box">
+//                     <div class="dashboard-box">
+//                         <h2 class="dashbord-title">購買紀錄</h2>
+//                     </div>
+//                     <div class="dashboard-wrapper">
+//                         <nav class="nav-table">
+//                         </nav>
+//                         <table class="table dashboardtable tablemyads">
+//                             <thead>
+//                             <tr>
+//                                 <th>
+//                                 </th>
+//                                 <th>照片</th>
+//                                 <th>標題</th>
+//                                 <th>類別</th>
+//                                 <th>商品</th>
+//                                 <th>價格</th>
+//                                 <th>狀態</th>
+//                             </tr>
+//                             </thead>
+//                             <tbody>
+
+
+//                             <tr data-category="active">
+//                                 <td>
+//                                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample"
+//                                        role="button" aria-expanded="false" aria-controls="collapseExample">
+//                                         商品詳細
+//                                     </a>
+//                                 </td>
+//                               <!--購物車-->
+//                                 <td class="photo"><img class="img-fluid" src=""
+//                                                        alt=""></td>
+//                                 <td data-title="Title">
+//                                     <h3>HP Laptop 6560b core i3 3nd generation</h3>
+//                                 </td>
+//                                 <td data-title="Category"><span class="adcategories">Laptops & PCs</span>
+//                                 </td>
+//                                 <td data-title="Ad Status"><span
+//                                         class="adstatus adstatusactive">active</span></td>
+//                                 <td data-title="Price">
+//                                     <h3>139$</h3>
+//                                 </td>
+//                                <!--按鈕-->
+//                                 <td data-title="Action">
+//                                     <div class="btns-actions">
+//                                         <a class="btn-action btn-view" href="#"><i class="lni-eye">顯示</i></a>
+//                                         <a class="btn-action btn-delete" href="#"><i class="lni-trash">刪除</i></a>
+//                                     </div>
+//                                 </td>
+//                             </tr>
+
+//                             </tbody>
+//                         </table>
+
+//                             </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+
+// `
+
+//   }
+//   }
+
 //}
 
 
