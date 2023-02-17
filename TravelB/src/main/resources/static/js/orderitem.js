@@ -208,6 +208,7 @@ function Info (data) {
                                     <th>訂單編號</th>
                                     <th>創建時間</th>
                                     <th>訂單總額</th>
+                                    <th>購買狀態</th>
                                     <th>刪除</th>
                                 </tr>
                                 </thead>
@@ -225,11 +226,12 @@ function Info (data) {
                                     <td>${data.results[i].createdDate}</td>
                                     <td data-title="Title">
                                         <h3>${data.results[i].totalAmount}</h3>
+                                        <th style="Color: #66DD00">已付款</th>
                                     </td>
                                     <td data-title="Action">
                                         <div class="btns-actions">
                                             <button onclick="deleteOrderId(${data.results[i].orderId})"
-                                                    class="btn-action btn-delete"><i class="lni-trash">刪除清單</i>
+                                                    class="btn btn-danger"><i class="lni-trash" >刪除清單</i>
                                             </button>
                                         </div>
                                     </td>
