@@ -323,25 +323,25 @@ function Info (data) {
 function goToTainan () {
     setCookie("city", "台南", 365);
     document.location.href = "http://localhost:8080/travel/find";
-    datalist();
+    // datalist();
 }
 
 function goToTaichung () {
     setCookie("city", "台中", 365);
     document.location.href = "http://localhost:8080/travel/find";
-    datalist();
+    // datalist();
 }
 
 function goToTaoyuan () {
     setCookie("city", "桃園", 365);
     document.location.href = "http://localhost:8080/travel/find";
-    datalist();
+    // datalist();
 }
 
 function goToYunlin () {
     setCookie("city", "雲林", 365);
     document.location.href = "http://localhost:8080/travel/find";
-    datalist();
+    // datalist();
 }
 
 // $('.package-item').click(function () {

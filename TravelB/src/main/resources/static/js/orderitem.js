@@ -44,23 +44,38 @@ function selectorderitem (data) {
 }
 
 function deleteOrderId (data) {
-    console.log(data)
+    
+    swal({
+        title: "確定要刪除訂單?",
+        icon: "warning",
+        buttons: {
+            A: {
+                text: "確定",
+                value: "success"
+              },
+              B: {
+                text: "取消",
+                value: "error"
+              }
+        }
+    }).then((value)=>{
+        console.log(value)
+    if(value=="success"){
     $.ajax({
         type: "DELETE",
         url: "http://localhost:8080/travel/user/" + data + "/delectOrder",
         dataType: 'json',
         contentType: "application/json ; charset=utf-8",
+         
         success: function () {
 
             location.reload()
 
 
-        },
-        error: () => {
-
-
-        }
+        },  
     });
+    }
+})
 }
 
 
