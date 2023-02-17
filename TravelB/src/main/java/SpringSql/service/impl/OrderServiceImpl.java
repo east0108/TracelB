@@ -160,7 +160,7 @@ public class OrderServiceImpl implements OrderSevice{
 		}
 
 
-		aioCheckOutALL.setMerchantTradeNo("3002607"+orderId);
+		aioCheckOutALL.setMerchantTradeNo("3002609"+orderId);
 		aioCheckOutALL.setMerchantTradeDate(orderDate);
 		aioCheckOutALL.setPeriodType("aio");
 		aioCheckOutALL.setTotalAmount(orderTotal);
