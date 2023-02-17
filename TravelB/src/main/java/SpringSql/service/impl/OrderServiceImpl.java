@@ -104,8 +104,8 @@ public class OrderServiceImpl implements OrderSevice{
 		
 		for(Order order : orderList) {
 			List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(order.getOrderId());
-			
-			order.setOrderItemList(orderItemList);
+
+		order.setOrderItemList(orderItemList);
 		}
 		
 		return orderList;
@@ -141,8 +141,10 @@ public class OrderServiceImpl implements OrderSevice{
 		AioCheckOutALL aioCheckOutALL =new AioCheckOutALL();
 //		Integer intPayOderId = Integer.parseInt(payOrderId);
 		Order pay = orderDao.getOrderById(orderQueryParams.getOrderId());
-
-
+		List<OrderItem> orderList = orderDao.getOrderItemsByOrderId(orderQueryParams.getOrderId()) ;
+//		for (int i ; i < orderList.size() ;i++) {
+//			orderList[i].getName();
+//		}
 
 		String orderId =  Integer.toString(pay.getOrderId()) ;
 
@@ -151,16 +153,19 @@ public class OrderServiceImpl implements OrderSevice{
 
 		String orderTotal = Integer.toString(pay.getTotalAmount());
 
+		String orderName ="";
 
-
+		for (int i=0 ;i <orderList.size();i++) {
+			orderName += "#"+ orderList.get(i).getName();
+		}
 
 
 		aioCheckOutALL.setMerchantTradeNo("3002607"+orderId);
-		aioCheckOutALL.setMerchantTradeDate("2023/02/15 16:22:30");
+		aioCheckOutALL.setMerchantTradeDate(orderDate);
 		aioCheckOutALL.setPeriodType("aio");
 		aioCheckOutALL.setTotalAmount(orderTotal);
 		aioCheckOutALL.setTradeDesc("123");
-		aioCheckOutALL.setItemName("商店名稱");
+		aioCheckOutALL.setItemName(orderName);
 		aioCheckOutALL.setReturnURL("https://www.google.com.tw/");
 		aioCheckOutALL.setChooseSubPayment("ALL");
 		aioCheckOutALL.setPeriodType("");
