@@ -261,24 +261,19 @@ function Info (data) {
                             </nav>
 
                             <div class="card card-body">
-
                                 <table style="width:100%">
-
-                                    <tr>
-                                        <th>景點名稱</th>
-                                        <th>景點地區</th>
-                                        <th>景點地址</th>
-                                        <th>門票價格</th>
-                                        <th>門票張數</th>
-                                    </tr>
-
-                                    <tr>
-                                        <td>${data.results[i].orderItemList[s].name}</td>
-                                        <td>${data.results[i].orderItemList[s].town}</td>
-                                        <td>${data.results[i].orderItemList[s].address}</td>
-                                        <td>${data.results[i].orderItemList[s].tickets}</td>
-                                        <td>${data.results[i].orderItemList[s].quantity}</td>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>景點名稱</th>
+                                            <th>景點地區</th>
+                                            <th>景點地址</th>
+                                            <th>門票價格</th>
+                                            <th>門票張數</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${getOrderItemList(data.results[i].orderItemList)}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -288,8 +283,27 @@ function Info (data) {
         </div>
     </div>
 </div>
-                                                                           
+
+
+
+                                                            
 `
+            function getOrderItemList(orderItemList) {
+                let html = "";
+                for (s = 0; s < orderItemList.length; s++) {
+                    html += `
+                <tr>
+                <td>${orderItemList[s].name}</td>
+            <td>${orderItemList[s].town}</td>
+            <td>${orderItemList[s].address}</td>
+            <td>${orderItemList[s].tickets}$</td>
+            <td>${orderItemList[s].quantity}</td>
+        </tr>
+            `;
+                }
+                return html;
+            }
+
             $("#selectItemOrder").append(html);
 
 
